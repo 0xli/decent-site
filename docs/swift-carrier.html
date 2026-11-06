@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swift Carrier SDK — docs | Decent Network</title>
+    <meta name="description" content="Swift API over the native Carrier library for iOS: identity and signatures, friends, messages with receipts, Express offline delivery, groups, files and sessions. Build from source; no published package yet." />
+    <meta property="og:title" content="Swift Carrier SDK — docs | Decent Network" />
+    <meta property="og:description" content="Swift API over the native Carrier library for iOS: identity and signatures, friends, messages with receipts, Express offline delivery, groups, files and sessions. Build from source; no published package yet." />
+    <meta property="og:url" content="https://decent.network/docs/swift-carrier" />
+    <link rel="canonical" href="https://decent.network/docs/swift-carrier" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->Mobile + native Carrier SDKs</div><h1>Swift Carrier SDK</h1><p>Swift API over the native Carrier library for iOS: identity and signatures, friends, messages with receipts, Express offline delivery, groups, files and sessions. Build from source; no published package yet.</p><dl class="doc-meta"><div><dt>Version</dt><dd>No published release</dd></div><div><dt>Platform</dt><dd>iOS · Swift</dd></div><div><dt>Source</dt><dd><a href="https://github.com/0xli/Elastos.CarrierClassic.Swift/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer">0xli/Elastos.CarrierClassic.Swift @ feat/agentnet-proto-v2<!-- --> ↗</a></dd></div></dl></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#add-it-to-your-project">Add it to your project</a><a href="#initialize">Initialize</a><a href="#identity">Identity</a><a href="#friends">Friends</a><a href="#messages">Messages</a><a href="#files">Files</a><a href="#sessions-and-calls">Sessions and calls</a><a href="#offline-messages-express">Offline messages (Express)</a><a href="#threading-and-lifecycle">Threading and lifecycle</a><a href="#api-reference">API reference</a><a href="#source">Source</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a class="active" href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><blockquote>
+<p><strong>Integration verified</strong> on 2026-11-06: built the native Carrier libraries and the Swift framework from the public repositories for the iOS Simulator (arm64), wrapped the framework in an xcframework, compiled every sample on this page against it with SwiftPM (<code>xcodebuild</code>, Xcode 27.0, Swift 6.4, CMake 4.1.1), and ran the Quickstart on an iOS 27.0 simulator. The node got an identity, signed and verified a message, and reached <code>ready</code> / <code>Connected</code> on the live network in about 14 seconds. Only the Quickstart ran against the network; the friend, message, file, session and extension samples were compiled, not run.</p>
+</blockquote>
+<blockquote>
+<p><strong>Build from a fresh checkout is currently blocked.</strong> The native build downloads <code>https://github.com/elastos/c-toxcore/archive/v0.2.12.carrier.tar.gz</code>, and that URL now returns 404. The verified build used a copy of that tarball cached on the build machine (its SHA-256, <code>9a6276d8c4e5202b972d45819fd0b47ff9b55750c8f35a83d54f3ca4a4726381</code>, matches the pin in <code>deps/toxcore/CMakeLists.txt</code>). Until a replacement source is published, a new developer cannot complete step 1 below.</p>
+</blockquote>
+<p>The Swift Carrier SDK (module <code>ElastosCarrierSDK</code>) wraps the native Carrier C library for iOS. It gives an app a self-generated Carrier identity, plus friends, presence, text and binary messages with delivery receipts, offline delivery through Express nodes, groups, file transfer, and peer-to-peer sessions with streams. Beagle Chat for iOS uses this SDK (the <code>feat/agentnet-proto-v2</code> branch) as a prebuilt xcframework.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<p>Use it in a native iOS app written in Swift or Objective-C (every public class has an <code>ELA…</code> Objective-C name) that needs to be a full peer on the Decent Network. For voice and video calls on iOS, see the <a href="/docs/ios-webrtc">iOS WebRTC SDK</a>, which signals over this SDK. If you write C or C++, or target macOS, Linux or Windows, use the <a href="/docs/native-carrier">native Carrier SDK</a> directly. For JavaScript, use <a href="/docs/peer">@decentnetwork/peer</a>.</p>
+<h2 id="add-it-to-your-project"><a class="doc-anchor" href="#add-it-to-your-project">Add it to your project</a></h2>
+<p>No prebuilt distribution of this SDK is published. The repository has no tags and no <code>Package.swift</code>. The CocoaPods pod named <code>ElastosCarrierSDK</code> (latest 6.0.4, January 2023) is the older upstream Elastos build, not this SDK, and its download URL (<code>github.com/elastos/Elastos.NET.Carrier.Swift.SDK/releases/...</code>) now returns 404, so <code>pod &#39;ElastosCarrierSDK&#39;</code> does not work either. Build from source as follows. These are the commands that were run for the verification, for the iOS Simulator on Apple silicon.</p>
+<p><strong>1. Build the native libraries</strong> from <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer">0xli/Elastos.NET.Carrier.Native.SDK</a>, branch <code>feat/agentnet-proto-v2</code>. You need Xcode, CMake and <code>brew install autoconf automake libtool shtool pkg-config gettext</code>. See the blocker note at the top of this page about <code>c-toxcore</code>.</p>
+<div class="code-wrap"><pre><code class="language-bash">git clone --branch feat/agentnet-proto-v2 https://github.com/0xli/Elastos.NET.Carrier.Native.SDK.git native
+mkdir -p native/build/ios-sim-arm64 &amp;&amp; cd native/build/ios-sim-arm64
+cmake -DIOS_PLATFORM=iphonesimulator -DIOS_ARCH=arm64 \
+      -DCMAKE_TOOLCHAIN_FILE=../../cmake/iOSToolchain2.cmake \
+      -DCMAKE_BUILD_TYPE=Release -DENABLE_APPS=OFF -DENABLE_TESTS=OFF \
+      -DENABLE_SHARED=OFF -DENABLE_STATIC=ON ../..
+make -j8 &amp;&amp; make install</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>For a device slice, use <code>-DIOS_PLATFORM=iphoneos</code> (and for an Intel simulator, <code>-DIOS_ARCH=x86_64</code>). Those variants were not run for this page.</p>
+<p><strong>2. Stage the 18 static libraries</strong> into the Swift repository&#39;s <code>NativeDistributions/lib/-iphonesimulator</code> (use <code>-iphoneos</code> for device). The headers in <code>NativeDistributions/include</code> already match the native branch.</p>
+<div class="code-wrap"><pre><code class="language-bash">git clone --branch feat/agentnet-proto-v2 https://github.com/0xli/Elastos.CarrierClassic.Swift.git carrier-swift
+B=native/build/ios-sim-arm64; D=carrier-swift/NativeDistributions/lib/-iphonesimulator
+mkdir -p &quot;$D&quot;
+for l in libcarrier.a libcarriersession.a libcarrierfiletrans.a libcjson.a libcrypto.a \
+         libcrystal.a libcurl.a libflatccrt.a libpj.a libpjlib-util.a libpjmedia.a \
+         libpjnath.a libsodium.a libsrtp.a libssl.a libtls.a libtoxcore.a libz.a; do
+  for p in $B/src/carrier/$l $B/src/session/$l $B/src/filetransfer/$l $B/intermediates/lib/$l; do
+    [ -f &quot;$p&quot; ] &amp;&amp; cp &quot;$p&quot; &quot;$D/$l&quot; &amp;&amp; break
+  done
+done</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>3. Build the framework and wrap it in an xcframework.</strong> The project&#39;s defaults (iOS 9.0, simulator arm64 excluded) do not suit current Xcode, so override them:</p>
+<div class="code-wrap"><pre><code class="language-bash">cd carrier-swift
+xcodebuild -project ElastosCarrierSDK.xcodeproj -target ElastosCarrierSDK \
+  -configuration Release -sdk iphonesimulator ARCHS=arm64 EXCLUDED_ARCHS= \
+  ONLY_ACTIVE_ARCH=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES SKIP_INSTALL=NO \
+  IPHONEOS_DEPLOYMENT_TARGET=15.0 CODE_SIGNING_ALLOWED=NO \
+  CONFIGURATION_BUILD_DIR=$PWD/../out/iphonesimulator build
+cd ..
+xcodebuild -create-xcframework \
+  -framework out/iphonesimulator/ElastosCarrierSDK.framework \
+  -output ElastosCarrierSDK.xcframework</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>To ship to devices, build the <code>-sdk iphoneos</code> framework the same way and pass both <code>-framework</code> arguments to <code>-create-xcframework</code>.</p>
+<p><strong>4. Use the xcframework</strong> from a local Swift package, as the verification did, or drag it into your Xcode target (&quot;Embed &amp; Sign&quot;; it is a dynamic framework):</p>
+<div class="code-wrap"><pre><code class="language-swift">// swift-tools-version: 5.9
+import PackageDescription
+
+let package = Package(
+    name: &quot;CarrierQuickstart&quot;,
+    platforms: [.iOS(.v15)],
+    products: [
+        .library(name: &quot;CarrierQuickstart&quot;, targets: [&quot;CarrierQuickstart&quot;]),
+    ],
+    targets: [
+        // The xcframework you built from source (see &quot;Add it to your project&quot;).
+        .binaryTarget(name: &quot;ElastosCarrierSDK&quot;, path: &quot;ElastosCarrierSDK.xcframework&quot;),
+        .target(name: &quot;CarrierQuickstart&quot;, dependencies: [&quot;ElastosCarrierSDK&quot;]),
+    ]
+)</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>A simulator-only xcframework builds only for arm64, so pass <code>ARCHS=arm64</code> when you build for <code>generic/platform=iOS Simulator</code>.</p>
+<h2 id="initialize"><a class="doc-anchor" href="#initialize">Initialize</a></h2>
+<p>Create one <code>Carrier</code> with <code>Carrier.createInstance(options:delegate:)</code>, then call <code>start(iterateInterval:)</code>. Wait for <code>didBecomeReady</code> before you call friend or message APIs. <code>persistentLocation</code> and <code>bootstrapNodes</code> are required: the SDK force-unwraps <code>bootstrapNodes</code>, so leaving it <code>nil</code> crashes. The full lists of public bootstrap and Express nodes are in <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/blob/feat/agentnet-proto-v2/config/carrier.conf" target="_blank" rel="noreferrer"><code>config/carrier.conf</code></a> in the native repository.</p>
+<p>This is the verified Quickstart:</p>
+<div class="code-wrap"><pre><code class="language-swift">import Foundation
+import ElastosCarrierSDK
+
+/// Receives every Carrier callback. All methods are optional; they run on
+/// the SDK's background queue, not the main thread.
+public final class QuickstartNode: NSObject, CarrierDelegate {
+    public let ready = DispatchSemaphore(value: 0)
+
+    public func connectionStatusDidChange(_ carrier: Carrier,
+                                          _ newStatus: CarrierConnectionStatus) {
+        print(&quot;connection: \(newStatus)&quot;)
+    }
+
+    public func didBecomeReady(_ carrier: Carrier) {
+        print(&quot;ready&quot;)
+        ready.signal()
+    }
+
+    public func didReceiveFriendRequest(_ carrier: Carrier, _ userId: String,
+                                        _ userInfo: CarrierUserInfo, _ hello: String) {
+        print(&quot;friend request from \(userId): \(hello)&quot;)
+        try? carrier.acceptFriend(with: userId)
+    }
+
+    public func didReceiveFriendMessage(_ carrier: Carrier, _ from: String, _ data: Data,
+                                        _ timestamp: Date, _ isOffline: Bool) {
+        print(&quot;message from \(from) (offline: \(isOffline)): \(String(decoding: data, as: UTF8.self))&quot;)
+    }
+}
+
+public func makeOptions(dataDir: String) -&gt; CarrierOptions {
+    let options = CarrierOptions()
+    options.persistentLocation = dataDir        // identity + friend list live here
+    options.udpEnabled = true
+    options.loglevel = .Warning
+
+    // Bootstrap and Express nodes: config/carrier.conf in the native SDK repo.
+    let bootstrap = BootstrapNode()
+    bootstrap.ipv4 = &quot;13.58.208.50&quot;
+    bootstrap.port = &quot;33445&quot;
+    bootstrap.publicKey = &quot;89vny8MrKdDKs7Uta9RdVmspPjnRMdwMmaiEW27pZ7gh&quot;
+    options.bootstrapNodes = [bootstrap]        // required: must not be nil
+
+    let express = ExpressNode()
+    express.ipv4 = &quot;lens.beagle.chat&quot;
+    express.port = &quot;443&quot;
+    express.publicKey = &quot;ECbs4GxwGzxGerNkmqDJFibEmevu8jAXqAZtikccvD95&quot;
+    options.expressNodes = [express]            // offline (Express) delivery
+    return options
+}
+
+public func runQuickstart(dataDir: String, waitSeconds: Int = 60) throws {
+    print(&quot;Carrier version: \(Carrier.getVersion())&quot;)
+
+    let delegate = QuickstartNode()
+    let carrier = try Carrier.createInstance(options: makeOptions(dataDir: dataDir),
+                                             delegate: delegate)
+    print(&quot;userId:  \(carrier.getUserId())&quot;)
+    print(&quot;address: \(carrier.getAddress())&quot;)
+    print(&quot;address valid: \(Carrier.isValidAddress(carrier.getAddress()))&quot;)
+
+    // Identity signatures (XEdDSA): anyone holding the userId can verify.
+    let message = Data(&quot;hello decent&quot;.utf8)
+    let signature = try carrier.identitySign(message)
+    let ok = Carrier.identityVerify(userId: carrier.getUserId(),
+                                    message: message, signature: signature)
+    print(&quot;signature: \(signature.count) bytes, verifies: \(ok)&quot;)
+
+    try carrier.setClientInfo(CarrierClientInfo(protoVersion: 1, platform: &quot;ios&quot;,
+                                                osVersion: &quot;18&quot;, appVersion: &quot;0.1&quot;))
+
+    try carrier.start(iterateInterval: 1000)
+    if delegate.ready.wait(timeout: .now() + .seconds(waitSeconds)) == .success {
+        print(&quot;friends: \(try carrier.getFriends().count)&quot;)
+    } else {
+        print(&quot;not ready after \(waitSeconds) s&quot;)
+    }
+    carrier.kill()
+    print(&quot;killed&quot;)
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (built from source as above, iOS 27.0 simulator, 2026-11-06). The <code>I/Carrier</code> log lines are trimmed. A second run with the same data directory printed the same <code>userId</code>.</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">Carrier version: 52master
+userId:  BZb6K3TqEhpaMXsNZC5f6R9nUjk1caAkg8iGP7TmJidA
+address: QDS1fGKx48cgsbMtEbJuHAwYXVkFC3sFtWKgXSgsf5btxqL4toRK
+address valid: true
+signature: 64 bytes, verifies: true
+ready
+connection: Connected
+friends: 0
+killed</code></pre></div>
+<h2 id="identity"><a class="doc-anchor" href="#identity">Identity</a></h2>
+<p>On first start the SDK generates a key pair and stores it in <code>persistentLocation</code>, as the file <code>carrier.data</code>. Every later start with the same directory reuses that identity. Each node has two identifiers:</p>
+<ul>
+<li><code>getUserId()</code> returns the 32-byte public key in Base58. This is the permanent identity, used as the friend id in every API.</li>
+<li><code>getAddress()</code> returns the userId plus a 4-byte nospam and checksum (38 bytes in Base58). This is what you share so others can send a friend request. Change the nospam with <code>setSelfNospam(_:)</code> to stop new requests to an old address.</li>
+</ul>
+<p><code>Carrier.isValidAddress(_:)</code>, <code>Carrier.isValidUserId(_:)</code> and <code>Carrier.getUserIdFromAddress(_:)</code> are static helpers. <code>identitySign(_:)</code> returns a 64-byte XEdDSA signature, and the static <code>Carrier.identityVerify(userId:message:signature:)</code> checks it without a Carrier instance. Signatures are compatible with the JavaScript peer. To move an identity, call <code>exportSecretKey()</code> and load the key on a fresh data directory:</p>
+<div class="code-wrap"><pre><code class="language-swift">func identityBackup(carrier: Carrier) throws -&gt; Data {
+    return try carrier.exportSecretKey()   // 32 bytes; keep it in the Keychain
+}
+func restoreOptions(secretKey: Data, freshDataDir: String) -&gt; CarrierOptions {
+    let options = makeOptions(dataDir: freshDataDir)
+    options.secret_key = secretKey
+    return options
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Profile data is set with <code>setSelfUserInfo(_:)</code> (name, description, gender, phone, email, region) and <code>setSelfProfileExt(_:)</code> (avatar URL, link, ENS name, extra):</p>
+<div class="code-wrap"><pre><code class="language-swift">func profileSample(carrier: Carrier) throws {
+    let me = try carrier.getSelfUserInfo()
+    me.name = &quot;Bob&quot;
+    me.briefDescription = &quot;testing Carrier on iOS&quot;
+    try carrier.setSelfUserInfo(me)
+    try carrier.setSelfPresence(.None)
+    try carrier.setSelfProfileExt(CarrierProfileExt(avatarUrl: &quot;https://example.com/a.png&quot;,
+                                                    url: &quot;&quot;, ens: &quot;&quot;, extra: &quot;&quot;))
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="friends"><a class="doc-anchor" href="#friends">Friends</a></h2>
+<p>A friendship is mutual. One side calls <code>addFriend(with:withGreeting:)</code> with the other side&#39;s <strong>address</strong>: the parameter is labelled <code>with userId</code>, but the native call takes an address. The other side gets <code>didReceiveFriendRequest</code> and calls <code>acceptFriend(with:)</code> with the requester&#39;s userId. Both sides then get <code>newFriendAdded</code>. Presence and connection changes arrive as <code>friendConnectionDidChange</code>, <code>friendPresenceDidChange</code> and <code>friendInfoDidChange</code>.</p>
+<div class="code-wrap"><pre><code class="language-swift">func friendsSample(carrier: Carrier, friendAddress: String) throws {
+    // addFriend takes the friend's *address* (not the userId).
+    if Carrier.isValidAddress(friendAddress) {
+        try carrier.addFriend(with: friendAddress, withGreeting: &quot;hi, it's me&quot;)
+    }
+    for friend in try carrier.getFriends() {
+        print(friend.userId ?? &quot;&quot;, friend.name ?? &quot;&quot;, friend.status, friend.presence)
+    }
+    if let friendId = Carrier.getUserIdFromAddress(friendAddress),
+       carrier.isFriend(with: friendId) {
+        try carrier.setFriendLabel(forFriend: friendId, newLabel: &quot;Alice&quot;)
+        // try carrier.removeFriend(friendId)
+    }
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>getFriendRequestProfileExt(_:)</code>, called from inside <code>didReceiveFriendRequest</code>, returns the requester&#39;s avatar URL if the request carried one.</p>
+<h2 id="messages"><a class="doc-anchor" href="#messages">Messages</a></h2>
+<p><code>sendFriendMessage(to:withMessage:responseHandler:)</code> sends a <code>Data</code> or <code>String</code> payload of up to 5 MB (the Swift wrapper&#39;s limit; the native limit is 16 MB). It returns a message id, and the handler later reports a <code>CarrierReceiptState</code> for that id. The Swift overloads differ only in return type (<code>UInt32</code> and, for Objective-C, <code>NSNumber</code>), so annotate the result. Incoming messages arrive in <code>didReceiveFriendMessage(_:_:_:_:_:)</code> as <code>Data</code>, with the sender&#39;s userId and a timestamp.</p>
+<div class="code-wrap"><pre><code class="language-swift">func messageSample(carrier: Carrier, friendId: String) throws {
+    let payload = Data(&quot;hello&quot;.utf8)
+    let msgId: UInt32 = try carrier.sendFriendMessage(to: friendId, withMessage: payload) { id, state in
+        switch state {
+        case .ByFriend: print(&quot;\(id) delivered to the friend&quot;)
+        case .Offline:  print(&quot;\(id) stored for offline delivery (Express)&quot;)
+        case .Error:    print(&quot;\(id) failed&quot;)
+        @unknown default: break
+        }
+    }
+    print(&quot;queued message \(msgId)&quot;)
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The <code>String</code> overload sends the UTF-8 bytes <strong>plus a trailing NUL byte</strong>, and the receiver sees that byte in its <code>Data</code>. Use the <code>Data</code> overload when the exact bytes matter.</p>
+<p>For a request that needs an answer, use <code>sendInviteFriendRequest(to:withData:responseHandler:)</code>. The receiver gets <code>didReceiveFriendInviteRequest</code> and answers with <code>replyFriendInviteRequest(to:withStatus:reason:data:)</code>:</p>
+<div class="code-wrap"><pre><code class="language-swift">func inviteSample(carrier: Carrier, friendId: String) throws {
+    try carrier.sendInviteFriendRequest(to: friendId, withData: &quot;ping&quot;) { _, from, status, reason, data in
+        print(&quot;invite reply from \(from): status \(status) reason \(reason ?? &quot;-&quot;) data \(data ?? &quot;-&quot;)&quot;)
+    }
+}
+// The receiving side gets CarrierDelegate.didReceiveFriendInviteRequest and answers with:
+func replyInvite(carrier: Carrier, from: String) throws {
+    try carrier.replyFriendInviteRequest(to: from, withStatus: 0, reason: nil, data: &quot;pong&quot;)
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Groups.</strong> <code>createGroup()</code>, <code>joinGroup(createdBy:withCookie:)</code> (with the cookie from <code>didReceiveGroupInvite</code>), <code>leaveGroup(from:)</code> and <code>getGroups()</code> live on <code>Carrier</code>. <code>CarrierGroup</code> has <code>inviteFriend(_:)</code>, <code>sendMessage(_:)</code>, <code>getTitle()</code> / <code>setTitle(_:)</code>, <code>getPeers()</code> and <code>getPeer(byPeerid:)</code>. Group events go to the same delegate object, because <code>CarrierDelegate</code> inherits <code>CarrierGroupDelegate</code> (<code>groupDidConnect</code>, <code>didReceiveGroupMessage</code>, <code>groupTitleDidChange</code>, <code>groupPeerNameDidChange</code>, <code>groupPeerListDidChange</code>).</p>
+<div class="code-wrap"><pre><code class="language-swift">func groupSample(carrier: Carrier, friendId: String) throws -&gt; CarrierGroup {
+    let group = try carrier.createGroup()
+    try group.setTitle(&quot;Team&quot;)
+    try group.inviteFriend(friendId)
+    try group.sendMessage(Data(&quot;hello group&quot;.utf8))
+    return group
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="files"><a class="doc-anchor" href="#files">Files</a></h2>
+<p>File transfer is pull-based and works between friends. Create one <code>CarrierFileTransferManager</code> per <code>Carrier</code>. The sender creates a <code>CarrierFileTransfer</code> with the file&#39;s info and calls <code>sendConnectionRequest()</code>. The receiver gets the manager&#39;s connect handler, creates its own transfer and calls <code>acceptConnectionRequest()</code>. After that the receiver gets <code>didReceiveFileRequest</code> and asks for data with <code>sendPullRequest(fileId:withOffset:)</code>. The sender gets <code>didReceivePullRequest</code> and replies with <code>sendData(fileId:withData:)</code>. Data arrives in <code>didReceiveFileTransferData</code>.</p>
+<div class="code-wrap"><pre><code class="language-swift">final class FileSender: NSObject, CarrierFileTransferDelegate {
+    let path: String
+    init(path: String) { self.path = path }
+
+    func fileTransferStateDidChange(_ fileTransfer: CarrierFileTransfer,
+                                    _ newState: CarrierFileTransferConnectionState) {
+        print(&quot;file transfer: \(newState)&quot;)
+    }
+    // The receiver asked for data starting at `offset`.
+    func didReceivePullRequest(_ fileTransfer: CarrierFileTransfer, _ fileId: String, _ offset: UInt64) {
+        guard let handle = FileHandle(forReadingAtPath: path) else { return }
+        handle.seek(toFileOffset: offset)
+        while case let chunk = handle.readData(ofLength: 4096), !chunk.isEmpty {
+            try? fileTransfer.sendData(fileId: fileId, withData: chunk)
+        }
+        handle.closeFile()
+    }
+}
+
+func fileSendSample(manager: CarrierFileTransferManager, friendId: String, path: String,
+                    delegate: FileSender) throws -&gt; CarrierFileTransfer {
+    let info = CarrierFileTransferInfo()
+    info.fileName = (path as NSString).lastPathComponent
+    info.fileSize = (try FileManager.default.attributesOfItem(atPath: path)[.size] as? UInt64) ?? 0
+    let transfer = try manager.createFileTransfer(to: friendId, withFileInfo: info, delegate: delegate)
+    try transfer.sendConnectionRequest()
+    return transfer
+}
+
+final class FileReceiver: NSObject, CarrierFileTransferDelegate {
+    func didReceiveFileRequest(_ fileTransfer: CarrierFileTransfer, _ fileId: String,
+                               _ fileName: String, _ size: UInt64) {
+        try? fileTransfer.sendPullRequest(fileId: fileId, withOffset: 0)
+    }
+    func didReceiveFileTransferData(_ fileTransfer: CarrierFileTransfer, _ fileId: String,
+                                    _ data: Data) -&gt; Bool {
+        // append `data` to the file being written; return true to keep receiving
+        return true
+    }
+}
+
+/// Accepts incoming file transfers. Keep the manager and the transfers alive.
+final class FileInbox {
+    private(set) var manager: CarrierFileTransferManager!
+    private var transfers: [CarrierFileTransfer] = []
+    private let receiver = FileReceiver()
+
+    init(carrier: Carrier) throws {
+        manager = try CarrierFileTransferManager.createInstance(carrier: carrier) { [weak self] _, from, fileInfo in
+            guard let self,
+                  let transfer = try? self.manager.createFileTransfer(to: from, withFileInfo: fileInfo,
+                                                                      delegate: self.receiver) else { return }
+            try? transfer.acceptConnectionRequest()
+            self.transfers.append(transfer)
+        }
+    }
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Track the expected size from <code>didReceiveFileRequest</code> to know when a file is complete. <code>pendTransfering</code>, <code>resumeTransfering</code> and <code>cancelTransfering</code> control a transfer in progress. Small files can also be sent inline as a message, up to the 5 MB message limit.</p>
+<h2 id="sessions-and-calls"><a class="doc-anchor" href="#sessions-and-calls">Sessions and calls</a></h2>
+<p>A <code>CarrierSession</code> is a peer-to-peer connection to a friend, negotiated with ICE. The two sides exchange SDP over the friend link. Create one <code>CarrierSessionManager</code> per <code>Carrier</code>. A session holds one or more <code>CarrierStream</code>s (<code>.Audio</code>, <code>.Video</code>, <code>.Text</code>, <code>.Application</code>, <code>.Message</code>) with <code>CarrierStreamOptions</code> (<code>.compress</code>, <code>.plain</code>, <code>.reliable</code>, <code>.multiplexing</code>, <code>.portForwarding</code>). A multiplexing stream adds channels (<code>openChannel</code>, <code>writeChannel</code>) and TCP port forwarding (<code>addService</code> on one side, <code>openPortForwarding</code> on the other).</p>
+<p>The handshake follows the native SDK&#39;s port-forwarding app (<code>apps/pfd</code>). The caller sends the invite once its stream is <code>Initialized</code>, and starts the session with the SDP in the reply. The callee replies once its stream is <code>Initialized</code>, and starts the session with the caller&#39;s SDP once its stream is <code>TransportReady</code>.</p>
+<div class="code-wrap"><pre><code class="language-swift">final class StreamHandler: NSObject, CarrierStreamDelegate {
+    var onStateChange: ((CarrierStream, CarrierStreamState) -&gt; Void)?
+    func streamStateDidChange(_ stream: CarrierStream, _ newState: CarrierStreamState) {
+        onStateChange?(stream, newState)
+    }
+    func didReceiveStreamData(_ stream: CarrierStream, _ data: Data) {
+        print(&quot;stream \(stream.getStreamId()) got \(data.count) bytes&quot;)
+    }
+}
+
+// Caller: add a stream, send the invite once the stream is Initialized,
+// start the session with the callee's SDP, write once Connected.
+func openSession(manager: CarrierSessionManager, friendId: String,
+                 handler: StreamHandler) throws -&gt; CarrierSession {
+    let session = try manager.createSession(to: friendId)
+    handler.onStateChange = { stream, state in
+        switch state {
+        case .Initialized:
+            try? session.sendInviteRequest { session, status, reason, sdp in
+                guard status == 0, let sdp = sdp else { return print(&quot;refused: \(reason ?? &quot;&quot;)&quot;) }
+                try? session.start(remoteSdp: sdp)
+            }
+        case .Connected:
+            _ = try? stream.writeData(Data(&quot;hello over a stream&quot;.utf8))
+        default: break
+        }
+    }
+    _ = try session.addStream(type: .Application, options: [.reliable], delegate: handler)
+    return session
+}
+
+// Callee: createInstance(carrier:sessionRequestHandler:) receives (carrier, from, sdp).
+func acceptSessions(carrier: Carrier, handler: StreamHandler) throws -&gt; CarrierSessionManager {
+    var accepted: [CarrierSession] = []
+    var manager: CarrierSessionManager?
+    manager = try CarrierSessionManager.createInstance(carrier: carrier) { _, from, sdp in
+        guard let session = try? manager?.createSession(to: from) else { return }
+        accepted.append(session)
+        handler.onStateChange = { _, state in
+            if state == .Initialized { try? session.replyInviteRequest(with: 0, reason: nil) }
+            if state == .TransportReady { try? session.start(remoteSdp: sdp) }
+        }
+        _ = try? session.addStream(type: .Application, options: [.reliable], delegate: handler)
+    }
+    return manager!
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Calls.</strong> The SDK has no media engine. Beagle&#39;s audio and video calls use the <a href="/docs/ios-webrtc">iOS WebRTC SDK</a>, which sends its signaling through <code>CarrierExtension</code>. That class has <code>registerExtension(_:)</code> to receive, <code>sendInviteFriendRequest(to:withData:_:)</code> and <code>replyFriendInviteRequest(to:withStatus:_:_:)</code> to send and answer, and <code>turnServerInfo()</code>, which returns TURN credentials from the Carrier network:</p>
+<div class="code-wrap"><pre><code class="language-swift">func extensionSample(carrier: Carrier, friendId: String) throws -&gt; CarrierExtension {
+    let ext = CarrierExtension(carrier)
+    try ext.registerExtension { _, from, data in
+        print(&quot;extension invite from \(from): \(data ?? &quot;&quot;)&quot;)
+    }
+    let turn = try ext.turnServerInfo()
+    print(&quot;turn:\(turn.server):\(turn.port) user \(turn.username)&quot;)
+    try ext.sendInviteFriendRequest(to: friendId, withData: &quot;{\&quot;type\&quot;:\&quot;offer\&quot;}&quot;) { _, from, status, _, data in
+        print(&quot;reply from \(from): \(status) \(data ?? &quot;&quot;)&quot;)
+    }
+    return ext
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="offline-messages-express"><a class="doc-anchor" href="#offline-messages-express">Offline messages (Express)</a></h2>
+<p>Express has no separate API. Set <code>CarrierOptions.expressNodes</code>, as in the Quickstart. When a friend is offline, <code>sendFriendMessage</code> stores the message on an Express node, and the receipt handler reports <code>.Offline</code> instead of <code>.ByFriend</code>. When the friend comes online, the message arrives in <code>didReceiveFriendMessage</code> with <code>isOffline == true</code>. The public Express node is listed in <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/blob/feat/agentnet-proto-v2/config/carrier.conf" target="_blank" rel="noreferrer"><code>config/carrier.conf</code></a>.</p>
+<h2 id="threading-and-lifecycle"><a class="doc-anchor" href="#threading-and-lifecycle">Threading and lifecycle</a></h2>
+<ul>
+<li><code>start(iterateInterval:)</code> returns at once and runs the native loop on a background <code>DispatchQueue</code> (<code>org.elastos.queue</code>, QoS <code>.background</code>). <strong>All delegate callbacks run on that queue</strong>, so dispatch to the main queue before you touch UI.</li>
+<li>The Carrier holds its delegate <code>weak</code>, but the callbacks force-unwrap it. Keep a strong reference to the delegate for as long as the Carrier lives, or callbacks will crash.</li>
+<li><code>didBecomeReady</code> fires once the node is connected. Calls made before it may fail. <code>isReady()</code> reports the same state.</li>
+<li><code>kill()</code> stops the loop and <strong>blocks until the loop thread exits</strong>. Call it from your own code, not from inside a Carrier callback, because the loop is running that callback. <code>deinit</code> also calls <code>kill()</code>. After <code>kill()</code> the instance cannot be used; create a new one with the same <code>persistentLocation</code> to resume with the same identity.</li>
+<li>Keep strong references to <code>CarrierSessionManager</code>, <code>CarrierFileTransferManager</code>, <code>CarrierExtension</code>, sessions and transfers. Call <code>cleanup()</code> on the managers and extension and <code>close()</code> on sessions and transfers before you <code>kill()</code> the Carrier.</li>
+<li>The SDK has no iOS background-mode or push support of its own. What happens when the app is suspended is up to the app.</li>
+</ul>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>Public API on branch <code>feat/agentnet-proto-v2</code>. Errors are thrown as <code>CarrierError</code> (<code>InvalidArgument</code>, <code>IllegalState</code>, <code>GeneralError(ecode:)</code>, <code>DHTError(ecode:)</code>, <code>SystemError(ecode:)</code>, <code>ICEError(ecode:)</code>, <code>UnknowError(ecode:)</code>, each with <code>errorCode</code> and <code>errorDescription</code>).</p>
+<h3 id="carrier"><a class="doc-anchor" href="#carrier"><code>Carrier</code></a></h3>
+<div class="doc-table"><table><thead><tr><th>Member</th><th>Signature</th></tr></thead><tbody><tr><td>version</td><td><code>static func getVersion() -&gt; String</code></td></tr><tr><td>validators</td><td><code>static func isValidAddress(_ address: String) -&gt; Bool</code>, <code>static func isValidUserId(_ id: String) -&gt; Bool</code>, <code>static func getUserIdFromAddress(_ address: String) -&gt; String?</code></td></tr><tr><td>create</td><td><code>static func createInstance(options: CarrierOptions, delegate: CarrierDelegate) throws -&gt; Carrier</code></td></tr><tr><td>run / stop</td><td><code>func start(iterateInterval: Int = 0) throws</code>, <code>func kill()</code>, <code>func isReady() -&gt; Bool</code></td></tr><tr><td>ids</td><td><code>func getAddress() -&gt; String</code>, <code>func getNodeId() -&gt; String</code>, <code>func getUserId() -&gt; String</code></td></tr><tr><td>nospam</td><td><code>func setSelfNospam(_ newNospam: UInt32) throws</code>, <code>func getSelfNospam() throws -&gt; UInt32</code></td></tr><tr><td>self info</td><td><code>func setSelfUserInfo(_ newUserInfo: CarrierUserInfo) throws</code>, <code>func getSelfUserInfo() throws -&gt; CarrierUserInfo</code></td></tr><tr><td>presence</td><td><code>func setSelfPresence(_ newPresence: CarrierPresenceStatus) throws</code>, <code>func getSelfPresence() throws -&gt; CarrierPresenceStatus</code></td></tr><tr><td>client info</td><td><code>func setClientInfo(_ info: CarrierClientInfo) throws</code>, <code>func getClientInfo() throws -&gt; CarrierClientInfo</code>, <code>func getFriendClientInfo(_ friendId: String) throws -&gt; CarrierClientInfo</code></td></tr><tr><td>profile ext</td><td><code>func setSelfProfileExt(_ ext: CarrierProfileExt) throws</code>, <code>func getSelfProfileExt() throws -&gt; CarrierProfileExt</code>, <code>func getFriendProfileExt(_ friendId: String) throws -&gt; CarrierProfileExt</code>, <code>func getFriendRequestProfileExt(_ userId: String) -&gt; CarrierProfileExt?</code></td></tr><tr><td>identity</td><td><code>func identitySign(_ message: Data) throws -&gt; Data</code>, <code>static func identityVerify(userId: String, message: Data, signature: Data) -&gt; Bool</code>, <code>func exportSecretKey() throws -&gt; Data</code>, <code>func createIdentityAuthProof(serverPublicKey: Data, transcript: Data) throws -&gt; Data</code></td></tr><tr><td>friends</td><td><code>func getFriends() throws -&gt; [CarrierFriendInfo]</code>, <code>func getFriendInfo(_ friendId: String) throws -&gt; CarrierFriendInfo</code>, <code>func setFriendLabel(forFriend friendId: String, newLabel: String) throws</code>, <code>func isFriend(with userId: String) -&gt; Bool</code>, <code>func addFriend(with userId: String, withGreeting hello: String) throws</code>, <code>func acceptFriend(with userId: String) throws</code>, <code>func removeFriend(_ friendId: String) throws</code></td></tr><tr><td>messages</td><td><code>func sendFriendMessage(to target: String, withMessage msg: Data, responseHandler: @escaping CarrierFriendMessageReceiptResponseHandler) throws -&gt; UInt32</code> (also <code>String</code>, and <code>NSNumber</code>-returning variants)</td></tr><tr><td>invites</td><td><code>func sendInviteFriendRequest(to target: String, withData data: String, responseHandler: @escaping CarrierFriendInviteResponseHandler) throws</code>, <code>func replyFriendInviteRequest(to target: String, withStatus status: Int, reason: String?, data: String?) throws</code></td></tr><tr><td>groups</td><td><code>func createGroup() throws -&gt; CarrierGroup</code>, <code>func joinGroup(createdBy friendId: String, withCookie cookie: Data) throws -&gt; CarrierGroup</code>, <code>func leaveGroup(from group: CarrierGroup) throws</code>, <code>func getGroups() throws -&gt; [CarrierGroup]</code></td></tr><tr><td>constant</td><td><code>static let MAX_APP_MESSAGE_LEN: Int = 2048</code></td></tr></tbody></table></div>
+<p>Handler types: <code>CarrierFriendMessageReceiptResponseHandler = (_ msgid: UInt32, _ status: CarrierReceiptState) -&gt; Void</code> and <code>CarrierFriendInviteResponseHandler = (_ carrier: Carrier, _ from: String, _ status: Int, _ reason: String?, _ data: String?) -&gt; Void</code>.</p>
+<h3 id="carrieroptions"><a class="doc-anchor" href="#carrieroptions"><code>CarrierOptions</code></a></h3>
+<div class="doc-table"><table><thead><tr><th>Property</th><th>Type</th><th>Notes</th></tr></thead><tbody><tr><td><code>persistentLocation</code></td><td><code>String?</code></td><td>Required. Data directory for identity and friends.</td></tr><tr><td><code>bootstrapNodes</code></td><td><code>[BootstrapNode]?</code></td><td>Required (force-unwrapped). <code>ipv4</code>, <code>ipv6</code>, <code>port</code>, <code>publicKey</code> (all <code>String?</code>).</td></tr><tr><td><code>expressNodes</code></td><td><code>[ExpressNode]?</code></td><td>Optional. Same fields. Enables offline delivery.</td></tr><tr><td><code>udpEnabled</code></td><td><code>Bool</code></td><td>Default <code>true</code>. <code>false</code> forces TCP.</td></tr><tr><td><code>loglevel</code></td><td><code>CarrierLogLevel</code></td><td>Default <code>.Debug</code>. <code>.None</code> through <code>.Verbose</code>.</td></tr><tr><td><code>secret_key</code></td><td><code>Data?</code></td><td>Optional 32-byte key from <code>exportSecretKey()</code>, to import an identity into a fresh directory.</td></tr></tbody></table></div>
+<h3 id="carrierdelegate-all-methods-optional-objc"><a class="doc-anchor" href="#carrierdelegate-all-methods-optional-objc"><code>CarrierDelegate</code> (all methods optional, <code>@objc</code>)</a></h3>
+<p><code>willBecomeIdle(_:)</code>, <code>connectionStatusDidChange(_:_:)</code>, <code>didBecomeReady(_:)</code>, <code>selfUserInfoDidChange(_:_:)</code>, <code>didReceiveFriendsList(_:_:)</code>, <code>friendConnectionDidChange(_:_:_:)</code>, <code>friendInfoDidChange(_:_:_:)</code>, <code>friendPresenceDidChange(_:_:_:)</code>, <code>didReceiveFriendRequest(_ carrier:, _ userId:, _ userInfo: CarrierUserInfo, _ hello:)</code>, <code>newFriendAdded(_:_:)</code>, <code>friendRemoved(_:_:)</code>, <code>didReceiveFriendMessage(_ carrier:, _ from: String, _ data: Data, _ timestamp: Date, _ isOffline: Bool)</code>, <code>didReceiveFriendInviteRequest(_:_:_:)</code>, <code>didReceiveGroupInvite(_ carrier:, _ from: String, _ cookie: Data)</code>, plus the <code>CarrierGroupDelegate</code> methods.</p>
+<h3 id="data-types"><a class="doc-anchor" href="#data-types">Data types</a></h3>
+<div class="doc-table"><table><thead><tr><th>Type</th><th>Members</th></tr></thead><tbody><tr><td><code>CarrierUserInfo</code></td><td><code>userId</code> (read-only), <code>name</code>, <code>briefDescription</code>, <code>hasAvatar</code>, <code>gender</code>, <code>phone</code>, <code>email</code>, <code>region</code></td></tr><tr><td><code>CarrierFriendInfo</code> (subclass)</td><td><code>status: CarrierConnectionStatus</code>, <code>label: String?</code>, <code>presence: CarrierPresenceStatus</code></td></tr><tr><td><code>CarrierClientInfo</code></td><td><code>protoVersion: UInt32</code>, <code>platform</code>, <code>osVersion</code>, <code>appVersion</code>; <code>init(protoVersion:platform:osVersion:appVersion:)</code></td></tr><tr><td><code>CarrierProfileExt</code></td><td><code>avatarUrl</code>, <code>url</code>, <code>ens</code>, <code>extra</code>; <code>init(avatarUrl:url:ens:extra:)</code></td></tr><tr><td><code>CarrierConnectionStatus</code></td><td><code>.Connected</code>, <code>.Disconnected</code></td></tr><tr><td><code>CarrierPresenceStatus</code></td><td><code>.None</code>, <code>.Away</code>, <code>.Busy</code></td></tr><tr><td><code>CarrierReceiptState</code></td><td><code>.ByFriend</code>, <code>.Offline</code>, <code>.Error</code></td></tr><tr><td><code>CarrierGroup</code> / <code>CarrierGroupPeer</code></td><td><code>getId()</code>, <code>inviteFriend(_:)</code>, <code>sendMessage(_:)</code>, <code>getTitle()</code>, <code>setTitle(_:)</code>, <code>getPeers()</code>, <code>getPeer(byPeerid:)</code>, <code>leave()</code> / <code>userId</code>, <code>name</code></td></tr></tbody></table></div>
+<h3 id="sessions"><a class="doc-anchor" href="#sessions">Sessions</a></h3>
+<div class="doc-table"><table><thead><tr><th>Type</th><th>Members</th></tr></thead><tbody><tr><td><code>CarrierSessionManager</code></td><td><code>static func createInstance(carrier: Carrier) throws</code>, <code>static func createInstance(carrier: Carrier, sessionRequestHandler: @escaping CarrierSessionRequestHandler) throws</code>, <code>func createSession(to target: String) throws -&gt; CarrierSession</code>, <code>func cleanup()</code></td></tr><tr><td><code>CarrierSession</code></td><td><code>getPeer()</code>, <code>sendInviteRequest(handler:)</code>, <code>replyInviteRequest(with:reason:)</code>, <code>start(remoteSdp:)</code>, <code>addStream(type:options:delegate:) -&gt; CarrierStream</code>, <code>removeStream(stream:)</code>, <code>addService(serviceName:protocol:host:port:)</code>, <code>removeService(serviceName:)</code>, <code>close()</code></td></tr><tr><td><code>CarrierStream</code></td><td><code>getType()</code>, <code>getStreamId()</code>, <code>getTransportInfo()</code>, <code>writeData(_:) -&gt; NSNumber</code>, <code>openChannel(cookie:)</code>, <code>closeChannel(_:)</code>, <code>writeChannel(_:data:)</code>, <code>pendChannel(_:)</code>, <code>resumeChannel(_:)</code>, <code>openPortForwarding(service:ptotocol:host:port:)</code>, <code>closePortForwarding(_:)</code></td></tr><tr><td><code>CarrierStreamDelegate</code> (optional)</td><td><code>streamStateDidChange</code>, <code>didReceiveStreamData</code>, <code>shouldOpenNewChannel</code>, <code>didOpenNewChannel</code>, <code>didCloseChannel</code>, <code>didReceiveChannelData</code>, <code>channelPending</code>, <code>channelResumed</code></td></tr><tr><td><code>CarrierStreamState</code></td><td><code>.Initialized</code>, <code>.TransportReady</code>, <code>.Connecting</code>, <code>.Connected</code>, <code>.Deactivated</code>, <code>.Closed</code>, <code>.Error</code></td></tr></tbody></table></div>
+<h3 id="file-transfer"><a class="doc-anchor" href="#file-transfer">File transfer</a></h3>
+<div class="doc-table"><table><thead><tr><th>Type</th><th>Members</th></tr></thead><tbody><tr><td><code>CarrierFileTransferManager</code></td><td><code>static func createInstance(carrier: Carrier) throws</code>, <code>static func createInstance(carrier: Carrier, connectHandler: @escaping CarrierFileTransferConnectHandler) throws</code>, <code>func createFileTransfer(to address: String, withFileInfo: CarrierFileTransferInfo?, delegate: CarrierFileTransferDelegate) throws -&gt; CarrierFileTransfer</code>, <code>func cleanup()</code></td></tr><tr><td><code>CarrierFileTransfer</code></td><td><code>getPeer()</code>, <code>acquireFileId(by:)</code>, <code>acquireFileName(by:)</code>, <code>sendConnectionRequest()</code>, <code>acceptConnectionRequest()</code>, <code>addFile(_:)</code>, <code>sendPullRequest(fileId:withOffset:)</code>, <code>sendData(fileId:withData:)</code>, <code>cancelTransfering(fileId:withReason:reason:)</code>, <code>pendTransfering(fileId:)</code>, <code>resumeTransfering(fileId:)</code>, <code>close()</code></td></tr><tr><td><code>CarrierFileTransferInfo</code></td><td><code>fileName</code>, <code>fileId</code>, <code>fileSize: UInt64</code></td></tr><tr><td><code>CarrierFileTransferDelegate</code> (optional)</td><td><code>fileTransferStateDidChange</code>, <code>didReceiveFileRequest</code>, <code>didReceivePullRequest</code>, <code>didReceiveFileTransferData -&gt; Bool</code>, <code>fileTransferPending</code>, <code>fileTransferResumed</code>, <code>fileTransferWillCancel</code></td></tr></tbody></table></div>
+<h3 id="carrierextension"><a class="doc-anchor" href="#carrierextension"><code>CarrierExtension</code></a></h3>
+<p><code>init(_ carrier: Carrier)</code>, <code>func turnServerInfo() throws -&gt; TurnServerInfo</code> (<code>server</code>, <code>port</code>, <code>username</code>, <code>password</code>, <code>realm</code>), <code>func registerExtension(_ handler: @escaping CarrierExtensionInviteCallback) throws</code>, <code>func sendInviteFriendRequest(to:withData:_:) throws</code>, <code>func replyFriendInviteRequest(to:withStatus:_:_:) throws</code>, <code>func cleanup()</code>.</p>
+<h2 id="source"><a class="doc-anchor" href="#source">Source</a></h2>
+<ul>
+<li>Repository: <a href="https://github.com/0xli/Elastos.CarrierClassic.Swift" target="_blank" rel="noreferrer">0xli/Elastos.CarrierClassic.Swift</a>, branch <a href="https://github.com/0xli/Elastos.CarrierClassic.Swift/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer"><code>feat/agentnet-proto-v2</code></a>, commit <code>789576869a3b304f459c5a4c22c11c4742db3efe</code>. This is the branch Beagle Chat for iOS ships. Branch <code>agent/permissionless-realtime-network</code> (commit <code>61666e4</code>) is two commits behind it, without the client-info, profile-extension, identity sign/verify and key-export APIs.</li>
+<li>Native libraries: <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer">0xli/Elastos.NET.Carrier.Native.SDK</a>, branch <code>feat/agentnet-proto-v2</code>, commit <code>e8eb0b0f18a1b55d7ede08de9482bc51d080584e</code>.</li>
+<li>License: the repository&#39;s <code>LICENSE</code> file is GPLv3. The source file headers carry an MIT-style notice from the Elastos Foundation.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

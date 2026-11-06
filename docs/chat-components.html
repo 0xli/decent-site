@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/chat-components 0.1.3 — docs | Decent Network</title>
+    <meta name="description" content="Interactive forms inside chat messages: a shared schema between an agent that asks and a client that renders. No HTML, URLs or scripts." />
+    <meta property="og:title" content="@decentnetwork/chat-components 0.1.3 — docs | Decent Network" />
+    <meta property="og:description" content="Interactive forms inside chat messages: a shared schema between an agent that asks and a client that renders. No HTML, URLs or scripts." />
+    <meta property="og:url" content="https://decent.network/docs/chat-components" />
+    <link rel="canonical" href="https://decent.network/docs/chat-components" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/chat-components</h1><p>Interactive forms inside chat messages: a shared schema between an agent that asks and a client that renders. No HTML, URLs or scripts.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.1.3<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>Node.js 20+ · browser</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/chat-components" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install @decentnetwork/chat-components</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a class="active" href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/chat-components</code> defines interactive forms that travel inside ordinary chat messages. An agent sends a message made of a human-readable sentence plus a fenced JSON block that declares a form (select boxes, text inputs, a submit button). A client that supports forms draws them with its own trusted widgets; a client that does not shows the sentence. The answer goes back the same way, as a chat message with a submission block. No HTML, URLs or scripts cross the wire, and every parser treats its input as untrusted. The package has no dependencies and works in Node and in the browser.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<ul>
+<li>Use it when a bot or agent on Decent Network needs a structured answer from a person (pick an option, fill in a field) and you control the client that renders the chat.</li>
+<li>Use it on both sides: the agent builds forms and reads submissions, and the client reads forms and builds submissions. That way the two sides cannot drift into slightly different formats.</li>
+<li>It never touches the network. Send its output with any transport that carries text, usually <code>Peer.sendText</code> from <a href="/docs/peer"><code>@decentnetwork/peer</code></a>, and pass received text to <code>readMessage</code>.</li>
+<li>It is not a UI kit. It gives you validated data; your client draws the widgets.</li>
+</ul>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/chat-components</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The package is an ES module. Its <code>package.json</code> also maps <code>require</code> to the same ESM file, so <code>require()</code> works only on Node versions that can load ES modules synchronously. It worked on Node.js 24.3.0; Node 20 was not tested.</p>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<p>This file plays both sides: the agent builds a form, the client reads it and answers, and the agent routes the answer.</p>
+<div class="code-wrap"><pre><code class="language-js">// quickstart.mjs — build a form, read it on the client, answer it, route the answer.
+// Run: node quickstart.mjs
+import { encodeForm, readMessage, buildInteraction, encodeInteraction, answers } from &quot;@decentnetwork/chat-components&quot;;
+
+// Agent side: a form is data inside an ordinary chat message.
+const ask = encodeForm(&quot;Voice clone: pick a voice and a quality.&quot;, {
+  custom_id: &quot;vc-form-7f3a&quot;,
+  components: [
+    { type: &quot;select&quot;, id: &quot;voice&quot;, label: &quot;Voice&quot;, required: true,
+      options: [{ label: &quot;Alto&quot;, value: &quot;alto&quot; }, { label: &quot;Tenor&quot;, value: &quot;tenor&quot; }] },
+    { type: &quot;select&quot;, id: &quot;quality&quot;, label: &quot;Quality&quot;, default: &quot;good&quot;,
+      options: [{ label: &quot;Fast&quot;, value: &quot;fast&quot; }, { label: &quot;Good&quot;, value: &quot;good&quot; }, { label: &quot;Best&quot;, value: &quot;best&quot; }] },
+    { type: &quot;submit&quot;, id: &quot;go&quot;, label: &quot;Start&quot; },
+  ],
+});
+console.log(&quot;--- message on the wire ---\n&quot; + ask);
+
+// Client side: one call tells you what to show.
+const shown = readMessage(ask);
+console.log(&quot;--- client renders ---&quot;);
+console.log(&quot;text:&quot;, shown.text);
+console.log(&quot;widgets:&quot;, shown.form.components.map((c) =&gt; `${c.type}:${c.id}`).join(&quot;, &quot;));
+
+// The user submits; the client sends the answer back as another chat message.
+const answer = buildInteraction(&quot;vc-form-7f3a&quot;, &quot;go&quot;, { voice: &quot;tenor&quot;, quality: &quot;best&quot; });
+const reply = encodeInteraction(answer, &quot;Voice: Tenor, Quality: Best&quot;);
+console.log(&quot;--- reply on the wire ---\n&quot; + reply);
+
+// Agent side again: route on custom_id.
+const { interaction } = readMessage(reply);
+if (interaction?.custom_id === &quot;vc-form-7f3a&quot;) {
+  console.log(&quot;agent got:&quot;, interaction.values);
+}
+
+// Answered state is derived from the transcript, not stored separately.
+console.log(&quot;answered:&quot;, [...answers([reply]).keys()]);
+
+// Untrusted input never throws: garbage just shows as text with no form.
+console.log(&quot;garbage:&quot;, readMessage(&quot;hi\n```decent-form\n{not json\n```&quot;));</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:chat-components@0.1.3">chat-components@0.1.3</a>, Node.js 24.3.0, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">--- message on the wire ---
+Voice clone: pick a voice and a quality.
+
+```decent-form
+{&quot;v&quot;:1,&quot;custom_id&quot;:&quot;vc-form-7f3a&quot;,&quot;components&quot;:[{&quot;type&quot;:&quot;select&quot;,&quot;id&quot;:&quot;voice&quot;,&quot;label&quot;:&quot;Voice&quot;,&quot;required&quot;:true,&quot;options&quot;:[{&quot;label&quot;:&quot;Alto&quot;,&quot;value&quot;:&quot;alto&quot;},{&quot;label&quot;:&quot;Tenor&quot;,&quot;value&quot;:&quot;tenor&quot;}]},{&quot;type&quot;:&quot;select&quot;,&quot;id&quot;:&quot;quality&quot;,&quot;label&quot;:&quot;Quality&quot;,&quot;default&quot;:&quot;good&quot;,&quot;options&quot;:[{&quot;label&quot;:&quot;Fast&quot;,&quot;value&quot;:&quot;fast&quot;},{&quot;label&quot;:&quot;Good&quot;,&quot;value&quot;:&quot;good&quot;},{&quot;label&quot;:&quot;Best&quot;,&quot;value&quot;:&quot;best&quot;}]},{&quot;type&quot;:&quot;submit&quot;,&quot;id&quot;:&quot;go&quot;,&quot;label&quot;:&quot;Start&quot;}]}
+```
+--- client renders ---
+text: Voice clone: pick a voice and a quality.
+widgets: select:voice, select:quality, submit:go
+--- reply on the wire ---
+Voice: Tenor, Quality: Best
+
+```decent-interaction
+{&quot;v&quot;:1,&quot;custom_id&quot;:&quot;vc-form-7f3a&quot;,&quot;component&quot;:&quot;go&quot;,&quot;values&quot;:{&quot;voice&quot;:&quot;tenor&quot;,&quot;quality&quot;:&quot;best&quot;}}
+```
+agent got: { voice: 'tenor', quality: 'best' }
+answered: [ 'vc-form-7f3a' ]
+garbage: { text: 'hi', form: null, interaction: null }</code></pre></div>
+<p>To send it for real, pass <code>ask</code> to <code>peer.sendText(userid, ask)</code>. On the other side, pass <code>msg.text</code> from <code>peer.onText</code> to <code>readMessage</code>.</p>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>All exports come from the package root.</p>
+<h3 id="functions"><a class="doc-anchor" href="#functions">Functions</a></h3>
+<div class="doc-table"><table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>encodeForm(text: string, form: Form): string</code></td><td>Agent side. Returns <code>text</code>, a blank line, and a <code>```decent-form</code> fenced JSON block (with <code>&quot;v&quot;: 1</code> added). Throws if <code>text</code> is empty or only whitespace: the text is the fallback for clients without form support.</td></tr><tr><td><code>readMessage(text: string): ReadMessage</code></td><td>Either side. Returns <code>{ text, form, interaction }</code>: the human-readable text with the payload block removed, a validated <code>Form</code> or <code>null</code>, and a validated <code>Interaction</code> or <code>null</code>. Never throws. A block that fails validation is still removed from <code>text</code>. Only the first block of each kind is read.</td></tr><tr><td><code>buildInteraction(customId: string, component: string, values: Record&lt;string, string | FileValue&gt;): Interaction</code></td><td>Client side. Builds a submission, capping lengths so a local bug cannot send an oversized payload.</td></tr><tr><td><code>encodeInteraction(interaction: Interaction, summary?: string): string</code></td><td>Client side. Returns the summary line plus a <code>```decent-interaction</code> block. When <code>summary</code> is left out, the default joins <code>key: value</code> pairs with a full-width comma (<code>，</code>) and uses <code>(已提交)</code> when there are no values. Pass your own summary to control the language.</td></tr><tr><td><code>answers(texts: readonly string[]): Map&lt;string, Interaction&gt;</code></td><td>The submissions found in a list of message texts, keyed by <code>custom_id</code>. When a form was answered twice, the first answer wins. Pass outbound texts on a client (to collapse answered forms) and inbound texts on an agent.</td></tr><tr><td><code>parseForm(raw: unknown): Form | null</code></td><td>Validate an already-parsed form object. The object must carry <code>v: 1</code>.</td></tr><tr><td><code>parseInteraction(raw: unknown): Interaction | null</code></td><td>Validate an already-parsed submission object. Also requires <code>v: 1</code>.</td></tr></tbody></table></div>
+<h3 id="types"><a class="doc-anchor" href="#types">Types</a></h3>
+<div class="code-wrap"><pre><code class="language-ts">type ComponentType = &quot;select&quot; | &quot;submit&quot; | &quot;text&quot; | &quot;button&quot; | &quot;attachment&quot;;
+
+interface ChatComponent {
+  type: ComponentType;
+  id: string;
+  label?: string;
+  required?: boolean;
+  default?: string;
+  placeholder?: string;
+  options?: SelectOption[];   // select
+  accept?: string[];          // attachment: MIME patterns for the file picker
+  max_bytes?: number;         // attachment: size hint for the file picker
+}
+interface SelectOption { label: string; value: string }
+interface Form { custom_id: string; components: ChatComponent[] }
+interface Interaction { custom_id: string; component: string; values: Record&lt;string, string | FileValue&gt; }
+interface FileValue { fileId: string; name: string; size: number }   // fileId = sha256 of the content
+interface ReadMessage { text: string; form: Form | null; interaction: Interaction | null }</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h3 id="validation-rules-what-parseform-readmessage-drop"><a class="doc-anchor" href="#validation-rules-what-parseform-readmessage-drop">Validation rules (what <code>parseForm</code> / <code>readMessage</code> drop)</a></h3>
+<ul>
+<li><code>select</code>, <code>text</code> and <code>submit</code> are rendered today. <code>button</code> and <code>attachment</code> are declared in the types but <strong>dropped by the parser</strong> in 0.1.3.</li>
+<li>Unknown component types are dropped, not rejected.</li>
+<li>A <code>default</code> that is not one of the select&#39;s option values is removed.</li>
+<li>Duplicate component ids are dropped.</li>
+<li>A form with no submit, or a submit with no inputs, is unusable: <code>form</code> is <code>null</code>.</li>
+<li>A payload without <code>&quot;v&quot;: 1</code> is ignored.</li>
+<li>Every count and length is capped (see the constants below). Payload blocks over <code>MAX_PAYLOAD_CHARS</code> are not parsed.</li>
+</ul>
+<h3 id="constants"><a class="doc-anchor" href="#constants">Constants</a></h3>
+<div class="doc-table"><table><thead><tr><th>Constant</th><th>Value</th></tr></thead><tbody><tr><td><code>WIRE_VERSION</code></td><td><code>1</code></td></tr><tr><td><code>FORM_FENCE</code> / <code>INTERACTION_FENCE</code></td><td><code>&quot;decent-form&quot;</code> / <code>&quot;decent-interaction&quot;</code></td></tr><tr><td><code>MAX_COMPONENTS</code></td><td><code>12</code></td></tr><tr><td><code>MAX_OPTIONS</code></td><td><code>40</code></td></tr><tr><td><code>MAX_LABEL_LEN</code></td><td><code>120</code></td></tr><tr><td><code>MAX_ID_LEN</code></td><td><code>64</code></td></tr><tr><td><code>MAX_VALUE_LEN</code></td><td><code>512</code></td></tr><tr><td><code>MAX_CUSTOM_ID_LEN</code></td><td><code>128</code></td></tr><tr><td><code>MAX_ACCEPT</code></td><td><code>12</code></td></tr><tr><td><code>MAX_PAYLOAD_CHARS</code></td><td><code>65536</code></td></tr><tr><td><code>INPUT_TYPES</code></td><td><code>ReadonlySet</code> of <code>&quot;select&quot;</code>, <code>&quot;text&quot;</code>, <code>&quot;attachment&quot;</code>: the component types that collect a value</td></tr></tbody></table></div>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<p>There is nothing to configure: no options object, environment variables, config files or CLI. Behavior is fixed by the constants above.</p>
+<p>Two practices from the package&#39;s own guidance:</p>
+<ul>
+<li>Pick a unique <code>custom_id</code> per form and store whatever the form refers to under that id when you send it. Do not work out later which form a submission answers from &quot;the newest thing this peer sent&quot;.</li>
+<li>Treat <code>accept</code> and <code>max_bytes</code> as hints for the file picker. The receiving agent still has to validate the file.</li>
+</ul>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li>Node.js 20+ (<code>engines.node &gt;= 20.0.0</code>). Verified on Node.js 24.3.0.</li>
+<li>Browsers: plain ES module with no dependencies and no Node built-ins. It was not run in a browser for this page.</li>
+<li>Transport-agnostic: the output is plain text.</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.1.3</strong> (npm <code>latest</code>, published 2026-07-27).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/chat-components" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/chat-components</a></li>
+<li>Source: the source repository is not public yet. The published code is in the npm package: <a href="https://www.npmjs.com/package/@decentnetwork/chat-components?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/chat-components?activeTab=code</a></li>
+<li>Changelog: none is published for this package.</li>
+<li>License: GPL-3.0-or-later.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

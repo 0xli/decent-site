@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/beagle-connect 0.1.2 — docs | Decent Network</title>
+    <meta name="description" content="Sign in with Beagle from a website: identity, friend requests and app launches." />
+    <meta property="og:title" content="@decentnetwork/beagle-connect 0.1.2 — docs | Decent Network" />
+    <meta property="og:description" content="Sign in with Beagle from a website: identity, friend requests and app launches." />
+    <meta property="og:url" content="https://decent.network/docs/beagle-connect" />
+    <link rel="canonical" href="https://decent.network/docs/beagle-connect" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/beagle-connect</h1><p>Sign in with Beagle from a website: identity, friend requests and app launches.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.1.2<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>browser</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/beagle-connect" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install @decentnetwork/beagle-connect</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a class="active" href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/beagle-connect</code> adds &quot;Sign in with Beagle&quot; to a website. It finds the visitor&#39;s Beagle (an installed client on <code>localhost:8766</code>, or the web client at <code>app.beagle.chat</code>), opens its <code>/connect</code> popup, and returns an assertion signed by the visitor&#39;s own Carrier key. There are no passwords, no OAuth and no third-party server. The package does three things: <code>signIn()</code> proves who the visitor is, <code>readLaunch()</code> accepts a visitor who opened your site from Beagle&#39;s Apps tab, and <code>addFriend()</code> asks their Beagle to send a friend request. <code>verifySignIn()</code> and <code>verifyLaunch()</code> also run in Node, for checking on your server.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<ul>
+<li>Your site wants an identity without accounts: the Beagle <code>userid</code> is a public key, and the proof is an XEdDSA signature over your origin plus a nonce.</li>
+<li>Your site is listed in Beagle&#39;s Apps tab and should not ask the visitor to sign in again.</li>
+<li>Your site introduces two people (after a meeting, say) and wants their Beagle clients to become friends.</li>
+</ul>
+<p>It does not carry messages. For chat and data between peers, use <a href="/docs/peer">@decentnetwork/peer</a>. The popup it opens is served by <a href="/docs/beagle">@decentnetwork/beagle</a> (installed) or by app.beagle.chat (web).</p>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/beagle-connect@0.1.2 @decentnetwork/peer@0.1.172</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>@decentnetwork/peer</code> is already a dependency of beagle-connect. Install it directly too, so that your server can import <code>signDetached</code>/<code>verifyDetached</code> and the bundler alias below can resolve it.</p>
+<h3 id="bundling-for-the-browser"><a class="doc-anchor" href="#bundling-for-the-browser">Bundling for the browser</a></h3>
+<p>beagle-connect imports <code>verifyDetached</code> and <code>base58ToBytes</code> from the <strong>root</strong> of <code>@decentnetwork/peer</code>. That root also loads Node-only transports (<code>dgram</code>, <code>fs</code>, <code>net</code>, <code>node:crypto</code>). A plain <code>vite build</code> therefore fails in 0.1.2:</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">error during build:
+node_modules/@decentnetwork/peer/dist/utils/bytes.js (31:9): &quot;randomBytes&quot; is not exported by &quot;__vite-browser-external&quot;, imported by &quot;node_modules/@decentnetwork/peer/dist/utils/bytes.js&quot;.</code></pre></div>
+<p>Point the bundler at the two browser-safe modules instead. They depend only on <code>curve25519-js</code> and <code>tweetnacl</code>:</p>
+<div class="code-wrap"><pre><code class="language-js">// src/peer-browser.js
+// beagle-connect needs only these two functions from @decentnetwork/peer.
+// Importing the package root pulls in Node-only transports (dgram, fs, net),
+// so point the bundler at the two browser-safe modules instead.
+export { verifyDetached } from &quot;@decentnetwork/peer/dist/crypto/sign.js&quot;;
+export { base58ToBytes } from &quot;@decentnetwork/peer/dist/utils/base58.js&quot;;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre><code class="language-js">// vite.config.js
+import { defineConfig } from &quot;vite&quot;;
+import { fileURLToPath } from &quot;node:url&quot;;
+
+export default defineConfig({
+  resolve: {
+    alias: [
+      {
+        find: /^@decentnetwork\/peer$/,
+        replacement: fileURLToPath(new URL(&quot;./src/peer-browser.js&quot;, import.meta.url)),
+      },
+    ],
+  },
+});</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<h3 id="browser-a-sign-in-button"><a class="doc-anchor" href="#browser-a-sign-in-button">Browser: a sign-in button</a></h3>
+<div class="code-wrap"><pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;title&gt;Sign in with Beagle&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;button id=&quot;signin&quot;&gt;Sign in with Beagle&lt;/button&gt;
+    &lt;pre id=&quot;out&quot;&gt;&lt;/pre&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre><code class="language-js">// src/main.js
+import { signIn, readLaunch, pickUiOrigin } from &quot;@decentnetwork/beagle-connect&quot;;
+
+const out = document.getElementById(&quot;out&quot;);
+const show = (x) =&gt; (out.textContent += JSON.stringify(x, null, 2) + &quot;\n&quot;);
+
+// Arrived from Beagle's Apps tab? (null when there is no #beagle= fragment)
+readLaunch().then((who) =&gt; who &amp;&amp; show({ launch: who })).catch((e) =&gt; show({ launchError: e.message }));
+
+// Which Beagle would answer right now?
+pickUiOrigin().then((origin) =&gt; show({ beagleAt: origin }));
+
+document.getElementById(&quot;signin&quot;).addEventListener(&quot;click&quot;, async () =&gt; {
+  // In production the nonce comes from your server and is single-use.
+  const nonce = crypto.randomUUID();
+  try {
+    const who = await signIn({ nonce }); // opens the popup synchronously, inside the click
+    show({ userid: who.userid, address: who.address, name: who.name, uiOrigin: who.uiOrigin });
+    // POST `who` to your server and verify it there before minting a session.
+  } catch (e) {
+    show({ error: e.message });
+  }
+});</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Call <code>signIn()</code> and <code>addFriend()</code> directly from a click handler. Browsers block a popup opened after an <code>await</code>.</p>
+<h3 id="server-verify-the-assertion"><a class="doc-anchor" href="#server-verify-the-assertion">Server: verify the assertion</a></h3>
+<p>Never trust the browser&#39;s check alone. On your server, verify the signature against <strong>your own</strong> origin and a nonce you issued (and then retire). This Node script plays the Beagle side too, so it runs on its own:</p>
+<div class="code-wrap"><pre><code class="language-js">// verify.mjs
+// Server-side check of a &quot;Sign in with Beagle&quot; assertion, in plain Node.
+// We play the Beagle client here (sign with an X25519 key) so the example is
+// self-contained; in production `userid` and `sig` come from signIn().
+import { generateKeyPairSync, randomUUID } from &quot;node:crypto&quot;;
+import { signDetached, bytesToBase58 } from &quot;@decentnetwork/peer&quot;;
+import { verifySignIn, verifyLaunch, LAUNCH_MAX_AGE_MS, DEFAULT_UI_ORIGINS } from &quot;@decentnetwork/beagle-connect&quot;;
+
+const { publicKey, privateKey } = generateKeyPairSync(&quot;x25519&quot;);
+const pub = Buffer.from(publicKey.export({ format: &quot;jwk&quot; }).x, &quot;base64url&quot;);
+const sec = Buffer.from(privateKey.export({ format: &quot;jwk&quot; }).d, &quot;base64url&quot;);
+const userid = bytesToBase58(new Uint8Array(pub));            // a Carrier userid IS the public key
+const toHex = (b) =&gt; Buffer.from(b).toString(&quot;hex&quot;);
+
+const MY_ORIGIN = &quot;https://your.app&quot;;
+const nonce = randomUUID();                                     // issued by your server, single use
+const sig = toHex(signDetached(new Uint8Array(sec),
+  new TextEncoder().encode(`decent-auth\n${MY_ORIGIN}\n${nonce}`)));
+
+console.log(&quot;signIn verifies:          &quot;, verifySignIn(userid, MY_ORIGIN, nonce, sig));
+console.log(&quot;other origin rejected:    &quot;, verifySignIn(userid, &quot;https://evil.example&quot;, nonce, sig));
+console.log(&quot;replayed as launch:       &quot;, verifyLaunch(userid, MY_ORIGIN, nonce, sig));
+
+const ts = Date.now();
+const launchSig = toHex(signDetached(new Uint8Array(sec),
+  new TextEncoder().encode(`decent-launch\n${MY_ORIGIN}\n${ts}`)));
+console.log(&quot;launch verifies:          &quot;, verifyLaunch(userid, MY_ORIGIN, ts, launchSig));
+console.log(&quot;launch max age (ms):      &quot;, LAUNCH_MAX_AGE_MS);
+console.log(&quot;origins probed:           &quot;, DEFAULT_UI_ORIGINS.join(&quot;, &quot;));</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:beagle-connect@0.1.2">beagle-connect@0.1.2</a> + @decentnetwork/<a href="mailto:peer@0.1.172">peer@0.1.172</a>, Node 24.3.0, Vite 5.4.10, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ npx vite build
+vite v5.4.10 building for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                 0.28 kB │ gzip:  0.20 kB
+dist/assets/index-BO6rXdEv.js  57.60 kB │ gzip: 18.86 kB
+✓ built in 212ms
+
+$ node verify.mjs
+signIn verifies:           true
+other origin rejected:     false
+replayed as launch:        false
+launch verifies:           true
+launch max age (ms):       120000
+origins probed:            http://127.0.0.1:8766, http://localhost:8766, https://localhost:8766, https://127.0.0.1:8766, http://localhost:8767, http://localhost:8768, http://localhost:8765, https://app.beagle.chat</code></pre></div>
+<p>In the browser, a test build of the same code ran with <code>origins: [&quot;http://localhost:18766&quot;, &quot;https://app.beagle.chat&quot;]</code> against a local <code>beagle</code> 0.1.131. <code>pickUiOrigin</code> returned <code>http://localhost:18766</code>. The full <code>signIn</code> popup round trip was <strong>not</strong> exercised, because the test browser blocked popups. <code>signIn</code> rejected with <code>Beagle could not open — allow pop-ups for this site.</code>, which is the documented error.</p>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>The package ships plain ES modules (<code>src/index.js</code>) with <strong>no TypeScript declarations</strong>. The signatures below come from the source.</p>
+<div class="doc-table"><table><thead><tr><th>Export</th><th>Signature</th><th>Returns / notes</th></tr></thead><tbody><tr><td><code>signIn</code></td><td><code>signIn({ nonce, origins?, features?, existingWindow? })</code></td><td><code>Promise&lt;{ userid, address, name, avatar, sig, nonce, uiOrigin }&gt;</code>. Throws on deny (<code>&quot;Cancelled&quot;</code>), timeout (<code>&quot;Beagle did not answer.&quot;</code>, after 120 s), a blocked popup, or a bad signature. <code>features</code> defaults to <code>&quot;width=420,height=560&quot;</code>.</td></tr><tr><td><code>readLaunch</code></td><td><code>readLaunch({ maxAgeMs?, strip? })</code></td><td><code>Promise&lt;{ v, userid, address, name, punkId, ts, sig, assertion } | null&gt;</code>. Reads <code>#beagle=&lt;base64url&gt;</code>, checks age (default 120 s, either direction) and signature, and removes the fragment from the address bar unless <code>strip: false</code>. Throws if a fragment is present but invalid.</td></tr><tr><td><code>addFriend</code></td><td><code>addFriend({ address, name?, origins?, features?, existingWindow? })</code></td><td>Resolves the popup&#39;s reply (<code>{ ok: true, address, … }</code>). <code>address</code> must be the full Carrier address, not a userid.</td></tr><tr><td><code>pickUiOrigin</code></td><td><code>pickUiOrigin(origins = DEFAULT_UI_ORIGINS)</code></td><td><code>Promise&lt;string&gt;</code>. Probes every candidate except the last one in parallel (<code>GET /api/state</code>, then a no-cors <code>/connect</code>). Returns the earliest one that answers, or the last entry as the fallback.</td></tr><tr><td><code>verifySignIn</code></td><td><code>verifySignIn(userid, origin, nonce, sigHex)</code></td><td><code>boolean</code>. Checks an XEdDSA signature over <code>`decent-auth\n${origin}\n${nonce}`</code></td></tr><tr><td><code>verifyLaunch</code></td><td><code>verifyLaunch(userid, origin, ts, sigHex)</code></td><td><code>boolean</code>. Checks an XEdDSA signature over <code>`decent-launch\n${origin}\n${ts}`</code></td></tr><tr><td><code>DEFAULT_UI_ORIGINS</code></td><td><code>string[]</code></td><td>The 8 origins listed in the output above: local ports 8766/8767/8768/8765 over http and https, then <code>https://app.beagle.chat</code></td></tr><tr><td><code>LAUNCH_MAX_AGE_MS</code></td><td><code>number</code></td><td><code>120000</code></td></tr></tbody></table></div>
+<p><code>existingWindow</code> lets you pass a window you already opened in your own click handler.</p>
+<p>What is signed: the prefix, <strong>your origin</strong> and the nonce or timestamp. What is <strong>not</strong> signed: <code>name</code>, <code>avatar</code>, <code>punkId</code> and <code>address</code>. Treat those as display hints, never as identity. Pin <code>origin</code> to your own origin on the server, never to a value taken from the payload. For <code>readLaunch</code> assertions, your server must also remember every accepted <code>sig</code> for at least the two-minute window and refuse repeats.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<p>There are no config files or environment variables. Per call you can set:</p>
+<ul>
+<li><code>origins</code>: which Beagle UIs to try. The last entry is the fallback and is never probed.</li>
+<li><code>features</code>: the <code>window.open</code> feature string for the popup.</li>
+<li><code>maxAgeMs</code> / <code>strip</code>: for <code>readLaunch</code>.</li>
+</ul>
+<p>An https page that reaches for <code>http://localhost</code> is subject to the browser&#39;s Private Network Access rules. <code>pickUiOrigin</code> treats an opaque (no-cors) answer as evidence that a local Beagle exists.</p>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li>Browser: modern browsers with ES modules, <code>fetch</code>, <code>AbortController</code>, <code>crypto.randomUUID</code>, <code>window.open</code> and <code>postMessage</code>. Bundling needs the <code>@decentnetwork/peer</code> alias shown above (verified with Vite 5.4.10).</li>
+<li>Node: <code>verifySignIn</code>, <code>verifyLaunch</code>, <code>DEFAULT_UI_ORIGINS</code> and <code>LAUNCH_MAX_AGE_MS</code> work in Node (verified with Node 24.3.0). <code>signIn</code>, <code>addFriend</code>, <code>readLaunch</code> and <code>pickUiOrigin</code> need a browser window.</li>
+<li>Dependency: <code>@decentnetwork/peer</code> (^0.1.141, which resolved to 0.1.172).</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.1.2</strong> (<code>latest</code> on npm, published 2026-08-28).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/beagle-connect" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/beagle-connect</a></li>
+<li>Source repository is not public yet. Browse the published code at <a href="https://www.npmjs.com/package/@decentnetwork/beagle-connect?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/beagle-connect?activeTab=code</a></li>
+<li>License: MIT.</li>
+<li>Changelog: none is published in the package.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

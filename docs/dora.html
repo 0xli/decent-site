@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/dora 0.1.16 — docs | Decent Network</title>
+    <meta name="description" content="DHCP-style naming for AgentNet (Discover, Offer, Request, Acknowledge). Runs as a normal Carrier peer without admin rights." />
+    <meta property="og:title" content="@decentnetwork/dora 0.1.16 — docs | Decent Network" />
+    <meta property="og:description" content="DHCP-style naming for AgentNet (Discover, Offer, Request, Acknowledge). Runs as a normal Carrier peer without admin rights." />
+    <meta property="og:url" content="https://decent.network/docs/dora" />
+    <link rel="canonical" href="https://decent.network/docs/dora" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/dora</h1><p>DHCP-style naming for AgentNet (Discover, Offer, Request, Acknowledge). Runs as a normal Carrier peer without admin rights.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.1.16<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>Node.js 20+ · no root</dd></div><div><dt>Source</dt><dd><a href="https://github.com/0xli/dora" target="_blank" rel="noreferrer">github.com/0xli/dora<!-- --> ↗</a></dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/dora" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install -g @decentnetwork/dora</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a class="active" href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/dora</code> is the DHCP-style name and IP registry for the Decent Network virtual LAN. A dora server is an ordinary Carrier peer: it auto-accepts friend requests and answers <code>register</code>, <code>lookup</code> and <code>list</code> requests that arrive as Carrier text messages. Its roster maps each node&#39;s userid to a name and a <code>10.86.x.x</code> address, stored in a YAML file. It runs as a normal user, with no TUN device and no root. The package ships a <code>dora</code> binary for running a registry, plus the server, client, store, allocator and wire-format helpers as a library.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<ul>
+<li><strong>Run a private registry</strong> for your own <a href="/docs/lan">@decentnetwork/lan</a> nodes, so they get stable virtual IPs and names that do not collide with the public doras.</li>
+<li><strong>Embed the client</strong> (<code>DoraClient</code>) in your own Carrier app to register a name and resolve peers by name, userid or virtual IP, using whatever text transport you already have.</li>
+<li><strong>Embed the server</strong> (<code>DoraServer</code>) in a long-running Node process that already owns a <a href="/docs/peer">@decentnetwork/peer</a> <code>Peer</code>.</li>
+</ul>
+<p>If you only want to <em>join</em> the public virtual LAN, you do not need this package directly: <code>agentnet init</code> already points at the public doras. If you only need messaging between peers, use <a href="/docs/peer">@decentnetwork/peer</a> and skip dora entirely.</p>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/dora@0.1.16</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>To embed the server, also install the Carrier SDK it takes a <code>Peer</code> from:</p>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/peer@0.1.172</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<h3 id="1-run-a-registry-with-the-cli"><a class="doc-anchor" href="#1-run-a-registry-with-the-cli">1. Run a registry with the CLI</a></h3>
+<p><code>--range-start</code> and <code>--range-end</code> are <strong>required</strong> in 0.1.16. A registry is authoritative only for the band it declares, so pick a band that no other dora you federate with uses.</p>
+<div class="code-wrap"><pre><code class="language-bash">mkdir dora-demo &amp;&amp; cd dora-demo
+npm init -y
+npm install @decentnetwork/dora@0.1.16
+npx dora --data-dir ./data --range-start 10.86.2.10 --range-end 10.86.2.254 \
+         --http-port 18790 --name docs-dora --verbose
+# in another terminal: read-only status JSON
+curl -s http://127.0.0.1:18790/api/status</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Copy the <code>address=</code> value from the first line and share it. Clients friend that address once (<code>agentnet dora enable --address &lt;address&gt;</code>). The server accepts the request automatically.</p>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:dora@0.1.16">dora@0.1.16</a>, 2026-11-06). The server took about 35 seconds to join the network and print <code>registry ready</code>:</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">registry identity: address=V58F5TvJAM7VEA8GyrtSgp87mA3WpbQnDWDRjSYqTKq6JbGTNeuP userid=DmkXCCAiXu36tdAnxjHQqPRgRB1yQct5WAtsFWLhvQKR
+registry roster file: …/dora-demo/data/roster.yaml
+registry pool start: 10.86.2.10 end: 10.86.2.254
+[registry] dora server started — friend requests will auto-accept
+registry ready — clients should configure registry.userid in decentlan's config.yaml
+[registry] status UI on http://127.0.0.1:18790
+
+$ curl -s http://127.0.0.1:18790/api/status      # trimmed
+{
+  &quot;self&quot;: {
+    &quot;userid&quot;: &quot;DmkXCCAiXu36tdAnxjHQqPRgRB1yQct5WAtsFWLhvQKR&quot;,
+    &quot;address&quot;: &quot;V58F5TvJAM7VEA8GyrtSgp87mA3WpbQnDWDRjSYqTKq6JbGTNeuP&quot;,
+    &quot;name&quot;: &quot;docs-dora&quot;,
+    &quot;segment&quot;: &quot;10.86.2.10-10.86.2.254&quot;,
+    &quot;capacity&quot;: 245,
+    &quot;used&quot;: 0,
+    …
+  },
+  &quot;siblings&quot;: [],
+  &quot;records&quot;: [],
+  &quot;conflicts&quot;: [],
+  …
+}
+^C
+shutting down registry</code></pre></div>
+<p>Without the range flags the CLI exits with code 2 and prints the public federation bands, so you can pick a free one.</p>
+<h3 id="2-use-the-client-from-code"><a class="doc-anchor" href="#2-use-the-client-from-code">2. Use the client from code</a></h3>
+<p><code>DoraClient</code> does not open a network connection itself. You supply <code>sendText</code> and <code>onText</code> adapters (in a real app, backed by <code>Peer</code> friend messages). This sample answers requests in-process with the exported <code>DoraStore</code> and <code>IpAllocator</code>, so it runs offline and shows the exact wire frames:</p>
+<div class="code-wrap"><pre><code class="language-js">// quickstart.mjs
+// Library quickstart: drive DoraClient against an in-process registry built
+// from the exported DoraStore + IpAllocator + encode/decode wire helpers.
+import { mkdtempSync } from &quot;node:fs&quot;;
+import { tmpdir } from &quot;node:os&quot;;
+import { join } from &quot;node:path&quot;;
+import {
+  DoraClient, DoraStore, IpAllocator, encode, decode, randomIpInSubnet, DORA_PREFIX,
+} from &quot;@decentnetwork/dora&quot;;
+
+const dir = mkdtempSync(join(process.env.DORA_DEMO_DIR ?? tmpdir(), &quot;dora-&quot;));
+const store = new DoraStore(join(dir, &quot;roster.yaml&quot;));
+const allocator = new IpAllocator(store, { rangeStart: &quot;10.86.2.10&quot;, rangeEnd: &quot;10.86.2.254&quot; });
+console.log(&quot;segment:&quot;, allocator.segment(), &quot;capacity:&quot;, allocator.capacity());
+
+// A fake transport: the &quot;registry&quot; answers register/lookup/list in-process.
+const REGISTRY = &quot;registry-userid&quot;;
+let deliver = () =&gt; {};
+async function sendText(to, text) {
+  const req = decode(text);
+  let res;
+  if (req.op === &quot;register&quot;) {
+    const record = { userid: req.userid, name: req.name, address: req.address,
+      virtualIp: allocator.nextFree(), registeredAt: new Date().toISOString() };
+    store.put(record);
+    res = { op: &quot;register-ok&quot;, record };
+  } else if (req.op === &quot;lookup&quot;) {
+    const rec = req.by === &quot;name&quot; ? store.findByName(req.value)
+      : req.by === &quot;ip&quot; ? store.findByIp(req.value) : store.get(req.value);
+    res = rec ? { op: &quot;lookup-ok&quot;, record: rec } : { op: &quot;lookup-err&quot;, reason: &quot;not found&quot; };
+  } else {
+    res = { op: &quot;list-ok&quot;, records: store.list(), total: store.list().length };
+  }
+  setTimeout(() =&gt; deliver(to, encode(res)), 10);
+}
+const client = new DoraClient({
+  registryUserids: [REGISTRY],
+  sendText,
+  onText: (h) =&gt; { deliver = h; },
+  timeoutMs: 2000,
+});
+
+const rec = await client.register({ userid: &quot;node-a-userid&quot;, name: &quot;node-a&quot; });
+console.log(&quot;registered:&quot;, rec.name, rec.virtualIp);
+console.log(&quot;lookup by name:&quot;, (await client.lookup({ by: &quot;name&quot;, value: &quot;node-a&quot; }))?.virtualIp);
+console.log(&quot;roster size:&quot;, (await client.list()).length);
+console.log(&quot;wire frame:&quot;, encode({ op: &quot;lookup&quot;, by: &quot;ip&quot;, value: rec.virtualIp }));
+console.log(&quot;prefix:&quot;, DORA_PREFIX, &quot;non-dora text decodes to:&quot;, decode(&quot;hello&quot;));
+console.log(&quot;fallback IP:&quot;, randomIpInSubnet(&quot;10.86.0.0/16&quot;));</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:dora@0.1.16">dora@0.1.16</a>, Node 24.3.0, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ node quickstart.mjs
+segment: 10.86.2.10-10.86.2.254 capacity: 245
+registered: node-a 10.86.2.10
+lookup by name: 10.86.2.10
+roster size: 1
+wire frame: DORA:{&quot;op&quot;:&quot;lookup&quot;,&quot;by&quot;:&quot;ip&quot;,&quot;value&quot;:&quot;10.86.2.10&quot;}
+prefix: DORA: non-dora text decodes to: null
+fallback IP: 10.86.198.251</code></pre></div>
+<h3 id="3-embed-the-server"><a class="doc-anchor" href="#3-embed-the-server">3. Embed the server</a></h3>
+<p>This is the same wiring as the <code>dora</code> CLI (<code>dist/cli.js</code>), minus the lock file, sibling replication and status page:</p>
+<div class="code-wrap"><pre><code class="language-js">// server.mjs — embed a dora registry in your own Node process.
+import { mkdirSync } from &quot;node:fs&quot;;
+import { resolve } from &quot;node:path&quot;;
+import { Peer } from &quot;@decentnetwork/peer&quot;;
+import { DoraServer, DoraStore, IpAllocator } from &quot;@decentnetwork/dora&quot;;
+
+const dataDir = resolve(process.argv[2] ?? &quot;./my-dora&quot;);
+mkdirSync(dataDir, { recursive: true });
+
+const peer = await Peer.create({
+  keyFile: resolve(dataDir, &quot;keypair.json&quot;),
+  compatibilityMode: &quot;legacy&quot;,
+  // Same public bootstrap + express nodes the dora CLI uses (dist/cli.js).
+  bootstrapNodes: [
+    { host: &quot;13.58.208.50&quot;, port: 33445, pk: &quot;89vny8MrKdDKs7Uta9RdVmspPjnRMdwMmaiEW27pZ7gh&quot; },
+    { host: &quot;18.216.102.47&quot;, port: 33445, pk: &quot;G5z8MqiNDFTadFUPfMdYsYtkUDbX5mNCMVHMZtsCnFeb&quot; },
+    { host: &quot;54.193.141.205&quot;, port: 33445, pk: &quot;7TfZWZNV8vnBxxWzJXuvKgX2QyKkLpg2oXx3LQ5tg8LW&quot; },
+  ],
+  expressNodes: [
+    { host: &quot;lens.beagle.chat&quot;, port: 443, pk: &quot;ECbs4GxwGzxGerNkmqDJFibEmevu8jAXqAZtikccvD95&quot; },
+  ],
+});
+await peer.start();
+console.log(`dora address=${peer.address()} userid=${peer.userid()}`);
+await peer.joinNetwork();
+await peer.announceSelf(15000).catch((e) =&gt; console.warn(&quot;announce:&quot;, e.message));
+
+const store = new DoraStore(resolve(dataDir, &quot;roster.yaml&quot;));
+const allocator = new IpAllocator(store, { rangeStart: &quot;10.86.2.10&quot;, rangeEnd: &quot;10.86.2.254&quot; });
+const server = new DoraServer({ peer, store, allocator, verbose: true });
+server.start();
+console.log(&quot;serving segment&quot;, allocator.segment());
+
+process.on(&quot;SIGINT&quot;, async () =&gt; { await peer.stop(); process.exit(0); });</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:dora@0.1.16">dora@0.1.16</a> + @decentnetwork/<a href="mailto:peer@0.1.172">peer@0.1.172</a>, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ node server.mjs ./embedded-dora
+dora address=ZGiTEA8PV35YHAhdUPNXoGMcY7wVba6XJ5B63zeow4PnDr5HPGMw userid=FgaTFrzoAjXwTFRnLzKdm2y422ShsXR7DP5FVKRHof2f
+[registry] dora server started — friend requests will auto-accept
+serving segment 10.86.2.10-10.86.2.254</code></pre></div>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>All exports come from <code>@decentnetwork/dora</code> (<code>dist/index.d.ts</code>). Several are re-exported under new names: <code>RegistryServer</code> as <code>DoraServer</code>, <code>RegistryClient</code> as <code>DoraClient</code>, <code>RegistryStore</code> as <code>DoraStore</code>, and <code>RegistryRecord</code> as <code>DoraRecord</code>.</p>
+<h3 id="doraserver"><a class="doc-anchor" href="#doraserver"><code>DoraServer</code></a></h3>
+<div class="code-wrap"><pre><code class="language-ts">new DoraServer(opts: DoraServerOptions)
+start(): void
+availabilityLog(): AvailabilityLog | null
+availabilitySummary(): string[]</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="doc-table"><table><thead><tr><th><code>DoraServerOptions</code> field</th><th>Type</th><th>Notes</th></tr></thead><tbody><tr><td><code>peer</code></td><td><code>Peer</code> (from <code>@decentnetwork/peer</code>)</td><td>The registry&#39;s Carrier identity. Start it before <code>start()</code>.</td></tr><tr><td><code>store</code></td><td><code>DoraStore</code></td><td>Roster persistence</td></tr><tr><td><code>allocator</code></td><td><code>IpAllocator</code></td><td>IP band this server owns</td></tr><tr><td><code>verbose?</code></td><td><code>boolean</code></td><td>Log every served operation</td></tr><tr><td><code>siblings?</code></td><td><code>Array&lt;{ userid; address?; name? }&gt;</code></td><td>Sibling registries to replicate rosters from. Empty means replication is off.</td></tr><tr><td><code>availabilityFile?</code></td><td><code>string</code></td><td>Where to persist sibling reachability</td></tr><tr><td><code>syncIntervalMs?</code></td><td><code>number</code></td><td>Sibling pull interval (default 60 s)</td></tr><tr><td><code>replicaTtlMs?</code></td><td><code>number</code></td><td>Drop replicas not re-asserted within this window (default 15 min)</td></tr></tbody></table></div>
+<h3 id="doraclient"><a class="doc-anchor" href="#doraclient"><code>DoraClient</code></a></h3>
+<div class="code-wrap"><pre><code class="language-ts">new DoraClient(opts: DoraClientOptions)
+ensureSubscribed(): void
+register(opts: { userid: string; name: string; address?: string; requestedIp?: string; replace?: boolean }): Promise&lt;DoraRecord&gt;
+lookup(opts: { by: &quot;userid&quot; | &quot;name&quot; | &quot;ip&quot;; value: string }): Promise&lt;DoraRecord | null&gt;
+list(): Promise&lt;DoraRecord[]&gt;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="doc-table"><table><thead><tr><th><code>DoraClientOptions</code> field</th><th>Type</th><th>Notes</th></tr></thead><tbody><tr><td><code>registryUserids</code></td><td><code>string[]</code></td><td>Registries to try in order. The first one to answer wins.</td></tr><tr><td><code>sendText</code></td><td><code>(toUserid, text) =&gt; Promise&lt;void&gt;</code></td><td>Your transport, for example a Carrier friend message</td></tr><tr><td><code>onText</code></td><td><code>(handler: (fromUserid, text) =&gt; void) =&gt; void</code></td><td>Subscribe the client to incoming text</td></tr><tr><td><code>timeoutMs?</code></td><td><code>number</code></td><td>Per-registry wait (default 10 s)</td></tr></tbody></table></div>
+<p><code>list()</code> pages through large rosters automatically. When every registry fails, the client throws <code>AllRegistriesUnavailableError</code>. Catch it and fall back to <code>randomIpInSubnet()</code>.</p>
+<h3 id="dorastore"><a class="doc-anchor" href="#dorastore"><code>DoraStore</code></a></h3>
+<div class="code-wrap"><pre><code class="language-ts">new DoraStore(filePath: string)          // YAML roster; created on first write
+get(userid): DoraRecord | null
+findByName(name): DoraRecord | null
+findByIp(ip): DoraRecord | null
+list(): DoraRecord[]
+listOwned(): DoraRecord[]                 // records without replicatedFrom
+put(record: DoraRecord): void             // upsert + persist; caller checks collisions
+remove(userid): boolean
+touch(userid): void                       // update lastSeenAt
+putReplicatedBatch(records, fromUserid, skip?): { merged: number; conflicts: IpConflict[] }
+findIpConflicts(): IpConflict[]
+pruneStaleReplicas(ttlMs: number, now?: number): number</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h3 id="ipallocator"><a class="doc-anchor" href="#ipallocator"><code>IpAllocator</code></a></h3>
+<div class="code-wrap"><pre><code class="language-ts">new IpAllocator(store: DoraStore, opts?: AllocatorOptions)   // { rangeStart?, rangeEnd? }
+capacity(): number
+segment(): string               // &quot;&lt;start&gt;-&lt;end&gt;&quot;
+overlaps(segment: string): boolean
+ownsIp(ip: string): boolean
+acceptRequested(ip: string): boolean
+nextFree(): string | null       // null when the band is exhausted</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h3 id="wire-format-and-helpers"><a class="doc-anchor" href="#wire-format-and-helpers">Wire format and helpers</a></h3>
+<div class="code-wrap"><pre><code class="language-ts">const DORA_PREFIX = &quot;DORA:&quot;;
+encode(msg: DoraRequest | DoraResponse): string        // &quot;DORA:&quot; + JSON
+decode(text: string): DoraRequest | DoraResponse | null // null for non-dora text
+randomIpInSubnet(subnetCidr?: string, reservedFirstSlashTwentyFour?: boolean): string
+class AllRegistriesUnavailableError extends Error</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="doc-table"><table><thead><tr><th>Request</th><th>Response</th></tr></thead><tbody><tr><td><code>RegisterRequest { op: &quot;register&quot;, userid, name, address?, requestedIp?, replace? }</code></td><td><code>RegisterOk { op: &quot;register-ok&quot;, record }</code> / <code>RegisterErr { op: &quot;register-err&quot;, reason, suggestion? }</code></td></tr><tr><td><code>LookupRequest { op: &quot;lookup&quot;, by: &quot;userid&quot;|&quot;name&quot;|&quot;ip&quot;, value }</code></td><td><code>LookupOk { op: &quot;lookup-ok&quot;, record }</code> / <code>LookupErr { op: &quot;lookup-err&quot;, reason }</code></td></tr><tr><td><code>ListRequest { op: &quot;list&quot;, offset? }</code></td><td><code>ListOk { op: &quot;list-ok&quot;, records, total?, seg? }</code> / <code>ListErr { op: &quot;list-err&quot;, reason }</code></td></tr></tbody></table></div>
+<p><code>DoraRecord</code> fields: <code>userid</code>, <code>name</code>, <code>virtualIp</code>, <code>registeredAt</code>, <code>lastSeenAt?</code>, <code>address?</code> (the full Carrier address, which peers need to send a friend request), <code>replicatedFrom?</code> and <code>replicatedAt?</code>.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<h3 id="cli-flags"><a class="doc-anchor" href="#cli-flags">CLI flags</a></h3>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">dora --range-start &lt;ip&gt; --range-end &lt;ip&gt; [options]
+dora friend-add &lt;userid&gt; [name] [address] [--data-dir &lt;dir&gt;]</code></pre></div>
+<div class="doc-table"><table><thead><tr><th>Flag</th><th>Default</th><th>Effect</th></tr></thead><tbody><tr><td><code>--data-dir &lt;path&gt;</code></td><td><code>~/.dora</code> (or a legacy <code>~/.decent-registry</code> if only that exists)</td><td>Keypair, friend store, <code>roster.yaml</code>, <code>dora.pid</code> lock. The keypair here is the registry&#39;s public identity, so keep it stable.</td></tr><tr><td><code>--range-start &lt;ip&gt;</code>, <code>--range-end &lt;ip&gt;</code></td><td><strong>required</strong></td><td>The IP band this registry owns</td></tr><tr><td><code>--udp-port &lt;port&gt;</code></td><td>ephemeral</td><td>A stable Carrier UDP port. Recommended for an always-on registry.</td></tr><tr><td><code>--verbose</code></td><td>off</td><td>Log every operation</td></tr><tr><td><code>--peers &lt;userid&gt;[=&lt;address&gt;][#&lt;name&gt;],…</code></td><td>none</td><td>Sibling registries to replicate from</td></tr><tr><td><code>--sync-interval-ms &lt;n&gt;</code>, <code>--replica-ttl-ms &lt;n&gt;</code></td><td>60000 / 900000</td><td>Replication timing</td></tr><tr><td><code>--http-port &lt;n&gt;</code></td><td>off</td><td>Serve a read-only status page (<code>/</code>) and JSON (<code>/api/status</code>)</td></tr><tr><td><code>--http-host &lt;addr&gt;</code></td><td><code>127.0.0.1</code></td><td>Bind address for the status page. The roster maps identities to addresses, so expose it deliberately.</td></tr><tr><td><code>--name &lt;s&gt;</code></td><td>none</td><td>Label shown on the status page</td></tr></tbody></table></div>
+<p><code>dora friend-add</code> writes a userid straight into the data dir&#39;s friend store (<code>keypair.json.friends.json</code>) and exits. Use it to onboard a node whose friend request cannot reach the registry, then restart the server.</p>
+<p>The CLI refuses to start if another <code>dora</code> process is using the same <code>--data-dir</code>. It checks both the process list and the <code>dora.pid</code> file.</p>
+<h3 id="data-files"><a class="doc-anchor" href="#data-files">Data files</a></h3>
+<p><code>roster.yaml</code> (the server rewrites it on every change, so edit it only while dora is stopped):</p>
+<div class="code-wrap"><pre><code class="language-yaml">records:
+  - userid: node-a-userid
+    name: node-a
+    virtualIp: 10.86.2.10
+    registeredAt: '2026-11-06T08:37:15.267Z'</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Bootstrap and express nodes are fixed in <code>dist/cli.js</code>. There is no CLI flag for them. When embedding, pass your own list to <code>Peer.create()</code>.</p>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li>Node.js <strong>&gt;= 20</strong> (<code>engines</code>). Verified with Node 24.3.0 on macOS (arm64).</li>
+<li>No native modules, root or TUN. The CLI uses <code>ps</code> for duplicate-instance detection on Linux and macOS.</li>
+<li>Needs outbound UDP/TCP to the Carrier bootstrap nodes. A fixed <code>--udp-port</code> helps clients reach a long-lived registry.</li>
+<li>Runtime dependencies: <code>@decentnetwork/peer</code> (^0.1.101) and <code>js-yaml</code>.</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.1.16</strong> (<code>latest</code> on npm, published 2026-07-21).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/dora" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/dora</a></li>
+<li>Source: <a href="https://github.com/0xli/dora" target="_blank" rel="noreferrer">https://github.com/0xli/dora</a> (branch <code>main</code>, commit <code>d86369891abd30c600d95d3498fb53b2593a0571</code>, <code>package.json</code> version 0.1.16). Design notes are in <a href="https://github.com/0xli/dora/tree/main/docs" target="_blank" rel="noreferrer">https://github.com/0xli/dora/tree/main/docs</a></li>
+<li>License: GPL-3.0-or-later.</li>
+<li>Changelog: none is published. The repository has no release tags.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

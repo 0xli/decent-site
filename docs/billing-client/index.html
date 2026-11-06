@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/billing-client 0.1.2 — docs | Decent Network</title>
+    <meta name="description" content="Typed client for the Decent Network billing service: nodes call hold / capture / release and never speak raw HTTP or compute prices." />
+    <meta property="og:title" content="@decentnetwork/billing-client 0.1.2 — docs | Decent Network" />
+    <meta property="og:description" content="Typed client for the Decent Network billing service: nodes call hold / capture / release and never speak raw HTTP or compute prices." />
+    <meta property="og:url" content="https://decent.network/docs/billing-client" />
+    <link rel="canonical" href="https://decent.network/docs/billing-client" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/billing-client</h1><p>Typed client for the Decent Network billing service: nodes call hold / capture / release and never speak raw HTTP or compute prices.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.1.2<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>Node.js</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/billing-client" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install @decentnetwork/billing-client</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a class="active" href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/billing-client</code> is the typed client that compute-node operators use to talk to the Decent Network billing service. A node reports <strong>work</strong> (task kind plus seconds of source media), and the billing service decides what that costs. The node wraps each paid task in <code>hold()</code> → <code>capture()</code>, or <code>release()</code> on failure, and never computes money itself. The package is one small ES module with TypeScript declarations and no runtime dependencies. It uses the global <code>fetch</code>.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<p>Use it when you run a node that does paid work for users (for example audio or video generation for a service such as <code>interview</code>) and the billing service has given you its URL and a shared token. Typical cases:</p>
+<ul>
+<li>Reserve a user&#39;s balance before starting a task, and fail fast with &quot;please top up&quot; when it is empty.</li>
+<li>Charge actual work when the task finishes, and refund the reservation when it fails.</li>
+<li>Show a user their balance or history in your app.</li>
+</ul>
+<p>You do not need it to build on the network itself. For messaging, files and calls between peers, see <a href="/docs/peer">@decentnetwork/peer</a>.</p>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/billing-client@0.1.2</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<p>The real service&#39;s address and token come from its operator. Its usual base URL is an AgentNet virtual IP, because the service binds <code>127.0.0.1</code> on its own host and is reached over <a href="/docs/lan">the virtual LAN</a>. To keep this sample self-contained, it starts a small <strong>local stub</strong> that speaks the same HTTP envelope as the service. The stub&#39;s amounts are placeholders, and the sample never prints them.</p>
+<div class="code-wrap"><pre><code class="language-js">// stub-server.mjs
+// A local stand-in for the billing service: same paths, same JSON envelope
+// ({ ok: true, ... } / { ok: false, error }), same x-billing-token header.
+// It keeps holds in memory and never computes real prices.
+import { createServer } from &quot;node:http&quot;;
+
+export function startStub({ token, port = 0, broke = new Set() }) {
+  const holds = new Map();
+  const log = [];
+  const server = createServer(async (req, res) =&gt; {
+    const url = new URL(req.url, &quot;http://stub&quot;);
+    let body = {};
+    for await (const chunk of req) body = JSON.parse(chunk.toString() || &quot;{}&quot;);
+    log.push(`${req.method} ${url.pathname} token=${req.headers[&quot;x-billing-token&quot;] === token ? &quot;ok&quot; : &quot;bad&quot;}`);
+    const send = (status, data) =&gt; { res.writeHead(status, { &quot;content-type&quot;: &quot;application/json&quot; }); res.end(JSON.stringify(data)); };
+    if (req.headers[&quot;x-billing-token&quot;] !== token) return send(401, { ok: false, error: &quot;bad token&quot; });
+    switch (`${req.method} ${url.pathname}`) {
+      case &quot;GET /balance&quot;: return send(200, { ok: true, balance: 0, held: 0 });
+      case &quot;POST /hold&quot;:
+        if (broke.has(body.userid)) return send(400, { ok: false, error: &quot;insufficient balance&quot; });
+        holds.set(body.taskId, body);
+        return send(200, { ok: true, amount: 0 });
+      case &quot;POST /capture&quot;:
+        if (!holds.delete(body.taskId)) return send(404, { ok: false, error: `no hold for task ${body.taskId}` });
+        return send(200, { ok: true, entry: {} });
+      case &quot;POST /release&quot;: holds.delete(body.taskId); return send(200, { ok: true });
+      case &quot;GET /history&quot;: return send(200, { ok: true, entries: [] });
+      default: return send(404, { ok: false, error: &quot;not found&quot; });
+    }
+  });
+  return new Promise((resolve) =&gt; server.listen(port, &quot;127.0.0.1&quot;, () =&gt;
+    resolve({ url: `http://127.0.0.1:${server.address().port}`, log, close: () =&gt; server.close() })));
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre><code class="language-js">// quickstart.mjs
+import { BillingClient, BillingError } from &quot;@decentnetwork/billing-client&quot;;
+import { startStub } from &quot;./stub-server.mjs&quot;;
+
+const stub = await startStub({ token: &quot;dev-token&quot;, broke: new Set([&quot;broke-user&quot;]) });
+const billing = new BillingClient({ baseUrl: stub.url, token: &quot;dev-token&quot;, timeoutMs: 5000 });
+const NODE = &quot;my-node-userid&quot;;
+
+// One task, the way a node runs it: hold -&gt; work -&gt; capture (or release).
+async function runTask(userid, taskId, work) {
+  await billing.hold({ userid, taskId, kind: &quot;audio&quot;, seconds: 42, service: &quot;interview&quot;, node: NODE });
+  try {
+    const actualSeconds = await work();
+    await billing.capture(taskId, { kind: &quot;audio&quot;, seconds: actualSeconds });
+    return &quot;captured&quot;;
+  } catch (err) {
+    await billing.release(taskId);
+    return `released (${err.message})`;
+  }
+}
+
+console.log(&quot;task-1:&quot;, await runTask(&quot;alice&quot;, &quot;task-1&quot;, async () =&gt; 40));
+console.log(&quot;task-2:&quot;, await runTask(&quot;alice&quot;, &quot;task-2&quot;, async () =&gt; { throw new Error(&quot;TTS failed&quot;); }));
+
+try {
+  await runTask(&quot;broke-user&quot;, &quot;task-3&quot;, async () =&gt; 10);
+} catch (err) {
+  if (err instanceof BillingError &amp;&amp; err.code === &quot;insufficient&quot;) console.log(&quot;task-3: ask the user to top up&quot;);
+  else throw err;
+}
+
+const bad = new BillingClient({ baseUrl: stub.url, token: &quot;wrong&quot; });
+await bad.history(&quot;alice&quot;).catch((e) =&gt; console.log(&quot;wrong token:&quot;, e.name, e.code, e.status, e.message));
+
+console.log(&quot;balance keys:&quot;, Object.keys(await billing.balance(&quot;alice&quot;)).join(&quot;, &quot;));
+console.log(&quot;requests seen by the stub:\n  &quot; + stub.log.join(&quot;\n  &quot;));
+stub.close();</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:billing-client@0.1.2">billing-client@0.1.2</a>, Node 24.3.0, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ node quickstart.mjs
+task-1: captured
+task-2: released (TTS failed)
+task-3: ask the user to top up
+wrong token: BillingError http 401 bad token
+balance keys: balance, held
+requests seen by the stub:
+  POST /hold token=ok
+  POST /capture token=ok
+  POST /hold token=ok
+  POST /release token=ok
+  POST /hold token=ok
+  GET /history token=bad
+  GET /balance token=ok</code></pre></div>
+<p>This verifies the client&#39;s request paths, headers, JSON bodies and error mapping against a stub. It was <strong>not</strong> run against a live billing service.</p>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>From <code>dist/index.d.ts</code>. All amounts the service returns are integers in <strong>micro-USD</strong>. The client passes them through and does not do any arithmetic on them.</p>
+<h3 id="new-billingclientopts"><a class="doc-anchor" href="#new-billingclientopts"><code>new BillingClient(opts)</code></a></h3>
+<div class="code-wrap"><pre><code class="language-ts">interface BillingClientOptions {
+  baseUrl: string;      // e.g. &quot;http://&lt;billing virtual IP&gt;:&lt;port&gt;&quot; over AgentNet
+  token: string;        // shared secret, sent as the x-billing-token header
+  timeoutMs?: number;   // per request, default 10000
+}
+type TaskKind = &quot;audio&quot; | &quot;video&quot;;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h3 id="methods"><a class="doc-anchor" href="#methods">Methods</a></h3>
+<div class="doc-table"><table><thead><tr><th>Method</th><th>HTTP</th><th>Returns</th><th>Notes</th></tr></thead><tbody><tr><td><code>hold({ userid, taskId, kind, seconds, service?, node? })</code></td><td><code>POST /hold</code></td><td><code>Promise&lt;{ amount: number }&gt;</code></td><td>Freeze the estimate when a task starts. <code>service</code> (e.g. <code>&quot;interview&quot;</code>) selects the node revenue split. <code>node</code> is your Carrier userid, which earns the split on capture. Throws <code>BillingError</code> with <code>code: &quot;insufficient&quot;</code> when the user cannot pay.</td></tr><tr><td><code>capture(taskId, actual?)</code></td><td><code>POST /capture</code></td><td><code>Promise&lt;void&gt;</code></td><td>The task succeeded. Pass <code>{ kind, seconds }</code> to charge actual work, or leave it out to charge the held estimate.</td></tr><tr><td><code>release(taskId)</code></td><td><code>POST /release</code></td><td><code>Promise&lt;void&gt;</code></td><td>The task failed or was cancelled, so the hold is refunded. Safe to call in any error path.</td></tr><tr><td><code>quote(kind, seconds, service?)</code></td><td><code>POST /quote</code></td><td><code>Promise&lt;number&gt;</code></td><td>The service&#39;s estimate, for display</td></tr><tr><td><code>rates()</code></td><td><code>GET /rates</code></td><td><code>Promise&lt;{ rates: Record&lt;string, number&gt;; services: Record&lt;string, { nodeShareBps: number }&gt; }&gt;</code></td><td>The service&#39;s price card, for display only and never for local math</td></tr><tr><td><code>balance(userid)</code></td><td><code>GET /balance?userid=</code></td><td><code>Promise&lt;{ balance: number; held: number }&gt;</code></td><td>A node&#39;s own earnings use <code>userid = &quot;node:&lt;userid&gt;&quot;</code></td></tr><tr><td><code>history(userid)</code></td><td><code>GET /history?userid=</code></td><td><code>Promise&lt;Array&lt;Record&lt;string, unknown&gt;&gt;&gt;</code></td><td>Ledger entries</td></tr><tr><td><code>charge({ userid, amount, service, note, ref })</code></td><td><code>POST /charge</code></td><td><code>Promise&lt;void&gt;</code></td><td>Non-metered debit (memberships and similar). Idempotent per <code>ref</code>, so use a stable key and retries are safe.</td></tr><tr><td><code>credit(userid, amount, note)</code></td><td><code>POST /credit</code></td><td><code>Promise&lt;void&gt;</code></td><td>Operator top-up</td></tr><tr><td><code>bindWallet(userid, chain, address)</code></td><td><code>POST /bind-wallet</code></td><td><code>Promise&lt;void&gt;</code></td><td>Attribute future on-chain deposits from this wallet to this userid</td></tr></tbody></table></div>
+<p>The service decides which token may call what. In the billing service source, a node token is limited to <code>balance</code>, <code>rates</code>, <code>quote</code>, <code>hold</code>, <code>capture</code>, <code>release</code>, <code>charge</code> and <code>history</code>. <code>credit</code> and <code>bindWallet</code> need an operator (admin) token and otherwise return HTTP 403.</p>
+<h3 id="billingerror"><a class="doc-anchor" href="#billingerror"><code>BillingError</code></a></h3>
+<div class="code-wrap"><pre><code class="language-ts">class BillingError extends Error {
+  name: &quot;BillingError&quot;;
+  code: &quot;insufficient&quot; | &quot;http&quot;;   // &quot;insufficient&quot; when the message matches /insufficient/i
+  status?: number;                 // HTTP status
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>A <code>BillingError</code> is thrown when the response is not 2xx or the body has <code>ok: false</code>. The message is the service&#39;s <code>error</code> string. Two other failures surface as raw errors, not <code>BillingError</code> (both observed in testing):</p>
+<ul>
+<li>A non-JSON response (for example an HTML 502 from a proxy) throws <code>SyntaxError</code>.</li>
+<li>A timeout throws an <code>AbortError</code> (<code>DOMException</code>).</li>
+</ul>
+<p>Handle both in the same <code>catch</code> as <code>BillingError</code> and call <code>release()</code>.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<p>There are only the three constructor options: <code>baseUrl</code>, <code>token</code> and <code>timeoutMs</code>. The client reads no environment variables or config files. Keep <code>token</code> out of source control, for example by reading it from an environment variable your own service defines.</p>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li>Any runtime with a global <code>fetch</code> and <code>AbortController</code> (Node.js 18 and later has both). Verified only with Node 24.3.0.</li>
+<li>Published as an ES module (<code>dist/index.js</code>) with <code>dist/index.d.ts</code>. The package has no runtime dependencies and declares no <code>engines</code> field.</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.1.2</strong> (<code>latest</code> on npm, published 2026-08-10; earlier versions 0.1.0 and 0.1.1).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/billing-client" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/billing-client</a></li>
+<li>Source repository is not public yet. Browse the published code at <a href="https://www.npmjs.com/package/@decentnetwork/billing-client?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/billing-client?activeTab=code</a></li>
+<li>License: MIT.</li>
+<li>Changelog: none is published. The package also ships no README.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

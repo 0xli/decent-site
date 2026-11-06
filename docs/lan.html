@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/lan 0.1.316 — docs | Decent Network</title>
+    <meta name="description" content="Private virtual LAN over Peer transport: 10.86.x.x addresses, names, ACLs, files, proxy and a local console. CLI: agentnet." />
+    <meta property="og:title" content="@decentnetwork/lan 0.1.316 — docs | Decent Network" />
+    <meta property="og:description" content="Private virtual LAN over Peer transport: 10.86.x.x addresses, names, ACLs, files, proxy and a local console. CLI: agentnet." />
+    <meta property="og:url" content="https://decent.network/docs/lan" />
+    <link rel="canonical" href="https://decent.network/docs/lan" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/lan</h1><p>Private virtual LAN over Peer transport: 10.86.x.x addresses, names, ACLs, files, proxy and a local console. CLI: agentnet.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.1.316<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>macOS · Linux · Windows (WSL2)</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/lan" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install -g @decentnetwork/lan</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a class="active" href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/lan</code> (also called decentlan or AgentNet) is the node-side daemon and CLI that puts machines on a private virtual LAN over the Decent Network. Each node owns a Carrier identity, registers a <code>10.86.x.x</code> address with a <a href="/docs/dora">Dora</a> name server, and tunnels IP traffic to its Carrier friends — so SSH, HTTP and most TCP/UDP services work between machines behind NAT with no public IP and no port forwarding. The package ships two binaries, <code>agentnet</code> and <code>decentlan</code> (the same program), plus prebuilt TUN helpers for Linux, macOS and Windows.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<p>Pick <code>@decentnetwork/lan</code> when you want <strong>IP-level</strong> connectivity between machines: reach a service by <code>10.86.x.x</code> or <code>&lt;name&gt;.decent</code>, grant a friend access to one port for a few hours, or run a CONNECT proxy exit for peers. It is an operator tool, not a library.</p>
+<div class="doc-table"><table><thead><tr><th>You want</th><th>Use</th></tr></thead><tbody><tr><td>Messages, files and calls in your own Node or browser app</td><td><a href="/docs/peer">@decentnetwork/peer</a></td></tr><tr><td>A chat app for people (no root, no virtual LAN)</td><td><a href="/docs/beagle">@decentnetwork/beagle</a></td></tr><tr><td>To run the name/IP registry the LAN uses</td><td><a href="/docs/dora">@decentnetwork/dora</a></td></tr><tr><td>A virtual LAN between your machines, with ACLs</td><td><strong>@decentnetwork/lan</strong></td></tr></tbody></table></div>
+<p>Creating the TUN interface needs root (or Administrator on Windows). Identity, configuration, friend management and a &quot;mock TUN&quot; daemon run as a normal user, which is what the quickstart below does.</p>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/lan@0.1.316
+npx agentnet --help</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The project&#39;s own guide installs it globally (<code>npm install -g @decentnetwork/lan</code>) so <code>agentnet</code> is on <code>PATH</code> for system services. A local install plus <code>npx</code> is enough to try it.</p>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<p>This creates an identity and config in a throwaway directory and starts the daemon <strong>without</strong> a real TUN device — no <code>sudo</code>. Commands that touch the OS (TUN, system service, DNS resolver) are listed separately below.</p>
+<div class="code-wrap"><pre><code class="language-bash">mkdir lan-demo &amp;&amp; cd lan-demo
+npm init -y
+npm install @decentnetwork/lan@0.1.316
+
+# 1. Config + identity in ./agentnet-demo (skip contacting the public doras for now)
+npx agentnet init --name docs-demo --config-dir ./agentnet-demo --no-dora
+npx agentnet identity show --config-dir ./agentnet-demo
+npx agentnet status --config-dir ./agentnet-demo
+
+# 2. Optional: run the daemon as a normal user (mock TUN, no virtual interface)
+npx agentnet dora disable --config-dir ./agentnet-demo   # keep this test node off the public registry
+npx agentnet up --config-dir ./agentnet-demo             # foreground; Ctrl+C to stop
+# in a second terminal:
+npx agentnet status --config-dir ./agentnet-demo
+npx agentnet diag --config-dir ./agentnet-demo</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Notes from the verification run:</p>
+<ul>
+<li>The CLI talks to the daemon over a Unix socket at <code>&lt;carrier.dataDir&gt;/daemon.sock</code>. On macOS a socket path longer than about 104 bytes fails with <code>listen EINVAL</code>. Keep the project directory path short. Our scratch path was too long, so for the daemon step (marked <code>…</code> below) we set <code>carrier.dataDir: carrier</code> (a relative path) in <code>config.yaml</code> and ran <code>up</code>, <code>status</code> and <code>diag</code> from inside <code>agentnet-demo</code> with <code>--config-dir .</code>.</li>
+<li>Do not start a second daemon on a machine that already runs <code>agentnet</code>. At startup on macOS the daemon tries to remove every other <code>10.86.x.x</code> loopback alias it finds, and it treats those as leftovers from an earlier run. As a normal user the attempt fails harmlessly. Run as root, it would remove the live daemon&#39;s address.</li>
+</ul>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:lan@0.1.316">lan@0.1.316</a>, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ npx agentnet init --name docs-demo --config-dir ./agentnet-demo --no-dora
+Created config directory: ./agentnet-demo
+Created config: …/lan-demo/agentnet-demo/config.yaml
+[IPAM] INFO: Creating new IPAM file: …/lan-demo/agentnet-demo/ipam.yaml
+[IPAM] INFO: IPAM saved to …/lan-demo/agentnet-demo/ipam.yaml
+[Policy] INFO: Policy saved to …/lan-demo/agentnet-demo/policy.yaml
+
+Decent AgentNet initialized:
+  Node name: docs-demo
+  Config dir: ./agentnet-demo
+  Subnet: 10.86.0.0/16
+  Interface: agentnet0
+
+Skipping dora friend-requests (--no-dora); the daemon joins a dora itself on first start.
+
+Next: sudo agentnet service install   # or 'agentnet up --real-tun' to run in foreground
+
+$ npx agentnet identity show --config-dir ./agentnet-demo
+(generated new identity at …/lan-demo/agentnet-demo/carrier/keypair.json)
+Address:    HYGw5jP6gVPKJ5Ggumss8GG5BRyyon1kZrJ3g74SscnAsndBWvkd
+Public Key: 6fce427433ff79b62e4efd2e301bcef3f10ecc3948d9f30c8056f293d3655e07
+User ID:    8XSfwqkwfduQBTS9HtA5fq7vVTYzqonAgjb2xdXZTgFG
+
+$ npx agentnet status --config-dir ./agentnet-demo
+Decent AgentNet
+Node: docs-demo
+Namespace: agentnet-main
+Daemon: not running — everything below is CONFIGURED, not live
+Subnet: 10.86.0.0/16
+Interface: agentnet0
+Virtual IP: 10.86.1.10
+Bootstrap: 15 nodes
+Peers (on disk): 0
+ACL rules: 0
+
+$ npx agentnet dora disable --config-dir ./agentnet-demo
+Dora disabled. Restart the daemon to take effect.
+
+$ npx agentnet up …        # mock TUN, dora disabled
+[Daemon] INFO: Starting daemon (node: docs-demo)
+[PeerManager] INFO: Peer started: HYGw5jP6gVPKJ5Ggumss8GG5BRyyon1kZrJ3g74SscnAsndBWvkd
+[IPC] INFO: Listening on carrier/daemon.sock
+[Daemon] INFO: Using deterministic fallback IP 10.86.84.251 (derived from userid; avoids the 10.86.1.10 init-default collision)
+[TunDevice[agentnet0]] INFO: Using mock TUN mode (no real /dev/net/tun)
+[Daemon] INFO: Daemon started successfully
+Daemon started. Identity: HYGw5jP6gVPKJ5Ggumss8GG5BRyyon1kZrJ3g74SscnAsndBWvkd
+Press Ctrl+C to stop.
+[PeerManager] INFO: Joined Carrier network
+[Daemon] INFO: Self-announce complete
+
+$ npx agentnet status …    # second terminal, daemon up
+Decent AgentNet
+Node: docs-demo
+Namespace: agentnet-main
+Daemon: running
+Userid: 8XSfwqkwfduQBTS9HtA5fq7vVTYzqonAgjb2xdXZTgFG
+Address: HYGw5jP6gVPKJ5Ggumss8GG5BRyyon1kZrJ3g74SscnAsndBWvkd
+Subnet: 10.86.0.0/16
+Interface: agentnet0
+Virtual IP: 10.86.84.251
+  note: config.yaml still says 10.86.1.10 — the daemon's address wins
+Bootstrap: 15 nodes
+Peers (roster): 0
+Friends: 0 (0 online)
+Sessions: 0 active
+Traffic: 0 sent / 0 received / 0 dropped
+ACL rules: 0
+
+$ npx agentnet diag …      # trimmed
+{
+  &quot;identity&quot;: { &quot;address&quot;: &quot;HYGw5jP6…vkd&quot;, &quot;userid&quot;: &quot;8XSfwqkw…TgFG&quot;, … },
+  &quot;node&quot;: { &quot;name&quot;: &quot;docs-demo&quot;, &quot;autoAccept&quot;: false, … },
+  &quot;tun&quot;: { &quot;name&quot;: &quot;agentnet0&quot;, &quot;ip&quot;: &quot;10.86.84.251&quot;, &quot;subnet&quot;: &quot;10.86.0.0/16&quot; },
+  &quot;dht&quot;: { &quot;bootstrapsConfigured&quot;: 15, &quot;knownNodesCount&quot;: 73, &quot;tcpRelayConnected&quot;: 3, … },
+  &quot;friends&quot;: [], &quot;ipam&quot;: [], …
+}</code></pre></div>
+<h3 id="joining-the-real-network-documented-not-run-here"><a class="doc-anchor" href="#joining-the-real-network-documented-not-run-here">Joining the real network (documented, not run here)</a></h3>
+<p>These steps need root or Administrator. They were <strong>not</strong> run during verification. They are the documented path from the package&#39;s <code>docs/INSTALL.md</code>:</p>
+<div class="code-wrap"><pre><code class="language-bash">sudo npm install -g @decentnetwork/lan
+agentnet init --name my-machine                              # also friends the default public doras
+sudo agentnet service install --config-dir $HOME/.agentnet   # systemd / LaunchDaemon / Windows startup task
+# or run in the foreground with a real TUN:
+sudo agentnet up --real-tun --config-dir $HOME/.agentnet
+
+agentnet ipam list           # roster from dora
+agentnet diag                # your allocated 10.86.x.x
+sudo $(which agentnet) dns install --config-dir $HOME/.agentnet   # optional: resolve *.decent system-wide</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>When you run with <code>sudo</code>, always pass <code>--config-dir</code>, because <code>sudo</code> changes <code>$HOME</code>. <code>service install</code> writes <code>/etc/systemd/system/agentnet.service</code> on Linux and <code>/Library/LaunchDaemons/com.decentlan.agentnet.plist</code> on macOS, or creates a Windows startup task. <code>--real-tun</code> also runs <code>harden-ssh</code> first, which makes SSH key-only for connections from <code>10.86.0.0/16</code>.</p>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p><code>@decentnetwork/lan</code> has <strong>no programmatic API</strong>. Its package entry (<code>dist/index.js</code>) imports the CLI, so <code>import &quot;@decentnetwork/lan&quot;</code> parses <code>process.argv</code> and exits. Its <code>index.d.ts</code> exports nothing. To build on the same network from code, use <a href="/docs/peer">@decentnetwork/peer</a>. To talk to a running daemon from another process, <a href="/docs/beagle">@decentnetwork/beagle</a> exports <code>ipcCall()</code> for the daemon&#39;s socket protocol.</p>
+<h3 id="cli-commands"><a class="doc-anchor" href="#cli-commands">CLI commands</a></h3>
+<p>Every command accepts <code>--config-dir &lt;dir&gt;</code> (default <code>~/.agentnet</code>).</p>
+<div class="doc-table"><table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>init [--name N] [--no-dora]</code></td><td>Create <code>config.yaml</code>, <code>ipam.yaml</code>, <code>policy.yaml</code>. By default it also sends friend requests to the default public doras. <code>--no-dora</code> skips that.</td></tr><tr><td><code>identity show</code></td><td>Print Address, Public Key and User ID (creates the keypair if missing).</td></tr><tr><td><code>up [--name N] [--real-tun]</code></td><td>Start the daemon in the foreground. Without <code>--real-tun</code> it uses a mock TUN (no root, no virtual interface).</td></tr><tr><td><code>restart</code></td><td>Ask the running daemon to re-exec itself.</td></tr><tr><td><code>status</code> / <code>diag</code> / <code>doctor</code></td><td>Human status, JSON snapshot over IPC, and a self-check that prints fixes.</td></tr><tr><td><code>peers list</code>, <code>ipam list</code></td><td>Peer IP allocations (live from the daemon when it is up).</td></tr><tr><td><code>ipam assign --peer ID --name N [--ip IP] [--service name:proto:port]</code></td><td>Register a peer with a virtual IP.</td></tr><tr><td><code>resolve &lt;name&gt;</code></td><td>Name to virtual IP.</td></tr><tr><td><code>grant --peer P [--tcp PORT…] [--udp PORT…] [--expires 1h|24h|7d] [--purpose S]</code></td><td>Add an ACL allow rule.</td></tr><tr><td><code>revoke --peer P</code></td><td>Remove a peer&#39;s grants.</td></tr><tr><td><code>audit log [--tail N]</code></td><td>Show the audit trail (default 50 lines).</td></tr><tr><td><code>friend-request &lt;address&gt; [--hello S] [--wait-ms N]</code></td><td>Send a friend request. The target can be a Carrier address or a <code>*.beagles.eth</code> name.</td></tr><tr><td><code>friend-accept [userid]</code></td><td>Accept a queued request (alias of <code>friends accept</code>).</td></tr><tr><td><code>friends list | pending | accept | reject | remove | alias | autoaccept [on|off]</code></td><td>Manage Carrier friends.</td></tr><tr><td><code>chat send &lt;userid&gt; &lt;text&gt;</code>, <code>chat history [--peer P]</code></td><td>Native Carrier text chat.</td></tr><tr><td><code>file send &lt;userid&gt; &lt;path&gt;</code></td><td>Send a file. The receiver saves it to <code>&lt;config-dir&gt;/downloads</code>.</td></tr><tr><td><code>ui [--port 8765] [--host 127.0.0.1] [--dora-dir D]</code></td><td>Local web UI for friends and requests.</td></tr><tr><td><code>console</code></td><td>Keyboard-driven terminal UI.</td></tr><tr><td><code>dora enable --address A</code> (or <code>--userid U</code>), <code>dora disable</code>, <code>dora status</code>, <code>dora autofriend none|all|allow|remove|list</code></td><td>Dora registry integration.</td></tr><tr><td><code>dns install [--uninstall]</code>, <code>dns hosts</code></td><td>OS resolver wiring for <code>*.decent</code> (needs root), or <code>/etc/hosts</code> lines.</td></tr><tr><td><code>bootstrap show</code>, <code>bootstrap update</code></td><td>Inspect or refresh the Carrier bootstrap node list.</td></tr><tr><td><code>proxy enable [--port 8888] | disable | status | allow-host | revoke-host | list-hosts | who | block | allow | use --peer P | whitelist | file-whitelist | busy-mbps | router | trust-ca</code></td><td>Built-in HTTP CONNECT proxy (exit) and a local multi-exit router.</td></tr><tr><td><code>service install [--uninstall] | uninstall | status | restart</code></td><td>Install the daemon as a system service (needs root).</td></tr><tr><td><code>harden-ssh</code></td><td>Make sshd key-only for the <code>10.86.0.0/16</code> subnet (needs root).</td></tr><tr><td><code>fix-perms [--user U]</code></td><td>Repair root-owned files under the config dir (run with sudo).</td></tr></tbody></table></div>
+<p><code>agentnet --version</code> prints the version from the nearest <code>package.json</code> <strong>above the binary&#39;s link</strong>, not the lan version. In a local install that is your own project&#39;s version. Use <code>npm ls @decentnetwork/lan</code> to check the installed version.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<h3 id="files"><a class="doc-anchor" href="#files">Files</a></h3>
+<p>All files live in the config directory (<code>~/.agentnet</code> by default, or <code>--config-dir</code>):</p>
+<div class="doc-table"><table><thead><tr><th>File</th><th>Contents</th></tr></thead><tbody><tr><td><code>config.yaml</code></td><td>Node name, Carrier data dir, bootstrap and express nodes, network, paths, proxy, friends, dora</td></tr><tr><td><code>ipam.yaml</code></td><td>Static peer to virtual-IP mappings (<code>namespace</code>, <code>peers: []</code>)</td></tr><tr><td><code>policy.yaml</code></td><td>ACL: <code>defaultAction</code> (<code>allow</code> after <code>init</code>) and <code>rules</code></td></tr><tr><td><code>audit.log</code></td><td>ACL audit trail</td></tr><tr><td><code>carrier/keypair.json</code></td><td>The node&#39;s Carrier identity. Treat it like an SSH private key.</td></tr><tr><td><code>carrier/daemon.sock</code></td><td>IPC socket while the daemon runs (a named pipe on Windows)</td></tr></tbody></table></div>
+<p><code>config.yaml</code> as written by <code>init</code> in 0.1.316 (lists trimmed):</p>
+<div class="code-wrap"><pre><code class="language-yaml">node:
+  name: docs-demo
+  namespace: agentnet-main
+carrier:
+  dataDir: /home/you/.agentnet/carrier
+  bootstrapNodes:            # 15 public Carrier bootstrap nodes
+    - host: 13.58.208.50
+      port: 33445
+      pk: 89vny8MrKdDKs7Uta9RdVmspPjnRMdwMmaiEW27pZ7gh
+  expressNodes:              # offline-message relays
+    - host: lens.beagle.chat
+      port: 443
+      pk: ECbs4GxwGzxGerNkmqDJFibEmevu8jAXqAZtikccvD95
+    - host: tokyo.fi.chat
+      port: 8443
+      pk: EzpBtoUkjeMQfuLGWwTUbvzCn9rK4J648Ziy21EKxefo
+network:
+  interface: agentnet0       # macOS uses a kernel-assigned utun* instead
+  ip: 10.86.1.10             # fallback; dora's allocation wins
+  subnet: 10.86.0.0/16
+  dnsDomain: decent
+  dnsPort: 5354
+paths:
+  ipamFile: /home/you/.agentnet/ipam.yaml
+  policyFile: /home/you/.agentnet/policy.yaml
+  auditLog: /home/you/.agentnet/audit.log
+proxy:
+  enabled: false
+  port: 8888
+friends:
+  autoAccept: false          # queue incoming requests for `friends accept`
+dora:
+  enabled: true
+  userids: [ …3 public dora userids… ]
+  refreshIntervalMs: 60000
+  autoFriend: [ …8 userids… ]   # whitelist; also accepts &quot;none&quot; or &quot;all&quot;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>policy.yaml</code> rules look like this (fields from the package&#39;s <code>docs/CONFIGURATION.md</code>):</p>
+<div class="code-wrap"><pre><code class="language-yaml">defaultAction: deny
+rules:
+  - peer: alice.decent          # name or carrier id
+    direction: inbound          # inbound | outbound | both
+    allow:
+      - { proto: tcp, port: 22, purpose: &quot;ssh&quot; }
+    deny: []
+    expiresAt: 2026-12-31T23:59:00Z
+    audit: true</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h3 id="environment-variables"><a class="doc-anchor" href="#environment-variables">Environment variables</a></h3>
+<div class="doc-table"><table><thead><tr><th>Variable</th><th>Effect</th></tr></thead><tbody><tr><td><code>AGENTNET_LOG_LEVEL</code></td><td><code>debug</code> / <code>info</code> / <code>warn</code> / <code>error</code> (default <code>info</code>)</td></tr><tr><td><code>AGENTNET_LOG_FILE</code></td><td>Daemon writes and rotates its own log file (used by <code>service install</code> on macOS)</td></tr><tr><td><code>AGENTNET_HANDSHAKE_TIMEOUT_MS</code></td><td>Packet-session handshake timeout (default 30000)</td></tr><tr><td><code>AGENTNET_DORA_TIMEOUT_MS</code></td><td>Per-request dora timeout (default 30000)</td></tr><tr><td><code>AGENTNET_TUNNEL_IDLE_MS</code></td><td>Idle reaping for CONNECT-proxy tunnels (default 120000)</td></tr><tr><td><code>DECENT_DEBUG=1</code></td><td>Verbose Carrier SDK logs (from <a href="/docs/peer">@decentnetwork/peer</a>)</td></tr></tbody></table></div>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li>Node.js <strong>&gt;= 20</strong> (<code>engines</code>). Verified with Node 24.3.0 on macOS (arm64).</li>
+<li>Prebuilt TUN helpers ship in <code>bin/</code> for Linux x64/arm64, macOS x64/arm64 and Windows x64/arm64. The Windows builds include a signed <code>wintun.dll</code>.</li>
+<li>A real TUN needs root on Linux and macOS and an Administrator PowerShell on Windows. Kernel NAT/masquerade is Linux-only.</li>
+<li>Outbound TCP/UDP to the Carrier bootstrap nodes (port 33445, plus 443). No inbound port is needed.</li>
+<li>Runtime dependencies include <code>@decentnetwork/peer</code>, <code>@decentnetwork/peer-webrtc</code>, <code>@decentnetwork/dora</code>, <code>ink</code>/<code>react</code> (TUI) and <code>yargs</code>.</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.1.316</strong> (<code>latest</code> on npm, published 2026-11-06).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/lan" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/lan</a></li>
+<li>Source repository is not public yet. The package code, including <code>docs/INSTALL.md</code>, <code>docs/INSTALL-WINDOWS.md</code> and <code>docs/CONFIGURATION.md</code>, can be browsed at <a href="https://www.npmjs.com/package/@decentnetwork/lan?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/lan?activeTab=code</a></li>
+<li>License: GPL-3.0-or-later (per <code>package.json</code>).</li>
+<li>Changelog: none is published in the package.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Android WebRTC SDK webrtc-0.0.4 — docs | Decent Network</title>
+    <meta name="description" content="One-to-one audio, video and data-channel calls between Carrier friends on Android, with signaling over Carrier. The JitPack build is not 16 KB-aligned; the builds Beagle ships are not published yet." />
+    <meta property="og:title" content="Android WebRTC SDK webrtc-0.0.4 — docs | Decent Network" />
+    <meta property="og:description" content="One-to-one audio, video and data-channel calls between Carrier friends on Android, with signaling over Carrier. The JitPack build is not 16 KB-aligned; the builds Beagle ships are not published yet." />
+    <meta property="og:url" content="https://decent.network/docs/android-webrtc" />
+    <link rel="canonical" href="https://decent.network/docs/android-webrtc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->Mobile + native Carrier SDKs</div><h1>Android WebRTC SDK</h1><p>One-to-one audio, video and data-channel calls between Carrier friends on Android, with signaling over Carrier. The JitPack build is not 16 KB-aligned; the builds Beagle ships are not published yet.</p><dl class="doc-meta"><div><dt>Version</dt><dd>webrtc-0.0.4<small> · <!-- -->JitPack</small></dd></div><div><dt>Platform</dt><dd>Android · Java/Kotlin</dd></div><div><dt>Source</dt><dd><a href="https://github.com/0xli/Elastos.NET.WebRTC.Android.SDK/tree/webrtc-0.0.4" target="_blank" rel="noreferrer">0xli/Elastos.NET.WebRTC.Android.SDK @ webrtc-0.0.4<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>implementation &#x27;com.github.0xli:Elastos.NET.WebRTC.Android.SDK:webrtc-0.0.4&#x27;</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#add-it-to-your-project">Add it to your project</a><a href="#initialize">Initialize</a><a href="#identity">Identity</a><a href="#friends">Friends</a><a href="#messages">Messages</a><a href="#files">Files</a><a href="#sessions-and-calls">Sessions and calls</a><a href="#offline-messages-express">Offline messages (Express)</a><a href="#threading-and-lifecycle">Threading and lifecycle</a><a href="#api-reference">API reference</a><a href="#source">Source</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a class="active" href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><blockquote>
+<p><strong>Integration verified</strong> on 2026-11-06: a minimal Android app depending on the JitPack coordinate <code>com.github.0xli:Elastos.NET.WebRTC.Android.SDK:webrtc-0.0.4</code> plus <code>org.elastos:carrier:6.0.4</code> was built with <code>./gradlew assembleDebug</code> (JDK 17.0.15, Gradle 8.7, Android Gradle Plugin 8.5.1, compileSdk 34, minSdk 21), then run on an Android 14 arm64 emulator: <code>WebrtcClient.createInstance</code> registered with Carrier and returned a client in state <code>init</code>, and Carrier reached <code>onReady</code>. A call between two peers was <strong>not</strong> exercised.</p>
+</blockquote>
+<p>The Android WebRTC SDK adds one-to-one audio, video and data-channel calls to an app that already runs the Android Carrier SDK (<code>/docs/android-carrier</code>). Carrier carries the signaling: offer, answer, ICE candidates and hang-up travel as Carrier friend-invite messages. Carrier also supplies a TURN server for ICE. Google&#39;s WebRTC engine (<code>org.webrtc</code>) handles the media. The public entry point is <code>org.elastos.carrier.webrtc.WebrtcClient</code>.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<p>Use it for voice/video calls or a WebRTC data channel between two Carrier friends on Android, with no signaling server of your own. You must add the Carrier SDK yourself, because this AAR compiles against Carrier but does not bundle it. For plain messages, files or raw streams, the Carrier SDK alone is enough.</p>
+<p>Limits worth knowing up front:</p>
+<ul>
+<li><code>WebrtcClient</code> is a process-wide singleton handling one call at a time with one peer.</li>
+<li>The callee must be an accepted Carrier friend.</li>
+<li>The SDK does not request runtime permissions or manage audio focus for you.</li>
+</ul>
+<h2 id="add-it-to-your-project"><a class="doc-anchor" href="#add-it-to-your-project">Add it to your project</a></h2>
+<p>The published coordinate is the git tag <code>webrtc-0.0.4</code> built by JitPack (build status <code>ok</code>, built 2026-05-18). The documented branch <code>fix/jitpack-agp8-webrtc-0.0.3</code> is two commits ahead of that tag, and JitPack has no finished build of it. Those commits harden call races (paced invite sends, batched candidates, stale &quot;bye&quot; ignored) and do not change the public API.</p>
+<blockquote>
+<p><strong>What you can resolve today is not what Beagle ships.</strong> <code>webrtc-0.0.4</code> on JitPack is the newest build a third party can resolve. It depends on <code>org.webrtc:google-webrtc:1.0.30039</code>, whose <code>libjingle_peerconnection_so.so</code> (arm64-v8a and x86_64) has 4 KB ELF segment alignment, and on the 2022 Carrier build <code>org.elastos:carrier:6.0.4</code> (see <a href="/docs/android-carrier">Android Carrier SDK</a>), which is also not 16 KB-aligned. Google Play may therefore reject an app built with these coordinates, and they lack the fixes Decent Network has made since. The 16 KB-aligned Carrier and WebRTC builds that Beagle Chat for Android ships with are not published yet. Use these coordinates to develop and evaluate; contact <a href="/docs/support">developer support</a> before shipping to Play.</p>
+</blockquote>
+<p><code>settings.gradle</code> needs three repositories besides Google:</p>
+<div class="code-wrap"><pre><code class="language-groovy">dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()                         // org.elastos:carrier:6.0.4
+        maven { url 'https://jitpack.io' }     // com.github.0xli:Elastos.NET.WebRTC.Android.SDK
+        // org.webrtc:google-webrtc:1.0.30039 (declared by the WebRTC SDK POM) is not on
+        // Maven Central or Google Maven; this third-party GitHub mirror is the only host.
+        maven { url 'https://raw.githubusercontent.com/alexgreench/google-webrtc/master' }
+    }
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>app/build.gradle</code>:</p>
+<div class="code-wrap"><pre><code class="language-groovy">android {
+    compileSdk 34
+    defaultConfig {
+        minSdk 21
+        multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.github.0xli:Elastos.NET.WebRTC.Android.SDK:webrtc-0.0.4'
+    // The WebRTC AAR compiles against Carrier but does not bundle it: add it yourself.
+    implementation 'org.elastos:carrier:6.0.4'
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>AndroidManifest.xml</code>: the SDK&#39;s own manifest declares only <code>INTERNET</code>. Declare what a call needs, and keep the <code>tools:replace</code> that the Carrier AAR requires:</p>
+<div class="code-wrap"><pre><code class="language-xml">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot; /&gt;
+    &lt;application
+        android:label=&quot;Call sample&quot;
+        tools:replace=&quot;android:label&quot;&gt;
+        ...
+    &lt;/application&gt;
+&lt;/manifest&gt;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Request <code>RECORD_AUDIO</code> (and <code>CAMERA</code> for video) at runtime before <code>makeCall</code> / <code>answerCall</code>. The repository&#39;s demo app also declares <code>BLUETOOTH</code> and <code>CHANGE_NETWORK_STATE</code>, which you need for Bluetooth headset routing through <code>WebRTCAudioManager</code>.</p>
+<p>Resolved runtime dependencies (from <code>:app:dependencies</code>):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">+--- com.github.0xli:Elastos.NET.WebRTC.Android.SDK:webrtc-0.0.4
+|    +--- org.webrtc:google-webrtc:1.0.30039
+\--- org.elastos:carrier:6.0.4</code></pre></div>
+<p>The POM also pulls <code>guava 28.1-android</code>, <code>gson</code>, <code>commons-lang3</code>, <code>commons-codec</code>, <code>slf4j-api</code>, <code>logback-android</code>, <code>awaitility</code>, <code>org.osgi.framework</code> and <code>androidx.annotation</code>. The verified debug APK came to about 23 MB.</p>
+<p><strong>16 KB pages:</strong> <code>libjingle_peerconnection_so.so</code> from <code>google-webrtc:1.0.30039</code> and <code>libcarrierjni.so</code> from Carrier 6.0.4 use 4 KB ELF alignment. Neither meets Google Play&#39;s 16 KB page-size requirement for apps targeting Android 15 and later. The branch&#39;s own notes record the plan to move to a 16 KB-aligned WebRTC build, but no published coordinate contains that change yet.</p>
+<h2 id="initialize"><a class="doc-anchor" href="#initialize">Initialize</a></h2>
+<p>Start Carrier first (see <code>/docs/android-carrier</code>), then create the client once:</p>
+<div class="code-wrap"><pre><code class="language-java">import org.elastos.carrier.webrtc.PeerConnectionParametersBuilder;
+import org.elastos.carrier.webrtc.WebrtcClient;
+import org.elastos.carrier.webrtc.call.CallHandler;
+import org.elastos.carrier.webrtc.call.CallReason;
+
+rtc = WebrtcClient.createInstance(this, carrier, new CallHandler() {
+    @Override public void onInvite(String friendId, boolean audio, boolean video, boolean data) {
+        // Arrives on the Carrier thread: post to the main thread for UI.
+        main.post(() -&gt; rtc.answerCall());
+    }
+    @Override public void onAnswer() { Log.i(TAG, &quot;answered&quot;); }
+    @Override public void onActive() { Log.i(TAG, &quot;call active&quot;); }
+    @Override public void onEndCall(CallReason reason) { Log.i(TAG, &quot;ended: &quot; + reason.getName()); }
+    @Override public void onIceConnected() { }
+    @Override public void onIceDisConnected() { }
+    @Override public void onConnectionError(String description) { Log.e(TAG, description); }
+    @Override public void onConnectionClosed() { }
+    @Override public void onMessage(ByteBuffer buffer, boolean binary) { }
+}, PeerConnectionParametersBuilder.builder().enableVideo(false).build());
+// createInstance returns null if registering the Carrier extension failed.
+Log.i(TAG, &quot;WebrtcClient: &quot; + (rtc != null ? &quot;created&quot; : &quot;null&quot;) + &quot;, state &quot; +
+        (rtc != null ? rtc.getCallState().getName() : &quot;-&quot;));</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>A real app shows an incoming-call UI in <code>onInvite</code> instead of answering immediately.</p>
+<p><strong>Verified output</strong> (<code>webrtc-0.0.4</code> + <code>carrier 6.0.4</code>, Android 14 arm64 emulator, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">I CarrierExtension: CarrierExtension instance created
+D WebrtcClient: initialize: success
+I CallSample: WebrtcClient: created, state init
+I CallSample: carrier ready</code></pre></div>
+<p><code>createInstance(Context, Carrier, CallHandler, PeerConnectionParameters)</code> returns the existing instance if one exists, ignoring the new arguments. <code>WebrtcClient.getInstance()</code> returns it later. Passing <code>null</code> parameters uses the builder defaults: video on at 1280x720 and 30 fps, <code>vp8</code>, <code>opus</code>, data channel off.</p>
+<h2 id="identity"><a class="doc-anchor" href="#identity">Identity</a></h2>
+<p>The WebRTC SDK has no identity of its own. Peers are addressed by their Carrier <code>userId</code> (see <code>/docs/android-carrier</code>). <code>getPeerAddress()</code> returns the current remote userId, and <code>isInitiator()</code> tells whether this side placed the call.</p>
+<h2 id="friends"><a class="doc-anchor" href="#friends">Friends</a></h2>
+<p>The WebRTC SDK doesn&#39;t manage friends. You can only call an accepted Carrier friend, because signaling is sent with the Carrier extension&#39;s friend invite. Make friends with <code>Carrier.addFriend</code> / <code>acceptFriend</code> first.</p>
+<h2 id="messages"><a class="doc-anchor" href="#messages">Messages</a></h2>
+<p>During a call you can open a WebRTC data channel. Pass <code>dataEnabled = true</code> to <code>makeCall</code>, or set <code>enableData(true)</code> on the builder:</p>
+<div class="code-wrap"><pre><code class="language-java">rtc.sendMessage(ByteBuffer.wrap(&quot;hi&quot;.getBytes(StandardCharsets.UTF_8)), false);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The peer receives it in <code>CallHandler.onMessage(ByteBuffer buffer, boolean binary)</code>. For messages outside a call, use <code>Carrier.sendFriendMessage</code>.</p>
+<h2 id="files"><a class="doc-anchor" href="#files">Files</a></h2>
+<p>The WebRTC SDK has no file API. Use Carrier file transfer (<code>/docs/android-carrier</code>) or your own framing over the data channel.</p>
+<h2 id="sessions-and-calls"><a class="doc-anchor" href="#sessions-and-calls">Sessions and calls</a></h2>
+<p>Place a call (audio-only here):</p>
+<div class="code-wrap"><pre><code class="language-java">rtc.makeCall(friendUserId, /* audio */ true, /* video */ false, /* data */ false);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Video, camera and mute controls:</p>
+<div class="code-wrap"><pre><code class="language-java">rtc.makeCall(friendUserId, true, true, false);   // audio + video, no data channel
+rtc.renderVideo(local, remote);                  // main thread
+rtc.switchCamera();
+rtc.setResolution(640, 480, 30);
+rtc.setAudioEnable(false);                       // mute mic
+rtc.setVideoEnable(true);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>local</code> and <code>remote</code> are <code>org.webrtc.SurfaceViewRenderer</code> views from your layout. The SDK initialises them with its own <code>EglBase</code> and releases them when the call ends. <code>swapVideoRenderer(boolean)</code> swaps the two views.</p>
+<p>Ending a call:</p>
+<div class="code-wrap"><pre><code class="language-java">if (incomingNotAnswered) {
+    rtc.rejectCall();              // peer gets onEndCall(CallReason.REJECT)
+} else if (rtc.getCallState() != CallState.INIT) {
+    rtc.hangupCall();              // peer gets onEndCall(CallReason.NORMAL_HANGUP)
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Call states (<code>CallState</code>): <code>INIT</code>, <code>INVITING</code>, <code>CONNECTING</code>, <code>RINGING</code> (an offer has arrived and <code>onInvite</code> has fired), <code>ACTIVE</code> (media connected and <code>onActive</code> has fired).</p>
+<p><strong>Signaling over Carrier.</strong> Each signaling message is a JSON string sent with the Carrier extension&#39;s friend invite. Its <code>type</code> field is one of:</p>
+<ul>
+<li><code>offer</code>: carries <code>sdp</code> and an <code>options</code> array of <code>&quot;audio&quot;</code>, <code>&quot;video&quot;</code>, <code>&quot;data&quot;</code>.</li>
+<li><code>answer</code>: carries <code>sdp</code>.</li>
+<li><code>candidate</code>: carries a <code>candidates</code> array. <code>webrtc-0.0.4</code> sends one candidate per message; the branch head batches them and paces the sends.</li>
+<li><code>removal-candidates</code></li>
+<li><code>bye</code>: carries a <code>reason</code>, which is <code>CallReason</code> -1 (reject), 0 (hang-up) or 1 (error).</li>
+</ul>
+<p>Every message also carries a <code>callId</code> (an upper-case UUID chosen by the caller), and the callee echoes it. These invites use a separate extension channel, so they don&#39;t show up in your <code>CarrierHandler.onFriendInviteRequest</code>.</p>
+<p><strong>ICE servers.</strong> For each call the SDK asks Carrier for the network&#39;s TURN server (<code>CarrierExtension.getTurnServerInfo()</code>) and uses it as both <code>stun:</code> and <code>turn:</code> with the returned credentials. You can add your own servers before calling:</p>
+<div class="code-wrap"><pre><code class="language-java">// Call before makeCall()/answerCall(); merged after the Carrier-provided TURN server.
+WebrtcClient.setSupplementalIceServers(Collections.singletonList(
+        PeerConnection.IceServer.builder(&quot;turn:turn.example.com:3478&quot;)
+                .setUsername(&quot;user&quot;).setPassword(&quot;pass&quot;).createIceServer()));</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Audio routing (optional).</strong> <code>org.elastos.carrier.webrtc.util.WebRTCAudioManager</code> takes care of speaker, earpiece, wired headset and Bluetooth routing. The SDK does not start it for you.</p>
+<div class="code-wrap"><pre><code class="language-java">WebRTCAudioManager am = WebRTCAudioManager.create(context);
+am.start((selected, available) -&gt; Log.i(&quot;Audio&quot;, selected + &quot; of &quot; + available));
+am.selectAudioDevice(WebRTCAudioManager.AudioDevice.SPEAKER_PHONE);
+// call am.stop() when the call ends</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="offline-messages-express"><a class="doc-anchor" href="#offline-messages-express">Offline messages (Express)</a></h2>
+<p>Not applicable. Calls need both peers online, and the SDK does not use Express.</p>
+<h2 id="threading-and-lifecycle"><a class="doc-anchor" href="#threading-and-lifecycle">Threading and lifecycle</a></h2>
+<ul>
+<li><code>onInvite</code>, <code>onAnswer</code>, and <code>onEndCall</code> caused by a remote <code>bye</code> all run on the <strong>Carrier thread</strong>: the SDK handles Carrier extension invites inline.</li>
+<li><code>onActive</code>, <code>onIceConnected</code>, <code>onIceDisConnected</code>, <code>onConnectionError</code>, <code>onConnectionClosed</code> and <code>onMessage</code> arrive on WebRTC / SDK worker threads.</li>
+<li>None of these callbacks run on the main thread. Post to the main thread before you touch views, and call <code>renderVideo</code> from the main thread.</li>
+<li>On the branch head (not yet in <code>webrtc-0.0.4</code>), <code>answerCall()</code> throws <code>IllegalStateException</code> if there is no pending remote offer, for example after the caller hung up, and a late <code>bye</code> from an earlier call (different <code>callId</code>) is ignored.</li>
+<li><code>hangupCall()</code> sends <code>bye</code> and releases the peer connection, the renderers and <code>EglBase</code>. The singleton lives for the whole process and has no public destroy method. Hang up before you <code>kill()</code> the Carrier instance.</li>
+<li><code>makeCall</code> throws <code>IllegalArgumentException</code> for a null peer or for your own userId, and <code>WebrtcException</code> on SDK errors.</li>
+</ul>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<h3 id="webrtcclient-extends-orgelastoscarriercarrierextension"><a class="doc-anchor" href="#webrtcclient-extends-orgelastoscarriercarrierextension"><code>WebrtcClient</code> (extends <code>org.elastos.carrier.CarrierExtension</code>)</a></h3>
+<div class="doc-table"><table><thead><tr><th>Member</th><th>Signature</th></tr></thead><tbody><tr><td>create</td><td><code>static WebrtcClient createInstance(Context context, Carrier carrier, CallHandler callHandler, CarrierPeerConnectionClient.PeerConnectionParameters peerConnectionParameters)</code></td></tr><tr><td>get</td><td><code>static WebrtcClient getInstance()</code></td></tr><tr><td>ICE</td><td><code>static void setSupplementalIceServers(List&lt;PeerConnection.IceServer&gt; servers)</code></td></tr><tr><td>call</td><td><code>void makeCall(String peerAddress)</code>, <code>void makeCall(String peerAddress, boolean videoEnabled)</code>, <code>void makeCall(String peerAddress, boolean audioEnabled, boolean videoEnabled, boolean dataEnabled)</code> (all <code>throws WebrtcException</code>)</td></tr><tr><td>answer / end</td><td><code>void answerCall()</code>, <code>void rejectCall() throws WebrtcException</code>, <code>void hangupCall()</code></td></tr><tr><td>state</td><td><code>CallState getCallState()</code>, <code>String getPeerAddress()</code>, <code>boolean isInitiator()</code></td></tr><tr><td>video</td><td><code>void renderVideo(SurfaceViewRenderer localRenderer, SurfaceViewRenderer remoteRenderer)</code>, <code>void swapVideoRenderer(boolean isSwap)</code>, <code>void switchCamera()</code>, <code>void setResolution(int width, int height, int fps)</code></td></tr><tr><td>media toggles</td><td><code>void setAudioEnable(boolean)</code>, <code>void setVideoEnable(boolean)</code>, <code>void setDataEnable(boolean)</code>, <code>void setMediaEnable(boolean video, boolean audio, boolean data)</code></td></tr><tr><td>data</td><td><code>void sendMessage(ByteBuffer byteBuffer, boolean binary) throws WebrtcException</code></td></tr></tbody></table></div>
+<h3 id="callhandler-orgelastoscarrierwebrtccall"><a class="doc-anchor" href="#callhandler-orgelastoscarrierwebrtccall"><code>CallHandler</code> (<code>org.elastos.carrier.webrtc.call</code>)</a></h3>
+<p><code>onInvite(String friendId, boolean audio, boolean video, boolean data)</code>, <code>onAnswer()</code>, <code>onActive()</code>, <code>onEndCall(CallReason reason)</code>, <code>onIceConnected()</code>, <code>onIceDisConnected()</code>, <code>onConnectionError(String description)</code>, <code>onConnectionClosed()</code>, <code>onMessage(ByteBuffer buffer, boolean binary)</code>.</p>
+<h3 id="enums"><a class="doc-anchor" href="#enums">Enums</a></h3>
+<div class="doc-table"><table><thead><tr><th>Type</th><th>Values</th></tr></thead><tbody><tr><td><code>CallState</code></td><td><code>INIT(0)</code>, <code>INVITING(1)</code>, <code>CONNECTING(2)</code>, <code>RINGING(3)</code>, <code>ACTIVE(4)</code>; <code>getValue()</code>, <code>getName()</code></td></tr><tr><td><code>CallReason</code></td><td><code>REJECT(-1)</code>, <code>NORMAL_HANGUP(0)</code>, <code>ERROR(1)</code>; <code>getValue()</code>, <code>getName()</code></td></tr></tbody></table></div>
+<h3 id="peerconnectionparametersbuilder"><a class="doc-anchor" href="#peerconnectionparametersbuilder"><code>PeerConnectionParametersBuilder</code></a></h3>
+<p><code>static builder()</code>, <code>build()</code> returning <code>CarrierPeerConnectionClient.PeerConnectionParameters</code>. Setters: <code>enableVideo</code>, <code>enableData</code>, <code>videoWidth</code>, <code>videoHeight</code>, <code>videoFps</code>, <code>videoMaxBitrate</code>, <code>VideoCodec</code> (sic, capital V), <code>videoCodecHwAcceleration</code>, <code>videoFlexfecEnabled</code>, <code>audioStartBitrate</code>, <code>audioCodec</code>, <code>noAudioProcessing</code>, <code>aecDump</code>, <code>saveInputAudioToFile</code>, <code>useOpenSLES</code>, <code>disableBuiltInAEC</code>, <code>disableBuiltInAGC</code>, <code>disableBuiltInNS</code>, <code>disableWebRtcAGCAndHPF</code>, <code>tracing</code>, <code>enableRtcEventLog</code>.</p>
+<h3 id="webrtcaudiomanager-orgelastoscarrierwebrtcutil"><a class="doc-anchor" href="#webrtcaudiomanager-orgelastoscarrierwebrtcutil"><code>WebRTCAudioManager</code> (<code>org.elastos.carrier.webrtc.util</code>)</a></h3>
+<p><code>static create(Context)</code>, <code>start(AudioManagerEvents)</code>, <code>stop()</code>, <code>setDefaultAudioDevice(AudioDevice)</code>, <code>selectAudioDevice(AudioDevice)</code>, <code>getAudioDevices()</code>, <code>getSelectedAudioDevice()</code>, <code>updateAudioDeviceState()</code>. <code>AudioDevice</code> is one of <code>SPEAKER_PHONE</code>, <code>WIRED_HEADSET</code>, <code>EARPIECE</code>, <code>BLUETOOTH</code>, <code>NONE</code>. <code>AudioManagerEvents.onAudioDeviceChanged(AudioDevice selected, Set&lt;AudioDevice&gt; available)</code>.</p>
+<h2 id="source"><a class="doc-anchor" href="#source">Source</a></h2>
+<ul>
+<li>Repository: <a href="https://github.com/0xli/Elastos.NET.WebRTC.Android.SDK" target="_blank" rel="noreferrer">https://github.com/0xli/Elastos.NET.WebRTC.Android.SDK</a> (public; the LICENSE file is Apache-2.0)</li>
+<li>Branch documented: <a href="https://github.com/0xli/Elastos.NET.WebRTC.Android.SDK/tree/fix/jitpack-agp8-webrtc-0.0.3" target="_blank" rel="noreferrer"><code>fix/jitpack-agp8-webrtc-0.0.3</code></a>, commit <code>cb50814fe32fd00de75517e481e18e1574a1902e</code> (2026-08-29)</li>
+<li>Published build verified: tag <a href="https://github.com/0xli/Elastos.NET.WebRTC.Android.SDK/tree/webrtc-0.0.4" target="_blank" rel="noreferrer"><code>webrtc-0.0.4</code></a>, commit <code>3eca6df7f2694f01c3a3c1d941ce2efd50f0529d</code>; JitPack build log: <a href="https://jitpack.io/com/github/0xli/Elastos.NET.WebRTC.Android.SDK/webrtc-0.0.4/build.log" target="_blank" rel="noreferrer">https://jitpack.io/com/github/0xli/Elastos.NET.WebRTC.Android.SDK/webrtc-0.0.4/build.log</a></li>
+<li>Carrier dependency: <code>/docs/android-carrier</code></li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

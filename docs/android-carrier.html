@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Android Carrier SDK 6.0.4 — docs | Decent Network</title>
+    <meta name="description" content="JNI wrapper for Carrier on Android: identity, friends, messages with receipts, Express offline delivery, files and sessions. The public coordinate is the 2022 upstream build; the 16 KB-aligned builds Beagle ships are not published yet." />
+    <meta property="og:title" content="Android Carrier SDK 6.0.4 — docs | Decent Network" />
+    <meta property="og:description" content="JNI wrapper for Carrier on Android: identity, friends, messages with receipts, Express offline delivery, files and sessions. The public coordinate is the 2022 upstream build; the 16 KB-aligned builds Beagle ships are not published yet." />
+    <meta property="og:url" content="https://decent.network/docs/android-carrier" />
+    <link rel="canonical" href="https://decent.network/docs/android-carrier" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->Mobile + native Carrier SDKs</div><h1>Android Carrier SDK</h1><p>JNI wrapper for Carrier on Android: identity, friends, messages with receipts, Express offline delivery, files and sessions. The public coordinate is the 2022 upstream build; the 16 KB-aligned builds Beagle ships are not published yet.</p><dl class="doc-meta"><div><dt>Version</dt><dd>6.0.4<small> · <!-- -->Maven Central · 2022 build</small></dd></div><div><dt>Platform</dt><dd>Android · Java</dd></div><div><dt>Source</dt><dd><a href="https://github.com/0xli/Elastos.NET.Carrier.Android.SDK/tree/agent/permissionless-realtime-network" target="_blank" rel="noreferrer">0xli/Elastos.NET.Carrier.Android.SDK @ agent/permissionless-realtime-network<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>implementation &#x27;org.elastos:carrier:6.0.4&#x27;</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#add-it-to-your-project">Add it to your project</a><a href="#initialize">Initialize</a><a href="#identity">Identity</a><a href="#friends">Friends</a><a href="#messages">Messages</a><a href="#files">Files</a><a href="#sessions-and-calls">Sessions and calls</a><a href="#offline-messages-express">Offline messages (Express)</a><a href="#threading-and-lifecycle">Threading and lifecycle</a><a href="#api-reference">API reference</a><a href="#source">Source</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a class="active" href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><blockquote>
+<p><strong>Integration verified</strong> on 2026-11-06: a minimal Android app depending on <code>org.elastos:carrier:6.0.4</code> from Maven Central was built with <code>./gradlew assembleDebug</code> (JDK 17.0.15, Gradle 8.7, Android Gradle Plugin 8.5.1, compileSdk 34, minSdk 21), then run on an Android 14 arm64 emulator: the native libraries loaded, an identity was created, and the node reached <code>onReady</code> and <code>Connected</code> through the public bootstrap nodes. Friend, message, file and session samples below compile against the same artifact; they were not exercised against a second peer.</p>
+</blockquote>
+<p>The Android Carrier SDK is a Java wrapper (JNI) around the native Carrier C library. It gives an Android app a self-generated Carrier identity, a friend list, end-to-end encrypted friend messages with delivery receipts, offline delivery through Express nodes, pull-based file transfer, and sessions/streams for raw peer-to-peer data. All classes live under <code>org.elastos.carrier</code>. The WebRTC calling SDK (<code>/docs/android-webrtc</code>) is built on top of it.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<p>Use it when you are writing a native Android app (Java or Kotlin) that must be a full Carrier peer on the device: it holds its own keys, talks to friends directly, and keeps working without any server you operate. Pick <code>/docs/android-webrtc</code> in addition when you need audio/video calls. If your code runs in Node.js or a browser, use the npm packages instead (see <code>/docs/peer</code>).</p>
+<p>What you get today is the Elastos Carrier 6.0.4 binary on Maven Central. The public fork documented here (<code>0xli/Elastos.NET.Carrier.Android.SDK</code>, branch <code>agent/permissionless-realtime-network</code>) has the same Java API as that binary, plus one method, <code>createIdentityAuthProof</code>, which is a stub (see the API reference). No build of the fork itself is published.</p>
+<h2 id="add-it-to-your-project"><a class="doc-anchor" href="#add-it-to-your-project">Add it to your project</a></h2>
+<blockquote>
+<p><strong>What you can resolve today is not what Beagle ships.</strong> <code>org.elastos:carrier:6.0.4</code> on Maven Central is the original upstream Elastos build from 2022-11-01 (Maven metadata <code>lastUpdated</code> 20221101); it was not built from the public fork documented on this page. It lacks 16 KB page-size alignment — in the 6.0.4 AAR, <code>arm64-v8a/libcarrierjni.so</code> and all five <code>x86_64</code> libraries have 4 KB ELF segment alignment — so Google Play may reject an app built with it, and it lacks the fixes Decent Network has made since. The 16 KB-aligned Carrier builds that Beagle Chat for Android ships with are not published yet. Use 6.0.4 to develop and evaluate; contact <a href="/docs/support">developer support</a> before shipping to Play.</p>
+</blockquote>
+<p>The only consumable distribution is Maven Central (<code>org.elastos:carrier:6.0.4</code>, published 2022-11-01). It is <strong>not</strong> on JitPack (JitPack has no builds of the fork), and the <code>5.3.2</code> coordinate in the repository README does not exist on Maven Central. The old Elastos Nexus repository (<code>nexus.elastos.org</code>) no longer resolves in DNS.</p>
+<p><code>settings.gradle</code>:</p>
+<div class="code-wrap"><pre><code class="language-groovy">dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()   // org.elastos:carrier:6.0.4 is published here
+    }
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>app/build.gradle</code>:</p>
+<div class="code-wrap"><pre><code class="language-groovy">android {
+    compileSdk 34
+    defaultConfig {
+        minSdk 21
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'org.elastos:carrier:6.0.4'
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The AAR&#39;s manifest sets <code>android:label</code> on <code>&lt;application&gt;</code>, so the manifest merge fails unless you override it. It already declares <code>INTERNET</code>.</p>
+<div class="code-wrap"><pre><code class="language-xml">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+    &lt;!-- The Carrier AAR's manifest also sets android:label; override it. --&gt;
+    &lt;application
+        android:label=&quot;Carrier sample&quot;
+        tools:replace=&quot;android:label&quot;&gt;
+        ...
+    &lt;/application&gt;
+&lt;/manifest&gt;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>What the AAR contains:</p>
+<div class="doc-table"><table><thead><tr><th>Item</th><th>Detail</th></tr></thead><tbody><tr><td>Java classes</td><td><code>org.elastos.carrier</code>, <code>.session</code>, <code>.filetransfer</code>, <code>.exceptions</code></td></tr><tr><td>Native libraries</td><td><code>libcarrierjni.so</code>, <code>libcarrier.so</code>, <code>libcarriersession.so</code>, <code>libcarrierfiletrans.so</code>, <code>libcrystal.so</code></td></tr><tr><td>ABIs</td><td><code>armeabi-v7a</code>, <code>arm64-v8a</code>, <code>x86</code>, <code>x86_64</code></td></tr><tr><td>Min SDK</td><td>21</td></tr><tr><td>License</td><td>GPLv3 (per the POM and the repository LICENSE)</td></tr></tbody></table></div>
+<p>In the 6.0.4 AAR, <code>arm64-v8a/libcarrierjni.so</code> is built with 4 KB ELF segment alignment (the other four <code>arm64-v8a</code> libraries use 64 KB), and all five <code>x86_64</code> libraries use 4 KB. It therefore does not meet Google Play&#39;s 16 KB page-size requirement for apps targeting Android 15 and later. Plan for a rebuilt AAR if you ship on Play.</p>
+<p>Building the fork from source is not practical today. Its Gradle files use Android Gradle Plugin 3.3.2 and <code>jcenter()</code>, and the prebuilt native libraries it expects in <code>app/native-dist/lib/</code> are not in git. The download script <code>.script/download_libs.sh</code> points at a release page that returns 404. You would need to cross-compile the native Carrier SDK yourself (<a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK" target="_blank" rel="noreferrer">https://github.com/0xli/Elastos.NET.Carrier.Native.SDK</a>) and modernise the build. That native build is itself blocked today: one of its pinned dependency downloads, <a href="https://github.com/elastos/c-toxcore/archive/v0.2.12.carrier.tar.gz" target="_blank" rel="noreferrer">https://github.com/elastos/c-toxcore/archive/v0.2.12.carrier.tar.gz</a>, returns 404, so a from-source build needs a cached copy of that tarball.</p>
+<h2 id="initialize"><a class="doc-anchor" href="#initialize">Initialize</a></h2>
+<p>Create a <code>Carrier.Options</code> with a persistent directory and at least one bootstrap node. Then call <code>Carrier.createInstance(options, handler)</code>, followed by <code>start()</code>. The SDK defines no default bootstrap nodes. The two below are the public nodes also listed in the <code>@decentnetwork/peer</code> documentation.</p>
+<div class="code-wrap"><pre><code class="language-java">import org.elastos.carrier.AbstractCarrierHandler;
+import org.elastos.carrier.Carrier;
+import org.elastos.carrier.ConnectionStatus;
+import org.elastos.carrier.FriendInfo;
+import org.elastos.carrier.UserInfo;
+import org.elastos.carrier.exceptions.CarrierException;
+
+public class MainActivity extends Activity {
+    private static final String TAG = &quot;CarrierSample&quot;;
+    private final Handler main = new Handler(Looper.getMainLooper());
+    private Carrier carrier;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(TAG, &quot;Carrier native version: &quot; + Carrier.getVersion());
+
+        File dir = new File(getFilesDir(), &quot;carrier&quot;);
+        dir.mkdirs();
+
+        Carrier.Options options = new Carrier.Options();
+        options.setPersistentLocation(dir.getAbsolutePath()); // keys + friend list live here
+        options.setUdpEnabled(true);
+
+        List&lt;Carrier.Options.BootstrapNode&gt; bootstraps = new ArrayList&lt;&gt;();
+        bootstraps.add(new Carrier.Options.BootstrapNode()
+                .setIpv4(&quot;47.100.103.201&quot;).setPort(&quot;33445&quot;)
+                .setPublicKey(&quot;CX1XH419p4xJ5SV4KvDxBeKYSRdMJW9QpdWJY8owUxHd&quot;));
+        bootstraps.add(new Carrier.Options.BootstrapNode()
+                .setIpv4(&quot;154.64.235.176&quot;).setPort(&quot;33445&quot;)
+                .setPublicKey(&quot;GdNtV2N74fZnLjhH7NhQ18nGdxb1k8jRM9dQaK7WnxmL&quot;));
+        options.setBootstrapNodes(bootstraps);
+
+        try {
+            carrier = Carrier.createInstance(options, new AbstractCarrierHandler() {
+                @Override
+                public void onConnection(Carrier c, ConnectionStatus status) {
+                    Log.i(TAG, &quot;connection: &quot; + status);
+                }
+
+                @Override
+                public void onReady(Carrier c) {
+                    // Carrier thread: hop to the main thread before touching UI.
+                    main.post(() -&gt; Log.i(TAG, &quot;ready&quot;));
+                }
+
+                @Override
+                public void onFriendRequest(Carrier c, String userId, UserInfo info, String hello) {
+                    try {
+                        c.acceptFriend(userId);
+                    } catch (CarrierException e) {
+                        Log.e(TAG, &quot;acceptFriend&quot;, e);
+                    }
+                }
+
+                @Override
+                public void onFriendAdded(Carrier c, FriendInfo info) {
+                    Log.i(TAG, &quot;friend added: &quot; + info.getUserId());
+                }
+
+                @Override
+                public void onFriendMessage(Carrier c, String from, byte[] message,
+                                            Date timestamp, boolean isOffline) {
+                    Log.i(TAG, from + (isOffline ? &quot; (offline): &quot; : &quot;: &quot;)
+                            + new String(message, StandardCharsets.UTF_8));
+                }
+            });
+
+            Log.i(TAG, &quot;address: &quot; + carrier.getAddress()); // share this to be added as a friend
+            Log.i(TAG, &quot;userId:  &quot; + carrier.getUserId());
+            Log.i(TAG, &quot;nodeId:  &quot; + carrier.getNodeId());
+            carrier.start(0); // spawns the Carrier thread (the SDK tests also pass 0)
+        } catch (CarrierException e) {
+            Log.e(TAG, &quot;createInstance failed&quot;, e);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (carrier != null) carrier.kill();
+        super.onDestroy();
+    }
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (<code>org.elastos:carrier:6.0.4</code>, Android 14 arm64 emulator, 2026-11-06), from <code>adb logcat -s CarrierSample CarrierCore</code>:</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">I CarrierSample: Carrier native version: 60bd828f
+I CarrierCore: Carrier node instance created
+I CarrierSample: address: 8KVejycnD6Kv42HiPH9YLKcDfgB7dg35vwQjLG2pzKYD5942N6Ub
+I CarrierSample: userId:  4L8hDmhCKHuRECoZwPHPbK2rQHwtT4tKwsrorYhG9Piy
+I CarrierSample: nodeId:  4L8hDmhCKHuRECoZwPHPbK2rQHwtT4tKwsrorYhG9Piy
+I CarrierCore: Native carrier node started
+I CarrierSample: ready
+I CarrierSample: connection: Connected[0]</code></pre></div>
+<p><code>Carrier.Options</code> setters:</p>
+<div class="doc-table"><table><thead><tr><th>Setter</th><th>Notes</th></tr></thead><tbody><tr><td><code>setPersistentLocation(String)</code></td><td>Required. Holds the identity keys and the friend list. Reuse the same directory to keep the same identity.</td></tr><tr><td><code>setSecretKey(byte[])</code></td><td>Optional, exactly 32 bytes. Seeds a new identity. Ignored when persistent data already exists.</td></tr><tr><td><code>setUdpEnabled(boolean)</code></td><td><code>false</code> forces TCP only (slower).</td></tr><tr><td><code>setBootstrapNodes(List&lt;BootstrapNode&gt;)</code></td><td>Required in practice; the SDK has no defaults. <code>BootstrapNode</code> has <code>setIpv4</code>, <code>setIpv6</code>, <code>setPort</code> (a String), <code>setPublicKey</code>.</td></tr><tr><td><code>setExpressNodes(List&lt;ExpressNode&gt;)</code></td><td>Optional offline-message relays. <code>ExpressNode</code> has <code>setIpv4</code>, <code>setPort</code>, <code>setPublicKey</code>.</td></tr></tbody></table></div>
+<h2 id="identity"><a class="doc-anchor" href="#identity">Identity</a></h2>
+<div class="code-wrap"><pre><code class="language-java">String address = carrier.getAddress();   // share this to be added as a friend
+String userId  = carrier.getUserId();    // stable public key; used to address friends
+String nodeId  = carrier.getNodeId();
+boolean ok = Carrier.isValidAddress(address);
+String idFromAddr = Carrier.getIdFromAddress(address); // == userId
+
+UserInfo me = carrier.getSelfInfo();
+me.setName(&quot;Alice&quot;);
+me.setDescription(&quot;Android demo&quot;);
+carrier.setSelfInfo(me);
+
+carrier.setPresence(PresenceStatus.Away);
+
+// Rotating nospam changes the address (old address stops accepting
+// new friend requests); userId stays the same.
+carrier.setNospam(carrier.getNospam() + 1);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<ul>
+<li><strong>address</strong>: Base58, 38 bytes decoded (public key plus nospam and checksum). Use it only for <code>addFriend</code>.</li>
+<li><strong>userId</strong>: Base58, 32 bytes decoded. It identifies a peer in every other call.</li>
+<li><strong>nodeId</strong>: on this build it equals the <code>userId</code> (see the verified output above).</li>
+</ul>
+<h2 id="friends"><a class="doc-anchor" href="#friends">Friends</a></h2>
+<div class="code-wrap"><pre><code class="language-java">carrier.addFriend(friendAddress, &quot;hi, it's Alice&quot;);   // request; peer gets onFriendRequest
+// receiving side, inside CarrierHandler.onFriendRequest(...):
+//     carrier.acceptFriend(userId);
+if (carrier.isFriend(friendUserId)) {
+    FriendInfo f = carrier.getFriend(friendUserId);
+    Log.i(TAG, f.getName() + &quot; &quot; + f.getConnectionStatus() + &quot; &quot; + f.getPresence());
+    carrier.labelFriend(friendUserId, &quot;work&quot;);
+}
+List&lt;FriendInfo&gt; all = carrier.getFriends();
+carrier.removeFriend(friendUserId);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>These handler callbacks report friend events: <code>onFriendRequest</code>, <code>onFriendAdded</code>, <code>onFriendRemoved</code>, <code>onFriendConnection</code> (<code>ConnectionStatus.Connected</code> / <code>Disconnected</code>), <code>onFriendPresence</code> (<code>PresenceStatus.None</code> / <code>Away</code> / <code>Busy</code>) and <code>onFriendInfoChanged</code>. The SDK also reports the whole list once through <code>onFriends(carrier, List&lt;FriendInfo&gt;)</code>.</p>
+<h2 id="messages"><a class="doc-anchor" href="#messages">Messages</a></h2>
+<div class="code-wrap"><pre><code class="language-java">long msgId = carrier.sendFriendMessage(friendUserId, &quot;hello&quot;,
+        (messageId, state) -&gt; {
+            if (state == ReceiptState.ReceiptByFriend) {
+                Log.i(TAG, messageId + &quot; delivered&quot;);
+            } else if (state == ReceiptState.DeliveredAsOffline) {
+                Log.i(TAG, messageId + &quot; stored for offline delivery&quot;);
+            } else {
+                Log.w(TAG, messageId + &quot; failed&quot;);
+            }
+        });
+
+// App-level request/response (&quot;invite&quot;) carrying a string payload:
+carrier.inviteFriend(friendUserId, &quot;{\&quot;op\&quot;:\&quot;ping\&quot;}&quot;,
+        (from, status, reason, data) -&gt; Log.i(TAG, &quot;invite reply &quot; + status + &quot; &quot; + data));
+// receiving side, inside CarrierHandler.onFriendInviteRequest(c, from, data):
+//     c.replyFriendInvite(from, 0, null, &quot;{\&quot;op\&quot;:\&quot;pong\&quot;}&quot;);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<ul>
+<li><code>sendFriendMessage</code> has two overloads: <code>String</code> and <code>byte[]</code>. Both require a non-null <code>FriendMessageReceiptHandler</code> and return a message id. The String form rejects messages of <code>Carrier.CARRIER_MAX_USER_NAME_LEN</code> (5 MiB) or longer. Split larger payloads yourself.</li>
+<li>Incoming messages arrive in <code>onFriendMessage(carrier, from, byte[] message, Date timestamp, boolean isOffline)</code>.</li>
+</ul>
+<h2 id="files"><a class="doc-anchor" href="#files">Files</a></h2>
+<p>File transfer is pull-driven: the receiver asks for data from an offset, and the sender writes it. Create <strong>one</strong> <code>filetransfer.Manager</code> per <code>Carrier</code> instance and keep it.</p>
+<p>Sender:</p>
+<div class="code-wrap"><pre><code class="language-java">org.elastos.carrier.filetransfer.Manager ftm =
+        org.elastos.carrier.filetransfer.Manager.createInstance(carrier);
+final FileTransferInfo info = new FileTransferInfo(&quot;photo.jpg&quot;, null, bytes.length);
+
+FileTransfer ft = ftm.newFileTransfer(friendUserId, info, new FileTransferHandler() {
+    @Override public void onStateChanged(FileTransfer t, FileTransferState s) {
+        Log.i(TAG, &quot;ft state &quot; + s);
+    }
+    @Override public void onFileRequest(FileTransfer t, String fileId, String name, long size) { }
+    @Override public void onPullRequest(FileTransfer t, String fileId, long offset) {
+        try {   // receiver asked for data starting at offset: push it, then finish
+            t.writeData(fileId, bytes, (int) offset, bytes.length - (int) offset);
+            t.sendFinish(fileId);
+        } catch (CarrierException e) {
+            Log.e(TAG, &quot;writeData&quot;, e);
+        }
+    }
+    @Override public boolean onData(FileTransfer t, String fileId, byte[] data) { return true; }
+    @Override public void onDataFinished(FileTransfer t, String fileId) { }
+    @Override public void onPending(FileTransfer t, String fileId) { }
+    @Override public void onResume(FileTransfer t, String fileId) { }
+    @Override public void onCancel(FileTransfer t, String fileId, int status, String reason) { }
+});
+ft.connect();   // peer gets ManagerHandler.onConnectRequest(carrier, from, info)</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Receiver:</p>
+<div class="code-wrap"><pre><code class="language-java">final org.elastos.carrier.filetransfer.Manager[] ftm =
+        new org.elastos.carrier.filetransfer.Manager[1];
+ftm[0] = org.elastos.carrier.filetransfer.Manager.createInstance(carrier,
+        (c, from, info) -&gt; {
+            try {
+                FileTransfer ft = ftm[0].newFileTransfer(from, info, new FileTransferHandler() {
+                    @Override public void onStateChanged(FileTransfer t, FileTransferState s) {
+                        if (s == FileTransferState.Connected) {
+                            try { t.pullData(info.getFileId(), 0); }
+                            catch (CarrierException e) { Log.e(TAG, &quot;pull&quot;, e); }
+                        }
+                    }
+                    @Override public void onFileRequest(FileTransfer t, String id, String n, long sz) { }
+                    @Override public void onPullRequest(FileTransfer t, String id, long off) { }
+                    @Override public boolean onData(FileTransfer t, String id, byte[] data) {
+                        // append data to your output file; return true to keep receiving
+                        return true;
+                    }
+                    @Override public void onDataFinished(FileTransfer t, String id) { t.close(); }
+                    @Override public void onPending(FileTransfer t, String id) { }
+                    @Override public void onResume(FileTransfer t, String id) { }
+                    @Override public void onCancel(FileTransfer t, String id, int st, String r) { }
+                });
+                ft.acceptConnect();
+            } catch (CarrierException e) {
+                Log.e(TAG, &quot;accept file&quot;, e);
+            }
+        });</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Other <code>FileTransfer</code> controls: <code>addFile(FileTransferInfo)</code>, <code>pendTransfer(fileId)</code> / <code>resumeTransfer(fileId)</code> for flow control, <code>cancelTransfer(fileId, status, reason)</code>, and <code>getOutputStream(fileId)</code>. You can resume from a break point by calling <code>pullData</code> with a non-zero offset. There is no <code>AbstractFileTransferHandler</code>, so you implement all eight callbacks.</p>
+<h2 id="sessions-and-calls"><a class="doc-anchor" href="#sessions-and-calls">Sessions and calls</a></h2>
+<p>A session carries raw streams (reliable or unreliable, optionally multiplexed into channels, or port-forwarding) between two friends over ICE. Create <strong>one</strong> <code>session.Manager</code> per <code>Carrier</code> instance. For audio/video calls, use <code>/docs/android-webrtc</code>; it does its own signaling over Carrier and does not use this session API.</p>
+<p>Initiator: add a stream, send the request once the stream is <code>Initialized</code>, then <code>start()</code> with the peer&#39;s SDP:</p>
+<div class="code-wrap"><pre><code class="language-java">org.elastos.carrier.session.Manager sm =
+        org.elastos.carrier.session.Manager.createInstance(carrier);
+final Session session = sm.newSession(friendUserId);
+session.addStream(StreamType.Application, Stream.PROPERTY_RELIABLE,
+        new AbstractStreamHandler() {
+            @Override
+            public void onStateChanged(Stream stream, StreamState state) {
+                if (state == StreamState.Initialized) {
+                    try {
+                        session.request((s, status, reason, sdp) -&gt; {
+                            if (status == 0) {
+                                try { s.start(sdp); }
+                                catch (CarrierException e) { Log.e(TAG, &quot;start&quot;, e); }
+                            }
+                        });
+                    } catch (CarrierException e) {
+                        Log.e(TAG, &quot;request&quot;, e);
+                    }
+                } else if (state == StreamState.Connected) {
+                    try { stream.writeData(&quot;hello over a stream&quot;.getBytes()); }
+                    catch (CarrierException e) { Log.e(TAG, &quot;write&quot;, e); }
+                }
+            }
+
+            @Override
+            public void onStreamData(Stream stream, byte[] data) {
+                Log.i(TAG, &quot;stream data &quot; + data.length);
+            }
+        });</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Responder: the <code>ManagerHandler</code> receives <code>onSessionRequest(carrier, from, sdp)</code>. Create a session back to <code>from</code>, add a matching stream, and on <code>TransportReady</code> reply and start:</p>
+<div class="code-wrap"><pre><code class="language-java">final org.elastos.carrier.session.Manager[] sm =
+        new org.elastos.carrier.session.Manager[1];
+sm[0] = org.elastos.carrier.session.Manager.createInstance(carrier, (c, from, sdp) -&gt; {
+    try {
+        final Session session = sm[0].newSession(from);
+        session.addStream(StreamType.Application, Stream.PROPERTY_RELIABLE,
+                new AbstractStreamHandler() {
+                    @Override
+                    public void onStateChanged(Stream stream, StreamState state) {
+                        if (state == StreamState.TransportReady) {
+                            try {
+                                session.replyRequest(0, null);
+                                session.start(sdp);
+                            } catch (CarrierException e) {
+                                Log.e(TAG, &quot;reply/start&quot;, e);
+                            }
+                        }
+                    }
+                });
+    } catch (CarrierException e) {
+        Log.e(TAG, &quot;session&quot;, e);
+    }
+});</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Stream states go <code>Initialized → TransportReady → Connecting → Connected</code>, then <code>Deactivated</code> / <code>Closed</code> / <code>Error</code>. <code>Stream.PROPERTY_*</code> flags are <code>COMPRESS</code>, <code>PLAIN</code>, <code>RELIABLE</code>, <code>MULTIPLEXING</code> and <code>PORT_FORWARDING</code>. With <code>MULTIPLEXING</code>, use <code>openChannel</code> / <code>writeData(channel, …)</code> / <code>closeChannel</code>. With <code>PORT_FORWARDING</code>, the responder calls <code>session.addService(name, PortForwardingProtocol.TCP, host, port)</code> and the initiator calls <code>stream.openPortForwarding(name, PortForwardingProtocol.TCP, host, port)</code>.</p>
+<h2 id="offline-messages-express"><a class="doc-anchor" href="#offline-messages-express">Offline messages (Express)</a></h2>
+<p>If you configure Express nodes in <code>Options</code>, a message to an offline friend is stored on an Express node. The sender then gets <code>ReceiptState.DeliveredAsOffline</code> in its receipt handler. The receiver gets the message later through <code>onFriendMessage(…, isOffline = true)</code>. Without Express nodes there is no offline store, so a friend has to be online to receive a message.</p>
+<div class="code-wrap"><pre><code class="language-java">List&lt;Carrier.Options.ExpressNode&gt; express = new ArrayList&lt;&gt;();
+express.add(new Carrier.Options.ExpressNode()
+        .setIpv4(&quot;EXPRESS_HOST&quot;)
+        .setPort(&quot;443&quot;)
+        .setPublicKey(&quot;EXPRESS_PUBLIC_KEY&quot;));
+options.setExpressNodes(express);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>setIpv4</code> takes a host name or an IP address. Get the host, port and public key from the Express operator you use. Offline delivery was not exercised in this verification.</p>
+<h2 id="threading-and-lifecycle"><a class="doc-anchor" href="#threading-and-lifecycle">Threading and lifecycle</a></h2>
+<ul>
+<li><code>Carrier.createInstance</code> is synchronous and loads <code>libcarrierjni</code> on first use of the class. <code>getAddress()</code> / <code>getUserId()</code> work immediately, before <code>start()</code>.</li>
+<li><code>start(int iterateInterval)</code> spawns one Java thread that runs the native event loop. <strong>Every <code>CarrierHandler</code> callback runs on that thread.</strong> In the verified run, <code>onConnection</code> arrived on the Carrier thread, not the main thread. Post to a main-thread <code>Handler</code> before you touch views.</li>
+<li>Don&#39;t block inside callbacks. <code>onIdle</code> fires on every loop iteration. File-transfer and stream callbacks also come from native threads.</li>
+<li><code>onReady</code> fires once the node has joined the network. <code>onConnection(Connected/Disconnected)</code> tracks the link to the network.</li>
+<li><code>kill()</code> stops the loop, joins the thread and invalidates the instance; create a new one to reconnect. Call <code>cleanup()</code> on session and file-transfer managers before <code>kill()</code>. Run one <code>Carrier</code> per persistent directory.</li>
+<li>Errors throw <code>CarrierException</code> (<code>getErrorCode()</code>, <code>getFacility()</code>, <code>getCode()</code>), with subclasses <code>GeneralException</code>, <code>SystemException</code>, <code>ICEException</code>, <code>DHTException</code> and <code>UnknownException</code>.</li>
+</ul>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<h3 id="carrier"><a class="doc-anchor" href="#carrier"><code>Carrier</code></a></h3>
+<div class="doc-table"><table><thead><tr><th>Member</th><th>Signature</th></tr></thead><tbody><tr><td>create</td><td><code>static Carrier createInstance(Options options, CarrierHandler handler) throws CarrierException</code></td></tr><tr><td>run / stop</td><td><code>void start(int iterateInterval)</code>, <code>synchronized void kill()</code>, <code>boolean isReady()</code></td></tr><tr><td>static helpers</td><td><code>static String getVersion()</code>, <code>static boolean isValidId(String)</code>, <code>static boolean isValidAddress(String)</code>, <code>static String getIdFromAddress(String)</code></td></tr><tr><td>identity</td><td><code>String getAddress()</code>, <code>String getUserId()</code>, <code>String getNodeId()</code>, <code>void setNospam(int)</code>, <code>int getNospam()</code></td></tr><tr><td>profile</td><td><code>UserInfo getSelfInfo()</code>, <code>void setSelfInfo(UserInfo)</code>, <code>void setPresence(PresenceStatus)</code>, <code>PresenceStatus getPresence()</code></td></tr><tr><td>friends</td><td><code>void addFriend(String address, String hello)</code>, <code>void acceptFriend(String userId)</code>, <code>void removeFriend(String userId)</code>, <code>boolean isFriend(String userId)</code>, <code>FriendInfo getFriend(String userId)</code>, <code>List&lt;FriendInfo&gt; getFriends()</code>, <code>void labelFriend(String userId, String label)</code></td></tr><tr><td>messages</td><td><code>long sendFriendMessage(String to, String message, FriendMessageReceiptHandler handler)</code>, <code>long sendFriendMessage(String to, byte[] message, FriendMessageReceiptHandler handler)</code></td></tr><tr><td>invites</td><td><code>void inviteFriend(String to, String data, FriendInviteResponseHandler handler)</code>, <code>void replyFriendInvite(String to, int status, String reason, String data)</code></td></tr><tr><td>groups</td><td><code>Group newGroup()</code>, <code>Group groupJoin(String friendId, byte[] cookie)</code>, <code>void groupLeave(Group)</code>, <code>Collection&lt;Group&gt; getGroups()</code></td></tr><tr><td>fork only</td><td><code>byte[] createIdentityAuthProof(byte[] serverPublicKey, byte[] transcript)</code>: present in the fork&#39;s Java source but not in 6.0.4, and its JNI side is a &quot;not implemented&quot; stub that is not even registered. Don&#39;t use it.</td></tr></tbody></table></div>
+<h3 id="carrierhandler-extend-abstractcarrierhandler-to-override-only-what-you-need"><a class="doc-anchor" href="#carrierhandler-extend-abstractcarrierhandler-to-override-only-what-you-need"><code>CarrierHandler</code> (extend <code>AbstractCarrierHandler</code> to override only what you need)</a></h3>
+<p><code>onIdle</code>, <code>onConnection(Carrier, ConnectionStatus)</code>, <code>onReady</code>, <code>onSelfInfoChanged(Carrier, UserInfo)</code>, <code>onFriends(Carrier, List&lt;FriendInfo&gt;)</code>, <code>onFriendConnection(Carrier, String, ConnectionStatus)</code>, <code>onFriendInfoChanged(Carrier, String, FriendInfo)</code>, <code>onFriendPresence(Carrier, String, PresenceStatus)</code>, <code>onFriendRequest(Carrier, String userId, UserInfo, String hello)</code>, <code>onFriendAdded(Carrier, FriendInfo)</code>, <code>onFriendRemoved(Carrier, String)</code>, <code>onFriendMessage(Carrier, String from, byte[], Date, boolean isOffline)</code>, <code>onFriendInviteRequest(Carrier, String from, String data)</code>, <code>onGroupInvite(Carrier, String from, byte[] cookie)</code>, plus the <code>GroupHandler</code> methods <code>onGroupConnected</code>, <code>onGroupMessage</code>, <code>onGroupTitle</code>, <code>onPeerName</code>, <code>onPeerListChanged</code>.</p>
+<h3 id="value-types"><a class="doc-anchor" href="#value-types">Value types</a></h3>
+<div class="doc-table"><table><thead><tr><th>Type</th><th>Values / members</th></tr></thead><tbody><tr><td><code>ConnectionStatus</code></td><td><code>Connected</code>, <code>Disconnected</code></td></tr><tr><td><code>PresenceStatus</code></td><td><code>None</code>, <code>Away</code>, <code>Busy</code></td></tr><tr><td><code>ReceiptState</code></td><td><code>ReceiptByFriend</code>, <code>DeliveredAsOffline</code>, <code>Error</code></td></tr><tr><td><code>UserInfo</code></td><td><code>getUserId</code>, <code>get/setName</code>, <code>get/setDescription</code>, <code>hasAvatar/setHasAvatar</code>, <code>get/setGender</code>, <code>get/setPhone</code>, <code>get/setEmail</code>, <code>get/setRegion</code></td></tr><tr><td><code>FriendInfo extends UserInfo</code></td><td><code>get/setLabel</code>, <code>getConnectionStatus</code>, <code>getPresence</code></td></tr><tr><td><code>Group</code></td><td><code>getId</code>, <code>invite(String friendId)</code>, <code>sendMessage(byte[])</code> (max <code>Group.MAX_APP_MESSAGE_LEN</code> = 1024), <code>getTitle</code> / <code>setTitle</code>, <code>getPeers()</code>, <code>getPeer(String)</code></td></tr></tbody></table></div>
+<h3 id="orgelastoscarrierfiletransfer"><a class="doc-anchor" href="#orgelastoscarrierfiletransfer"><code>org.elastos.carrier.filetransfer</code></a></h3>
+<div class="doc-table"><table><thead><tr><th>Class</th><th>Members</th></tr></thead><tbody><tr><td><code>Manager</code></td><td><code>static Manager createInstance(Carrier)</code>, <code>static Manager createInstance(Carrier, ManagerHandler)</code>, <code>FileTransfer newFileTransfer(String to, FileTransferInfo fileinfo, FileTransferHandler handler)</code>, <code>cleanup()</code></td></tr><tr><td><code>ManagerHandler</code></td><td><code>void onConnectRequest(Carrier carrier, String from, FileTransferInfo info)</code></td></tr><tr><td><code>FileTransfer</code></td><td><code>static String generateFileId()</code>, <code>connect()</code>, <code>acceptConnect()</code>, <code>addFile(FileTransferInfo)</code>, <code>pullData(String fileId, long offset)</code>, <code>writeData(String fileId, byte[] data[, int offset, int len])</code>, <code>getOutputStream(String fileId)</code>, <code>sendFinish(String fileId)</code>, <code>cancelTransfer(String fileId, int status, String reason)</code>, <code>pendTransfer(String)</code>, <code>resumeTransfer(String)</code>, <code>getFileId(String filename)</code>, <code>getFileName(String fileId)</code>, <code>close()</code></td></tr><tr><td><code>FileTransferInfo</code></td><td><code>FileTransferInfo(String filename, String fileId /* null = generate */, long size)</code>, <code>getFileName()</code>, <code>getFileId()</code>, <code>getSize()</code></td></tr><tr><td><code>FileTransferHandler</code></td><td><code>onStateChanged</code>, <code>onFileRequest</code>, <code>onPullRequest</code>, <code>boolean onData</code>, <code>onDataFinished</code>, <code>onPending</code>, <code>onResume</code>, <code>onCancel</code></td></tr><tr><td><code>FileTransferState</code></td><td><code>Initialized</code>, <code>Connecting</code>, <code>Connected</code>, <code>Closed</code>, <code>Failed</code></td></tr></tbody></table></div>
+<h3 id="orgelastoscarriersession"><a class="doc-anchor" href="#orgelastoscarriersession"><code>org.elastos.carrier.session</code></a></h3>
+<div class="doc-table"><table><thead><tr><th>Class</th><th>Members</th></tr></thead><tbody><tr><td><code>Manager</code></td><td><code>static Manager createInstance(Carrier)</code>, <code>static Manager createInstance(Carrier, ManagerHandler)</code>, <code>Session newSession(String to)</code>, <code>cleanup()</code></td></tr><tr><td><code>ManagerHandler</code></td><td><code>void onSessionRequest(Carrier carrier, String from, String sdp)</code></td></tr><tr><td><code>Session</code></td><td><code>getPeer()</code>, <code>request(SessionRequestCompleteHandler)</code>, <code>replyRequest(int status, String reason)</code>, <code>start(String sdp)</code>, <code>Stream addStream(StreamType type, int options, StreamHandler handler)</code>, <code>removeStream(Stream)</code>, <code>addService(String service, PortForwardingProtocol protocol, String host, String port)</code>, <code>removeService(String)</code>, <code>close()</code></td></tr><tr><td><code>SessionRequestCompleteHandler</code></td><td><code>void onCompletion(Session session, int status, String reason, String sdp)</code></td></tr><tr><td><code>Stream</code></td><td><code>getStreamId()</code>, <code>getType()</code>, <code>getTransportInfo()</code>, <code>writeData(byte[] …)</code>, <code>getOutputStream()</code>, <code>openChannel(String cookie)</code>, <code>closeChannel(int)</code>, <code>writeData(int channel, byte[] …)</code>, <code>pendChannel(int)</code>, <code>resumeChannel(int)</code>, <code>openPortForwarding(String service, PortForwardingProtocol protocol, String host, String port)</code>, <code>closePortForwarding(int)</code></td></tr><tr><td><code>StreamHandler</code> / <code>AbstractStreamHandler</code></td><td><code>onStateChanged</code>, <code>onStreamData</code>, <code>boolean onChannelOpen</code>, <code>onChannelOpened</code>, <code>onChannelClose</code>, <code>boolean onChannelData</code>, <code>onChannelPending</code>, <code>onChannelResume</code></td></tr><tr><td>enums</td><td><code>StreamType</code> (<code>Audio</code>, <code>Video</code>, <code>Text</code>, <code>Application</code>, <code>Message</code>), <code>StreamState</code>, <code>CloseReason</code>, <code>PortForwardingProtocol</code> (<code>TCP</code>)</td></tr></tbody></table></div>
+<h3 id="carrierextension"><a class="doc-anchor" href="#carrierextension"><code>CarrierExtension</code></a></h3>
+<p>An abstract class meant for the WebRTC SDK (its own docs advise ordinary apps not to use it). It provides a second friend-invite channel (<code>inviteFriend</code>, <code>replyFriendInvite</code>, abstract <code>onFriendInvite</code>) and <code>getTurnServerInfo()</code>, which returns the TURN server advertised by the Carrier network. All of its members are <code>protected</code>.</p>
+<h2 id="source"><a class="doc-anchor" href="#source">Source</a></h2>
+<ul>
+<li>Repository: <a href="https://github.com/0xli/Elastos.NET.Carrier.Android.SDK" target="_blank" rel="noreferrer">https://github.com/0xli/Elastos.NET.Carrier.Android.SDK</a> (public, GPLv3)</li>
+<li>Branch documented: <a href="https://github.com/0xli/Elastos.NET.Carrier.Android.SDK/tree/agent/permissionless-realtime-network" target="_blank" rel="noreferrer"><code>agent/permissionless-realtime-network</code></a>, commit <code>38d5a77239e102edae3f613b7d0637fe69aee259</code> (2026-08-02)</li>
+<li>Binary verified: <code>org.elastos:carrier:6.0.4</code> on Maven Central, <a href="https://repo1.maven.org/maven2/org/elastos/carrier/6.0.4/" target="_blank" rel="noreferrer">https://repo1.maven.org/maven2/org/elastos/carrier/6.0.4/</a> (published 2022-11-01; its <code>-sources.jar</code> matches the branch&#39;s Java sources except <code>createIdentityAuthProof</code>)</li>
+<li>Native C library: <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK" target="_blank" rel="noreferrer">https://github.com/0xli/Elastos.NET.Carrier.Native.SDK</a></li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

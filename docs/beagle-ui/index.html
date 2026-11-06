@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/beagle-ui 0.2.40 — docs | Decent Network</title>
+    <meta name="description" content="The Beagle chat UI without the machine it runs on — shared by the desktop install and the browser build." />
+    <meta property="og:title" content="@decentnetwork/beagle-ui 0.2.40 — docs | Decent Network" />
+    <meta property="og:description" content="The Beagle chat UI without the machine it runs on — shared by the desktop install and the browser build." />
+    <meta property="og:url" content="https://decent.network/docs/beagle-ui" />
+    <link rel="canonical" href="https://decent.network/docs/beagle-ui" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/beagle-ui</h1><p>The Beagle chat UI without the machine it runs on — shared by the desktop install and the browser build.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.2.40<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>browser bundle</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/beagle-ui" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install @decentnetwork/beagle-ui</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a class="active" href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/beagle-ui</code> is the Beagle chat interface as a single browser bundle. It is the same UI that the <a href="/docs/beagle">Beagle desktop client</a> serves and that <a href="https://app.beagle.chat" target="_blank" rel="noreferrer">app.beagle.chat</a> runs in a tab. You mount it into a page and tell it how to reach files. It then drives a Beagle backend through <code>fetch(&quot;/api/…&quot;)</code> calls. A second entry point, <code>@decentnetwork/beagle-ui/wallet-proof</code>, holds the wallet-binding helpers (Ethereum and Solana proofs tied to a Beagle userid). That entry has TypeScript types and also runs in Node.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<ul>
+<li><strong>Host the Beagle UI in your own page or shell</strong> (an Electron/Tauri wrapper, a browser extension, a branded web page) on top of a backend that speaks Beagle&#39;s <code>/api/*</code> routes: the <code>beagle</code> CLI, or your own adapter.</li>
+<li><strong>Bind a wallet address to a Beagle identity</strong>, or verify such a binding on a server, with <code>wallet-proof</code>.</li>
+</ul>
+<p>If you want a working chat client rather than a component, run <a href="/docs/beagle">@decentnetwork/beagle</a>, which serves this bundle for you. To build a different UI on the protocol, use <a href="/docs/peer">@decentnetwork/peer</a>.</p>
+<p>The main bundle is <strong>browser-only</strong>. Importing it in Node throws <code>window is not defined</code>. It also expects <strong>globals</strong> instead of importing them:</p>
+<div class="doc-table"><table><thead><tr><th>Global</th><th>Needed for</th></tr></thead><tbody><tr><td><code>window.React</code>, <code>window.ReactDOM</code> (with <code>createRoot</code>)</td><td>Everything</td></tr><tr><td><code>window.PeerWebRTC</code> (<a href="/docs/peer-webrtc">@decentnetwork/peer-webrtc</a>)</td><td>Audio/video calls. Without it the UI logs a warning and turns calls off.</td></tr><tr><td><code>window.ChatComponents</code> (<a href="/docs/chat-components">@decentnetwork/chat-components</a>)</td><td>Interactive form messages</td></tr></tbody></table></div>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/beagle-ui@0.2.40 react@18.3.1 react-dom@18.3.1 vite@5.4.10</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The package README asks consumers to <strong>pin an exact version</strong>. UI changes ship manually, and a caret range would pull in a UI nobody chose for your page. React and Vite are only what this page was verified with.</p>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<p>A minimal Vite page that mounts the UI against a locally running <code>beagle</code> process:</p>
+<div class="code-wrap"><pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;title&gt;Beagle UI host&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre><code class="language-js">// src/globals.js
+// beagle-ui reads React and ReactDOM as globals; set them before it loads.
+import React from &quot;react&quot;;
+import * as ReactDOMClient from &quot;react-dom/client&quot;;
+window.React = React;
+window.ReactDOM = ReactDOMClient;</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre><code class="language-js">// src/main.js
+import &quot;./globals.js&quot;;
+import { mount, setUiHost, BEAGLE_UI_VERSION } from &quot;@decentnetwork/beagle-ui&quot;;
+
+setUiHost({
+  fileUrl: (name) =&gt; &quot;/api/file-download?name=&quot; + encodeURIComponent(name),
+  fileDownloadUrl: (name) =&gt; &quot;/api/file-download?name=&quot; + encodeURIComponent(name) + &quot;&amp;dl=1&quot;,
+});
+mount(document.getElementById(&quot;root&quot;));
+console.log(&quot;beagle-ui&quot;, BEAGLE_UI_VERSION, &quot;mounted&quot;);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre><code class="language-js">// vite.config.js
+import { defineConfig } from &quot;vite&quot;;
+// Forward the UI's /api/* calls to a local `beagle` process (default port 8766).
+export default defineConfig({
+  server: { proxy: { &quot;/api&quot;: process.env.BEAGLE_API ?? &quot;http://127.0.0.1:8766&quot; } },
+  preview: { proxy: { &quot;/api&quot;: process.env.BEAGLE_API ?? &quot;http://127.0.0.1:8766&quot; } },
+});</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre><code class="language-bash">npx vite build
+# with a backend running, e.g. `npx beagle --port 18766` (see /docs/beagle):
+BEAGLE_API=http://127.0.0.1:18766 npx vite preview</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>setUiHost()</code> must run <strong>before</strong> <code>mount()</code>, because its flags are read during the first render. Importing <code>./globals.js</code> first makes sure React is on <code>window</code> before the bundle runs.</p>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:beagle-ui@0.2.40">beagle-ui@0.2.40</a>, React 18.3.1, Vite 5.4.10, Node 24.3.0, 2026-11-06). In the verification run the built page was previewed against <code>beagle</code> 0.1.131 on port 18766 and opened in a browser. It rendered the chat UI (friends list and Beagle Assistant), and the browser console showed:</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ npx vite build
+vite v5.4.10 building for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.22 kB │ gzip:   0.18 kB
+dist/assets/index-CCw0fUVg.js  413.37 kB │ gzip: 127.69 kB
+✓ built in 532ms
+
+browser console:
+[log] beagle-ui 0.2.40 mounted
+[log] [rtc] Carrier bootstrap ICE servers: {0: stun:13.58.208.50:3478, …}
+[log] [rtc] ICE warmup done (relay)
+[warn] [call] WebRTC or peer-webrtc unavailable — calls disabled</code></pre></div>
+<p>The last line is expected, because this page did not load <code>window.PeerWebRTC</code>.</p>
+<h3 id="wallet-proofs-in-node"><a class="doc-anchor" href="#wallet-proofs-in-node">Wallet proofs in Node</a></h3>
+<div class="code-wrap"><pre><code class="language-js">// wallet.mjs
+// Pure helpers from @decentnetwork/beagle-ui/wallet-proof also run in Node.
+// Bind a Solana wallet to a Beagle userid, then verify the proof.
+import { generateKeyPairSync, sign } from &quot;node:crypto&quot;;
+import {
+  base58Encode, signSolProof, encodeWalletProof, decodeWalletProof,
+  verifyWalletProof, isWalletAddress,
+} from &quot;@decentnetwork/beagle-ui/wallet-proof&quot;;
+
+// A throwaway ed25519 key stands in for a browser wallet (Phantom etc.).
+const { publicKey, privateKey } = generateKeyPairSync(&quot;ed25519&quot;);
+const raw = Buffer.from(publicKey.export({ format: &quot;jwk&quot; }).x, &quot;base64url&quot;);
+const address = base58Encode(raw);
+const wallet = { signMessage: async (bytes) =&gt; sign(null, bytes, privateKey) };
+
+const userid = &quot;D6p9dm91J49jTkUUrYFVnFRnRqrtEmwEwCR1YuPAZYye&quot;; // a Beagle userid
+console.log(&quot;valid sol address:&quot;, isWalletAddress(&quot;sol&quot;, address));
+
+const proof = await signSolProof(wallet, { userid, address });
+console.log(proof.message);
+const blob = encodeWalletProof(proof); // what gets stored in the profile record
+console.log(&quot;decoded ok:&quot;, decodeWalletProof(blob)?.signature === proof.signature);
+console.log(&quot;verify:&quot;, verifyWalletProof({ chain: &quot;sol&quot;, address, userid, proof: blob }));
+console.log(&quot;verify for another userid:&quot;,
+  verifyWalletProof({ chain: &quot;sol&quot;, address, userid: &quot;someone-else&quot;, proof: blob }));</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:beagle-ui@0.2.40">beagle-ui@0.2.40</a>, Node 24.3.0, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ node wallet.mjs
+valid sol address: true
+Beagle wallet binding
+
+I bind this wallet to my Beagle identity.
+
+userid: D6p9dm91J49jTkUUrYFVnFRnRqrtEmwEwCR1YuPAZYye
+chain: sol
+address: 2Ag8oCNN2LVr8vy8hnyahBmxgyMRyTncvNK3FWFYU9BN
+issued: 2026-11-06T08:50:28Z
+decoded ok: true
+verify: { ok: true, issued: '2026-11-06T08:50:28Z' }
+verify for another userid: { ok: false, error: 'proof names another Beagle identity' }</code></pre></div>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<h3 id="decentnetworkbeagle-ui-browser"><a class="doc-anchor" href="#decentnetworkbeagle-ui-browser"><code>@decentnetwork/beagle-ui</code> (browser)</a></h3>
+<p>This entry ships <strong>no <code>.d.ts</code></strong>. The names below are its runtime exports in 0.2.40.</p>
+<div class="doc-table"><table><thead><tr><th>Export</th><th>Signature</th><th>Purpose</th></tr></thead><tbody><tr><td><code>BEAGLE_UI_VERSION</code></td><td><code>string</code></td><td>Bundle version (<code>&quot;0.2.40&quot;</code>)</td></tr><tr><td><code>mount</code></td><td><code>(el: Element) =&gt; void</code></td><td>Render the app into <code>el</code> with <code>ReactDOM.createRoot</code>, and remove a <code>#boot</code> placeholder if one exists</td></tr><tr><td><code>setUiHost</code></td><td><code>(host: object) =&gt; void</code></td><td>Platform hooks. Call before <code>mount</code>.</td></tr><tr><td><code>dkGet</code></td><td><code>(path) =&gt; Promise&lt;any&gt;</code></td><td><code>fetch(path)</code> and parse JSON</td></tr><tr><td><code>dkPost</code></td><td><code>(path, body) =&gt; Promise&lt;any&gt;</code></td><td>POST JSON with a 15-second timeout. Resolves <code>{ ok: false, error }</code> on failure.</td></tr><tr><td><code>dkApi</code></td><td>object</td><td>UI request helpers, e.g. <code>send(userid, text)</code>, <code>add(address)</code>, <code>accept(userid)</code>, <code>reject(userid)</code>, <code>remove(userid)</code>, <code>alias(userid, alias)</code>, <code>markRead(userid)</code> (all POST to <code>/api/*</code>)</td></tr><tr><td><code>dkCopy</code></td><td><code>(text) =&gt; Promise&lt;boolean&gt;</code></td><td>Clipboard copy with a fallback</td></tr><tr><td><code>dkFileSize</code></td><td><code>(bytes) =&gt; string</code></td><td><code>&quot;1.5 KB&quot;</code> style formatting</td></tr><tr><td><code>shortKey</code></td><td><code>(s, head = 6, tail = 5) =&gt; string</code></td><td>Shorten a userid or address</td></tr><tr><td><code>Icon</code>, <code>Btn</code>, <code>Tag</code>, <code>Mono</code>, <code>Section</code>, <code>StatusDot</code></td><td>React components</td><td>Building blocks of the Beagle look</td></tr><tr><td><code>DkAvatar</code>, <code>DkIdenticon</code>, <code>DkImgAvatar</code>, <code>DkPunkAvatar</code>, <code>DkEnsAvatar</code></td><td>React components</td><td>Avatars for peers</td></tr></tbody></table></div>
+<p><code>setUiHost()</code> keys (all optional; anything left out keeps the local-server default):</p>
+<div class="doc-table"><table><thead><tr><th>Key</th><th>Purpose</th></tr></thead><tbody><tr><td><code>fileUrl(name)</code>, <code>fileDownloadUrl(name)</code></td><td>Turn a stored file into a URL for <code>&lt;img&gt;</code> / <code>&lt;a download&gt;</code>. These requests bypass a patched <code>fetch</code>, so a backend inside the tab must supply them.</td></tr><tr><td><code>prefetchThreadFiles(msgs)</code></td><td>Resolve a thread&#39;s files before it renders</td></tr><tr><td><code>DkWelcome</code>, <code>DkLockedOut</code>, <code>DkBrowserNotice</code></td><td>Components for first run, &quot;another tab owns the identity&quot;, and the browser caveat</td></tr><tr><td><code>hostNeedsWelcome</code>, <code>hostPrefersRtcFile</code>, <code>hostHasKeyBackup</code></td><td>Feature flags (first-run flow, DataChannel file transfer, keypair export)</td></tr><tr><td><code>hostEnsWrite</code>, <code>hostWalletBind</code>, <code>hostAssistant</code>, <code>hostBrandHref</code></td><td>Read by the bundle&#39;s <code>setUiHost</code> but not described in the README</td></tr><tr><td><code>hostTabs</code>, <code>hideApps</code>, <code>hostApps</code>, <code>hostProfileSections</code>, <code>hostHeaderActions</code>, <code>isProtocolMessage</code></td><td>Same as above: read by the bundle, not described in the README</td></tr></tbody></table></div>
+<h3 id="decentnetworkbeagle-uiwallet-proof-browser-and-node-typed"><a class="doc-anchor" href="#decentnetworkbeagle-uiwallet-proof-browser-and-node-typed"><code>@decentnetwork/beagle-ui/wallet-proof</code> (browser and Node, typed)</a></h3>
+<div class="code-wrap"><pre><code class="language-ts">type WalletChain = &quot;eth&quot; | &quot;sol&quot;;
+interface WalletProof { message: string; signature: string }
+type VerifyResult = { ok: true; issued: string } | { ok: false; error: string };
+
+const WALLET_PROOF_VERSION: 1;
+const WALLET_CHAINS: WalletChain[];
+const COIN_TYPE: { eth: &quot;60&quot;; sol: &quot;501&quot; };
+const PROOF_KEY: { eth: &quot;proof.eth&quot;; sol: &quot;proof.sol&quot; };
+const BIND_MAX_AGE_MS: number;
+
+function isWalletAddress(chain: string, address: unknown): boolean;
+function proofTime(date?: Date): string;
+function walletProofMessage(f: { userid; chain: WalletChain; address; issued }): string;
+function parseWalletProofMessage(msg: unknown): { userid; chain; address; issued } | null;
+function encodeWalletProof(p: WalletProof): string;
+function decodeWalletProof(text: unknown): WalletProof | null;
+function base58Encode(bytes: Uint8Array): string;
+function base58Decode(str: string): Uint8Array;
+function signEthProof(provider: { request(a: { method: string; params: unknown[] }): Promise&lt;unknown&gt; },
+                      f: { userid: string; address: string; issued?: string }): Promise&lt;WalletProof&gt;; // personal_sign
+function signSolProof(wallet: { signMessage(m: Uint8Array, display?: string): Promise&lt;unknown&gt; },
+                      f: { userid: string; address: string; issued?: string }): Promise&lt;WalletProof&gt;;
+function eip191Hash(message: string): Uint8Array;
+function recoverEthAddress(message: string, signature: string): string;
+function verifyWalletProof(a: { chain; address; userid; proof: string | WalletProof | null | undefined;
+                                maxAgeMs?: number; now?: number }): VerifyResult;
+function verifyRecordWallet(record, chain: WalletChain):
+  { ok: true; address; via: &quot;proof&quot;; issued } | { ok: true; address; via: &quot;owner&quot; } | { ok: false; error };
+function applyWalletBind(record, req: { chain; address; proof?; userid; now? }):
+  { ok: true; addresses; texts } | { ok: false; status: number; error: string };</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>verifyWalletProof</code> checks the chain, the userid, the address, the issue time (<code>maxAgeMs</code>) and then the signature: secp256k1 recovery for <code>eth</code>, ed25519 for <code>sol</code>.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<p>There are no config files or environment variables. Everything is set through <code>setUiHost()</code>. The UI expects a backend that answers Beagle&#39;s <code>/api/*</code> routes on the page&#39;s origin. The <code>beagle</code> CLI does this, and a Vite proxy as above forwards them. The UI keeps small per-browser preferences in <code>localStorage</code> (for example a dismissed update notice).</p>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li>Main bundle: modern browsers (ES modules, <code>fetch</code>, <code>AbortController</code>). Verified as a Vite 5.4.10 build with React 18.3.1, loaded in an embedded desktop browser. Not importable in Node.</li>
+<li><code>wallet-proof</code>: browsers and Node (verified with Node 24.3.0). Its <code>@noble/curves</code> and <code>@noble/hashes</code> code is bundled in.</li>
+<li>The package declares no runtime dependencies. React, ReactDOM, <code>peer-webrtc</code> and <code>chat-components</code> come from the host page.</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.2.40</strong> (<code>latest</code> on npm, published 2026-11-06).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/beagle-ui" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/beagle-ui</a></li>
+<li>Source repository is not public yet. Browse the published bundle at <a href="https://www.npmjs.com/package/@decentnetwork/beagle-ui?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/beagle-ui?activeTab=code</a></li>
+<li>License: MIT.</li>
+<li>Changelog: none is published in the package.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

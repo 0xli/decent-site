@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrier Native SDK (C/C++) — docs | Decent Network</title>
+    <meta name="description" content="The C library the mobile SDKs wrap: identity, friends, messages with receipts, Express offline delivery, invites, groups, file transfer and sessions. Build from source with CMake; no prebuilt release yet." />
+    <meta property="og:title" content="Carrier Native SDK (C/C++) — docs | Decent Network" />
+    <meta property="og:description" content="The C library the mobile SDKs wrap: identity, friends, messages with receipts, Express offline delivery, invites, groups, file transfer and sessions. Build from source with CMake; no prebuilt release yet." />
+    <meta property="og:url" content="https://decent.network/docs/native-carrier" />
+    <link rel="canonical" href="https://decent.network/docs/native-carrier" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->Mobile + native Carrier SDKs</div><h1>Carrier Native SDK (C/C++)</h1><p>The C library the mobile SDKs wrap: identity, friends, messages with receipts, Express offline delivery, invites, groups, file transfer and sessions. Build from source with CMake; no prebuilt release yet.</p><dl class="doc-meta"><div><dt>Version</dt><dd>No published release</dd></div><div><dt>Platform</dt><dd>macOS · Linux · iOS · Android</dd></div><div><dt>Source</dt><dd><a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer">0xli/Elastos.NET.Carrier.Native.SDK @ feat/agentnet-proto-v2<!-- --> ↗</a></dd></div></dl></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#add-it-to-your-project">Add it to your project</a><a href="#initialize">Initialize</a><a href="#identity">Identity</a><a href="#friends">Friends</a><a href="#messages">Messages</a><a href="#files">Files</a><a href="#sessions-and-calls">Sessions and calls</a><a href="#offline-messages-express">Offline messages (Express)</a><a href="#threading-and-lifecycle">Threading and lifecycle</a><a href="#platforms">Platforms</a><a href="#api-reference">API reference</a><a href="#source">Source</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a class="active" href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><blockquote>
+<p><strong>Integration verified</strong> on 2026-11-06: built <code>0xli/Elastos.NET.Carrier.Native.SDK</code> branch <code>feat/agentnet-proto-v2</code> (commit <code>e8eb0b0</code>) from a fresh clone on macOS 26.6 arm64 (Apple clang 21.0.0, CMake 4.1.1), then compiled and linked the C programs on this page against the installed headers and <code>libcarrier.dylib</code>. On the live network the Quickstart got <code>ready</code> and <code>connected</code>. Two nodes became friends, exchanged a message with a <code>ByFriend</code> receipt, and sent an offline message through the Express node <code>lens.beagle.chat</code>. They also completed an invite, a group, and a file transfer. They also opened a session with a reliable stream, which connected over LAN because both nodes ran on one machine. Port forwarding, channels, and builds for Linux, Android and Windows were not run.</p>
+</blockquote>
+<blockquote>
+<p><strong>Build from a fresh checkout is currently blocked.</strong> The build downloads <code>https://github.com/elastos/c-toxcore/archive/v0.2.12.carrier.tar.gz</code>, and that URL returns 404. No public mirror exists. The verified build used a cached copy of that tarball. Its SHA-256, <code>9a6276d8c4e5202b972d45819fd0b47ff9b55750c8f35a83d54f3ca4a4726381</code>, matches the pin in <code>deps/toxcore/CMakeLists.txt</code>. Every other dependency downloaded from its public URL. Until a replacement source is published, a new developer cannot finish the build below without that file.</p>
+</blockquote>
+<p>The native Carrier SDK is the C library under every non-JavaScript Decent Network client. It gives a process a self-generated Carrier identity (address, user ID) on the Carrier DHT. On top of that it provides friends and presence, text and binary messages with delivery receipts, and offline delivery through Express nodes. It also covers invites, groups, file transfer, and peer-to-peer sessions with streams and TCP port forwarding. The Beagle Chat iOS and Android apps ship it from the <code>feat/agentnet-proto-v2</code> branch. The iOS app gets it through the <a href="/docs/swift-carrier">Swift Carrier SDK</a> and the Android app through the <a href="/docs/android-carrier">Android Carrier SDK</a>. The API is plain C (<code>carrier.h</code>, <code>carrier_session.h</code>, <code>carrier_filetransfer.h</code>) and can be called from C++ as is.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<p>Use it from C or C++ on macOS or Linux, for example in a daemon, a sidecar, or an embedded device, or as the base of a new language binding. On iOS use the <a href="/docs/swift-carrier">Swift Carrier SDK</a>, and on Android use the <a href="/docs/android-carrier">Android Carrier SDK</a>; both wrap this library. In Node.js or a browser use <a href="/docs/peer">@decentnetwork/peer</a>, a separate JavaScript implementation of the same wire protocol.</p>
+<p><strong>Which branch to use.</strong> No GitHub releases or prebuilt libraries are published for either public repository (<code>gh release list</code> is empty for both). The tags (<code>release-v5.x</code>, <code>elastos-carrier-native-5.1</code>, …) are upstream Elastos releases from 2018–2019 and predate this network&#39;s protocol work. Use the <code>feat/agentnet-proto-v2</code> branch of <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer">0xli/Elastos.NET.Carrier.Native.SDK</a>. That is the branch the shipping Beagle apps are built from, and its <code>docs/AGENTNET_PROTOCOL.md</code> documents byte compatibility with <code>@decentnetwork/peer</code>. The other branches are behind it:</p>
+<div class="doc-table"><table><thead><tr><th>Repository / branch</th><th>Commit</th><th>Status</th></tr></thead><tbody><tr><td><a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer">0xli/…/feat/agentnet-proto-v2</a></td><td><code>e8eb0b0</code> (2026-11-01)</td><td><strong>Use this.</strong> Proto v2 API (identity signatures, client info, profile extension), 16 MB bulk messages, receipt-timeout fallback to Express, multi-node Express, avatar on friend requests, LibreSSL 4.3.4 / curl 8.23.0.</td></tr><tr><td><a href="https://github.com/decentnetworks/Elastos.NET.Carrier.Native.SDK/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer">decentnetworks/…/feat/agentnet-proto-v2</a></td><td><code>abd1a90</code></td><td>Older copy of the same branch, 8 commits behind (no multi-node Express, old LibreSSL/curl, no avatar on friend requests).</td></tr><tr><td><a href="https://github.com/decentnetworks/Elastos.NET.Carrier.Native.SDK" target="_blank" rel="noreferrer">decentnetworks/…/master</a> and <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK" target="_blank" rel="noreferrer">0xli/…/master</a></td><td><code>fb830b0</code> / <code>19aac23</code></td><td>Pre-AgentNet base with this network&#39;s bootstrap list. It advertises protocol version 0 (legacy): peers limit it to 5 MB messages, and it has none of the proto v2 API.</td></tr></tbody></table></div>
+<h2 id="add-it-to-your-project"><a class="doc-anchor" href="#add-it-to-your-project">Add it to your project</a></h2>
+<p>No prebuilt distribution exists, so build from source. On macOS you need Xcode command-line tools, CMake, and <code>brew install autoconf automake libtool shtool pkg-config gettext</code>. On Debian/Ubuntu, the README lists <code>build-essential autoconf automake autopoint libtool flex bison libncurses5-dev cmake</code>. The commands below are the ones run for the verification, on Apple silicon; the build took about 2 minutes with <code>-j8</code>.</p>
+<div class="code-wrap"><pre><code class="language-bash">git clone --branch feat/agentnet-proto-v2 https://github.com/0xli/Elastos.NET.Carrier.Native.SDK.git
+cd Elastos.NET.Carrier.Native.SDK
+
+# Dependency tarballs are cached here. c-toxcore must be placed by hand (see the note at the top).
+mkdir -p build/.tarballs
+cp /path/to/c-toxcore-0.2.12.carrier.tar.gz build/.tarballs/
+
+cmake -S . -B build/macos-arm64 -DCMAKE_BUILD_TYPE=Release \
+      -DENABLE_SHARED=ON -DENABLE_STATIC=ON -DENABLE_APPS=ON -DENABLE_TESTS=OFF \
+      -DCMAKE_INSTALL_PREFIX=$PWD/../carrier-dist
+make -C build/macos-arm64 -j8
+make -C build/macos-arm64 install</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>A failed download leaves a 0-byte file in <code>build/.tarballs/</code>, and the next configure treats it as cached. Delete any empty file there before retrying.</p>
+<p><code>make install</code> produces:</p>
+<div class="doc-table"><table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody><tr><td><code>include/</code></td><td><code>carrier.h</code>, <code>carrier_session.h</code>, <code>carrier_filetransfer.h</code> and their <code>*_deprecated.h</code> companions</td></tr><tr><td><code>lib/</code></td><td><code>libcarrier</code>, <code>libcarriersession</code>, <code>libcarrierfiletrans</code>, <code>libcrystal</code> (<code>.dylib</code>/<code>.so</code> and <code>.a</code>), plus the static dependencies (<code>libtoxcore.a</code>, <code>libsodium.a</code>, <code>libssl.a</code>, <code>libcrypto.a</code>, <code>libtls.a</code>, <code>libcurl.a</code>, <code>libpj*.a</code>, <code>libsrtp.a</code>, <code>libflatccrt.a</code>, <code>libcjson.a</code>, <code>libz.a</code>)</td></tr><tr><td><code>bin/</code></td><td><code>elashell</code> (interactive shell), <code>elafile</code>, <code>elapfd</code>, <code>elaspeedtest</code>, <code>elaerr</code> (error-code lookup)</td></tr><tr><td><code>etc/carrier/carrier.conf</code></td><td>The network&#39;s bootstrap and Express node list</td></tr></tbody></table></div>
+<p>Link against the shared libraries:</p>
+<div class="code-wrap"><pre><code class="language-bash">P=$PWD/../carrier-dist
+cc -Wall -o hello hello.c -I$P/include -L$P/lib -lcarrier -Wl,-rpath,$P/lib
+# sessions:      add -lcarriersession
+# file transfer: add -lcarrierfiletrans -lcarriersession</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="initialize"><a class="doc-anchor" href="#initialize">Initialize</a></h2>
+<p>Fill a <code>CarrierOptions</code> with a data directory and the network&#39;s bootstrap nodes. Optionally add Express nodes for offline delivery. Register the callbacks you need, call <code>carrier_new</code>, then run <code>carrier_run</code> on its own thread. Use the bootstrap and Express nodes from <code>config/carrier.conf</code> on the branch. The program below uses three of them.</p>
+<div class="code-wrap"><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;carrier.h&gt;
+
+static void on_connection(Carrier *c, CarrierConnectionStatus status, void *ctx)
+{
+    printf(&quot;connection: %s\n&quot;,
+           status == CarrierConnectionStatus_Connected ? &quot;connected&quot; : &quot;disconnected&quot;);
+}
+
+static void on_ready(Carrier *c, void *ctx)
+{
+    printf(&quot;ready\n&quot;);
+}
+
+static void on_friend_request(Carrier *c, const char *userid,
+                              const CarrierUserInfo *info, const char *hello, void *ctx)
+{
+    printf(&quot;friend request from %s: %s\n&quot;, userid, hello);
+    carrier_accept_friend(c, userid);
+}
+
+static void on_friend_message(Carrier *c, const char *from, const void *msg, size_t len,
+                              int64_t timestamp, bool offline, void *ctx)
+{
+    printf(&quot;%s from %s: %.*s\n&quot;, offline ? &quot;offline msg&quot; : &quot;msg&quot;, from, (int)len,
+           (const char *)msg);
+}
+
+static void *run_loop(void *arg)
+{
+    carrier_run((Carrier *)arg, 10);   /* blocks until carrier_kill() */
+    return NULL;
+}
+
+int main(int argc, char *argv[])
+{
+    BootstrapNode bootstraps[] = {
+        { &quot;13.58.208.50&quot;,  NULL, &quot;33445&quot;, &quot;89vny8MrKdDKs7Uta9RdVmspPjnRMdwMmaiEW27pZ7gh&quot; },
+        { &quot;18.216.102.47&quot;, NULL, &quot;33445&quot;, &quot;G5z8MqiNDFTadFUPfMdYsYtkUDbX5mNCMVHMZtsCnFeb&quot; },
+        { &quot;52.57.248.163&quot;, NULL, &quot;33445&quot;, &quot;CfJLve8FNQPQJ9xYQ8oEVkPxeAPCN7iSdhnYFkWmWgLn&quot; },
+    };
+    ExpressNode express[] = {
+        { &quot;lens.beagle.chat&quot;, NULL, &quot;443&quot;, &quot;ECbs4GxwGzxGerNkmqDJFibEmevu8jAXqAZtikccvD95&quot; },
+    };
+    CarrierOptions opts;
+    CarrierCallbacks cbs;
+    char addr[CARRIER_MAX_ADDRESS_LEN + 1];
+    char userid[CARRIER_MAX_ID_LEN + 1];
+    char nodeid[CARRIER_MAX_ID_LEN + 1];
+    char err[128];
+    pthread_t tid;
+
+    memset(&amp;opts, 0, sizeof(opts));
+    opts.persistent_location = argc &gt; 1 ? argv[1] : &quot;./carrier-data&quot;;
+    opts.udp_enabled = true;
+    opts.log_level = CarrierLogLevel_Warning;
+    opts.bootstraps = bootstraps;
+    opts.bootstraps_size = sizeof(bootstraps) / sizeof(bootstraps[0]);
+    opts.express_nodes = express;
+    opts.express_nodes_size = sizeof(express) / sizeof(express[0]);
+
+    memset(&amp;cbs, 0, sizeof(cbs));
+    cbs.connection_status = on_connection;
+    cbs.ready = on_ready;
+    cbs.friend_request = on_friend_request;
+    cbs.friend_message = on_friend_message;
+
+    Carrier *c = carrier_new(&amp;opts, &amp;cbs, NULL);
+    if (!c) {
+        printf(&quot;carrier_new failed: %s\n&quot;,
+               carrier_get_strerror(carrier_get_error(), err, sizeof(err)));
+        return 1;
+    }
+
+    printf(&quot;version: %s\n&quot;, carrier_get_version());
+    printf(&quot;address: %s\n&quot;, carrier_get_address(c, addr, sizeof(addr)));
+    printf(&quot;userid:  %s\n&quot;, carrier_get_userid(c, userid, sizeof(userid)));
+    printf(&quot;nodeid:  %s\n&quot;, carrier_get_nodeid(c, nodeid, sizeof(nodeid)));
+
+    pthread_create(&amp;tid, NULL, run_loop, c);
+    sleep(argc &gt; 2 ? atoi(argv[2]) : 15);
+    carrier_kill(c);
+    pthread_join(tid, NULL);
+    printf(&quot;killed\n&quot;);
+    return 0;
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (<code>./hello ./data 20</code>, branch <code>feat/agentnet-proto-v2</code> @ <code>e8eb0b0</code>, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">version: 5219aac2
+address: MK5iHYpfjr2vujMmMVCZiPTHkPGZemkbhzCaQ3brWwVfEQtEM1fX
+userid:  AEzccEk8AkYLtMx3QJK76DwqMSfqVFM3qUN1hpDNwmgG
+nodeid:  AEzccEk8AkYLtMx3QJK76DwqMSfqVFM3qUN1hpDNwmgG
+ready
+connection: connected
+killed</code></pre></div>
+<p>The first run creates <code>carrier.data</code> in <code>persistent_location</code>. That file holds the identity, unencrypted, plus the friend list. Later runs reuse it. <code>carrier_get_version()</code> returns major, minor and the first six hex digits of the build checkout&#39;s local <code>master</code>, with no separators (<code>5</code> <code>2</code> <code>19aac2</code> above). It does not identify the branch you built.</p>
+<p><code>CarrierOptions</code> fields:</p>
+<div class="doc-table"><table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td><code>persistent_location</code></td><td>Data directory (required).</td></tr><tr><td><code>secret_key</code></td><td>Optional 32-byte identity secret. Used only when the directory has no data yet (import an identity).</td></tr><tr><td><code>udp_enabled</code></td><td><code>false</code> forces TCP only.</td></tr><tr><td><code>log_level</code>, <code>log_file</code>, <code>log_printer</code></td><td><code>CarrierLogLevel_None</code> … <code>CarrierLogLevel_Verbose</code>; log to stdout by default.</td></tr><tr><td><code>bootstraps</code>, <code>bootstraps_size</code></td><td>DHT bootstrap nodes (<code>ipv4</code>, <code>ipv6</code>, <code>port</code>, <code>public_key</code>, all strings).</td></tr><tr><td><code>express_nodes</code>, <code>express_nodes_size</code></td><td>Express (offline message) nodes, same shape. Without them, offline delivery is off.</td></tr></tbody></table></div>
+<h2 id="identity"><a class="doc-anchor" href="#identity">Identity</a></h2>
+<p>Each node&#39;s identity is a key pair kept in <code>carrier.data</code>. The <strong>user ID</strong> is the base58 public key. The <strong>address</strong> (52 characters) is the user ID plus a nospam value and checksum. Others need the address to send a friend request; after that they reach you by user ID. The <strong>node ID</strong> equals the user ID on this build. Changing the nospam value with <code>carrier_set_self_nospam</code> changes the address, so old copies of it stop working for new requests.</p>
+<p>The proto v2 API adds XEdDSA signatures that the JavaScript peer can verify (<code>curve25519-js</code>), plus secret-key export and import. The excerpt below is from a program that was run:</p>
+<div class="code-wrap"><pre><code class="language-c">const char *msg = &quot;decent-auth\nhttps://example.org\nnonce-123&quot;;
+uint8_t sig[CARRIER_IDENTITY_SIGNATURE_BYTES], secret[CARRIER_IDENTITY_SECRET_BYTES];
+
+carrier_identity_sign(c, (const uint8_t *)msg, strlen(msg), sig);
+/* 1 = valid, 0 = invalid, -1 = bad arguments; needs only the userid */
+int ok = carrier_identity_verify(userid, (const uint8_t *)msg, strlen(msg), sig);
+
+carrier_export_secret_key(c, secret);   /* keep it in a keychain, never a plain file */
+/* Import: a fresh persistent_location plus opts.secret_key = secret gives the same userid. */</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">address valid: 1, userid valid: 1
+userid from address matches: 1
+verify good: 1
+verify tampered: 0
+same identity from secret_key: 1</code></pre></div>
+<p>Profile: <code>carrier_set_self_info</code> / <code>carrier_get_self_info</code> take a <code>CarrierUserInfo</code> (name, description, gender, phone, email, region). Beagle clients put the CryptoPunk avatar ID in <code>gender</code>. <code>carrier_set_self_profile_ext</code> adds <code>avatar_url</code>, <code>url</code>, <code>ens</code> and <code>extra</code>. <code>carrier_set_client_info</code> advertises <code>platform</code>, <code>os_version</code>, <code>app_version</code> and <code>proto_version</code>. Set <code>proto_version</code> to 2 only if your app answers the DNPACK1 text acknowledgements that <code>@decentnetwork/peer</code> sends. Read a friend&#39;s values with <code>carrier_get_friend_client_info</code> and <code>carrier_get_friend_profile_ext</code>.</p>
+<h2 id="friends"><a class="doc-anchor" href="#friends">Friends</a></h2>
+<p><code>carrier_add_friend(c, address, hello)</code> sends a request. The other side gets <code>friend_request</code> and calls <code>carrier_accept_friend(c, userid)</code>. On the requester, <code>friend_added</code> fired right after the request was sent. <code>friend_connection</code> reports when a friend comes online or goes offline. This excerpt is from a two-node program that was run, with both nodes in one process:</p>
+<div class="code-wrap"><pre><code class="language-c">/* B */
+if (!carrier_is_friend(b, a_id) &amp;&amp; carrier_add_friend(b, a_addr, &quot;hi from B&quot;) &lt; 0)
+    printf(&quot;[B] add_friend failed: 0x%x\n&quot;, carrier_get_error());
+
+/* A: CarrierCallbacks.friend_request */
+static void a_on_friend_request(Carrier *c, const char *userid,
+                                const CarrierUserInfo *info, const char *hello, void *ctx)
+{
+    printf(&quot;[A] friend request from %s, hello=\&quot;%s\&quot;\n&quot;, userid, hello);
+    carrier_accept_friend(c, userid);
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">[A] ready
+[B] ready
+[B] friend added: 9EbkTvShD1HnzXXFFB8QFukrhTAiMANuFU7R5V38X9W9
+[A] friend request from FXP4Vu7zdMBjbPbkjtyryh7rMLtGFAbf5bPciY7xNpy2, hello=&quot;hi from B&quot;
+[B] friend 9EbkTvShD1HnzXXFFB8QFukrhTAiMANuFU7R5V38X9W9 is online</code></pre></div>
+<p>Other calls: <code>carrier_remove_friend</code>, <code>carrier_get_friends</code> (iterator), <code>carrier_get_friend_info</code>, <code>carrier_set_friend_label</code>, <code>carrier_is_friend</code>. Callbacks: <code>friend_list</code>, <code>friend_info</code>, <code>friend_presence</code>, <code>friend_added</code>, <code>friend_removed</code>. A friend request carries the requester&#39;s <code>gender</code> (punk ID) in <code>info-&gt;gender</code>. Since 2026-11-01 it also carries an avatar URL; read it inside the callback with <code>carrier_get_friend_request_profile_ext</code>. The SDK remembers only the last 32 requesters, and only in memory.</p>
+<h2 id="messages"><a class="doc-anchor" href="#messages">Messages</a></h2>
+<p><code>carrier_send_friend_message</code> sends up to <code>CARRIER_MAX_APP_BULKMSG_LEN</code> (16 MB). Messages over 1024 bytes are fragmented and reassembled for you. The library refuses messages over 5 MB to a friend that advertises protocol version 0. The receipt callback reports one of three states: <code>CarrierReceipt_ByFriend</code> (delivered online), <code>CarrierReceipt_Offline</code> (stored on an Express node), or <code>CarrierReceipt_Error</code>.</p>
+<div class="code-wrap"><pre><code class="language-c">static void on_receipt(uint32_t msgid, CarrierReceiptState state, void *ctx)
+{
+    printf(&quot;[B] receipt for msg %u: %s\n&quot;, msgid,
+           state == CarrierReceipt_ByFriend ? &quot;ByFriend&quot; :
+           state == CarrierReceipt_Offline ? &quot;Offline&quot; : &quot;Error&quot;);
+}
+
+uint32_t msgid;
+if (carrier_send_friend_message(b, a_id, &quot;hello A&quot;, 7, &amp;msgid, on_receipt, NULL) &lt; 0)
+    printf(&quot;[B] send failed: 0x%x\n&quot;, carrier_get_error());</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">[B] sent msg 1793954296
+[A] message from FXP4Vu7zdMBjbPbkjtyryh7rMLtGFAbf5bPciY7xNpy2 (offline=0): hello A
+[B] receipt for msg 1793954296: ByFriend</code></pre></div>
+<p>Incoming messages arrive on <code>friend_message(carrier, from, msg, len, timestamp, offline, context)</code>. The header documents <code>timestamp</code> as seconds since the Epoch. The source passes microseconds, and the run above saw <code>1793954355618750</code>, so treat it as microseconds. If a message gets no receipt within <code>CARRIER_RECEIPT_TIMEOUT_SECONDS</code> (30 s), the library re-sends it through Express.</p>
+<p><strong>Invites</strong> are request/response exchanges with a friend (up to <code>CARRIER_MAX_INVITE_DATA_LEN</code>, 8192 bytes, plus an optional bundle). The excerpt below was run:</p>
+<div class="code-wrap"><pre><code class="language-c">/* A: CarrierCallbacks.friend_invite */
+static void a_on_invite(Carrier *c, const char *from, const char *bundle,
+                        const void *data, size_t len, void *ctx)
+{
+    carrier_reply_friend_invite(c, from, bundle, 0, NULL, &quot;pong&quot;, 4);   /* status 0 = accept */
+}
+
+/* B */
+carrier_invite_friend(b, a_id, NULL, &quot;ping&quot;, 4, b_on_invite_reply, NULL);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">[A] invite from FXP4Vu7zdMBjbPbkjtyryh7rMLtGFAbf5bPciY7xNpy2: ping
+[B] invite reply from 9EbkTvShD1HnzXXFFB8QFukrhTAiMANuFU7R5V38X9W9: status=0 data=pong</code></pre></div>
+<p><strong>Groups</strong> are decentralized; peers must be online. <code>carrier_new_group</code> creates one and <code>carrier_group_invite</code> invites a friend. The friend gets <code>group_invite</code> with a cookie and calls <code>carrier_group_join</code>. Group events go to <code>CarrierCallbacks.group_callbacks</code>. The excerpt below was run:</p>
+<div class="code-wrap"><pre><code class="language-c">/* A */
+char groupid[128];
+carrier_new_group(a, groupid, sizeof(groupid));
+carrier_group_invite(a, groupid, b_id);
+
+/* B: CarrierCallbacks.group_invite */
+static void b_on_group_invite(Carrier *c, const char *from, const void *cookie,
+                              size_t len, void *ctx)
+{
+    char gid[128];
+    carrier_group_join(c, from, cookie, len, gid, sizeof(gid));
+}
+
+/* B: group_callbacks.group_connected */
+static void b_on_group_connected(Carrier *c, const char *groupid, void *ctx)
+{
+    carrier_group_send_message(c, groupid, &quot;hi group&quot;, 8);
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">[A] created group EXLdYroudtB6xpZBdhVrjE9deSHTzFCDiKH2hEczdKNF
+[B] group invite from 9EbkTvShD1HnzXXFFB8QFukrhTAiMANuFU7R5V38X9W9 (35-byte cookie)
+[B] joined group EXLdYroudtB6xpZBdhVrjE9deSHTzFCDiKH2hEczdKNF
+[B] group connected EXLdYroudtB6xpZBdhVrjE9deSHTzFCDiKH2hEczdKNF
+[A] group EXLdYroudtB6xpZBdhVrjE9deSHTzFCDiKH2hEczdKNF message from FXP4Vu7zdMBjbPbkjtyryh7rMLtGFAbf5bPciY7xNpy2: hi group</code></pre></div>
+<h2 id="files"><a class="doc-anchor" href="#files">Files</a></h2>
+<p><code>carrier_filetransfer.h</code> (link <code>-lcarrierfiletrans -lcarriersession</code>) is a pull-driven, resumable transfer over a session stream. Each side calls <code>carrier_filetransfer_init</code> once; the receiver passes a connect callback. The sender opens a transfer with the file info and connects. The receiver accepts, gets <code>file</code>, and pulls from an offset. The sender gets <code>pull</code> and calls <code>carrier_filetransfer_send</code>. The excerpt below was run:</p>
+<div class="code-wrap"><pre><code class="language-c">/* Receiver (A): carrier_filetransfer_init(a, a_on_connect, NULL) */
+static void a_on_connect(Carrier *c, const char *from, const CarrierFileTransferInfo *fi, void *ctx)
+{
+    static CarrierFileTransferCallbacks cbs;
+    cbs.state_changed = a_state; cbs.file = a_file; cbs.data = a_data;
+    CarrierFileTransfer *ft = carrier_filetransfer_new(c, from, NULL, &amp;cbs, NULL);
+    carrier_filetransfer_accept_connect(ft);
+}
+static void a_file(CarrierFileTransfer *ft, const char *fileid, const char *filename,
+                   uint64_t size, void *ctx)
+{
+    carrier_filetransfer_pull(ft, fileid, 0);
+}
+
+/* Sender (B): carrier_filetransfer_init(b, NULL, NULL) */
+CarrierFileTransferInfo fi;
+memset(&amp;fi, 0, sizeof(fi));
+strcpy(fi.filename, &quot;hello.txt&quot;);
+carrier_filetransfer_fileid(fi.fileid, sizeof(fi.fileid));
+fi.size = sizeof(payload) - 1;
+bcbs.state_changed = b_state; bcbs.pull = b_pull;   /* b_pull calls carrier_filetransfer_send */
+CarrierFileTransfer *ft = carrier_filetransfer_new(b, a_id, &amp;fi, &amp;bcbs, NULL);
+carrier_filetransfer_connect(ft);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">[B] state connecting
+[A] filetransfer connect from FXP4Vu7zdMBjbPbkjtyryh7rMLtGFAbf5bPciY7xNpy2
+[A] state connecting
+[A] state connected
+[B] state connected
+[A] offered hello.txt (40 bytes), pulling
+[B] pull at 0, sent 40
+[A] data 40 bytes: file body sent over carrier_filetransfer
+[B] state closed
+[A] state closed</code></pre></div>
+<p>For large files, send from a separate thread in chunks of at most <code>CARRIER_MAX_USER_DATA_LEN</code> (2048 bytes). That is what the library&#39;s internal <code>easyfile.c</code> helper does; it is not exported. This file transfer is native to native only. Beagle apps and <code>@decentnetwork/peer</code> send online files as inline bulk messages (up to 16 MB, through <code>carrier_send_friend_message</code>), wrapped in an application-level JSON envelope. The JavaScript peer&#39;s messenger file transfer (packet IDs 80–82) is not implemented in this SDK. See <code>docs/AGENTNET_PROTOCOL.md</code> §2 on the branch.</p>
+<h2 id="sessions-and-calls"><a class="doc-anchor" href="#sessions-and-calls">Sessions and calls</a></h2>
+<p><code>carrier_session.h</code> (link <code>-lcarriersession</code>) sets up ICE (pjnath) peer-to-peer sessions with a friend: direct, server-reflexive, or relayed. A session carries one or more streams. Stream options: <code>CARRIER_STREAM_PLAIN</code>, <code>CARRIER_STREAM_RELIABLE</code>, <code>CARRIER_STREAM_MULTIPLEXING</code>, and <code>CARRIER_STREAM_PORT_FORWARDING</code>. Multiplexing streams carry channels (<code>carrier_stream_open_channel</code>, <code>carrier_stream_write_channel</code>). Port-forwarding streams expose a local TCP service (<code>carrier_session_add_service</code>) that the peer opens with <code>carrier_stream_open_port_forwarding</code>. This library has no audio/video call API. Beagle calls use the WebRTC SDKs, which signal over Carrier messages.</p>
+<p>The handshake:</p>
+<ol>
+<li>Both sides call <code>carrier_session_init(carrier)</code>. The receiving side registers <code>carrier_session_set_callback(carrier, NULL, on_request, ctx)</code>.</li>
+<li>Caller: <code>carrier_session_new(carrier, peer_userid)</code>, then <code>carrier_session_add_stream(...)</code>. Wait for <code>CarrierStreamState_initialized</code>, then call <code>carrier_session_request(session, NULL, on_complete, ctx)</code>.</li>
+<li>Callee, in or after <code>on_request(from, bundle, sdp, len)</code>: <code>carrier_session_new</code>, then the same <code>add_stream</code>. Wait for <code>initialized</code>, call <code>carrier_session_reply_request(session, NULL, 0, NULL)</code>, wait for <code>transport_ready</code>, then call <code>carrier_session_start(session, sdp, len)</code>.</li>
+<li>Caller, in <code>on_complete(…, status == 0, sdp, len)</code>: wait for <code>transport_ready</code>, then call <code>carrier_session_start(session, sdp, len)</code>.</li>
+<li>Both streams reach <code>CarrierStreamState_connected</code>. Then use <code>carrier_stream_write</code> and the <code>stream_data</code> callback.</li>
+</ol>
+<p>The excerpt below is from a program that was run. Both nodes ran in one process, and its main thread waited for the stream states:</p>
+<div class="code-wrap"><pre><code class="language-c">CarrierStreamCallbacks scb;
+memset(&amp;scb, 0, sizeof(scb));
+scb.state_changed = on_state;      /* records the state per side */
+scb.stream_data   = on_data;
+
+/* B (caller) */
+B.s = carrier_session_new(b, a_id);
+B.stream = carrier_session_add_stream(B.s, CarrierStreamType_text,
+                                      CARRIER_STREAM_RELIABLE, &amp;scb, &amp;B);
+wait_state(&amp;B, CarrierStreamState_initialized, 30);
+carrier_session_request(B.s, NULL, b_on_complete, NULL);   /* b_on_complete saves A's SDP */
+
+/* A (callee), after a_on_request saved `from` and B's SDP */
+A.s = carrier_session_new(a, A.from);
+A.stream = carrier_session_add_stream(A.s, CarrierStreamType_text,
+                                      CARRIER_STREAM_RELIABLE, &amp;scb, &amp;A);
+wait_state(&amp;A, CarrierStreamState_initialized, 30);
+carrier_session_reply_request(A.s, NULL, 0, NULL);
+wait_state(&amp;A, CarrierStreamState_transport_ready, 30);
+carrier_session_start(A.s, A.remote_sdp, A.sdp_len);
+
+/* B */
+wait_state(&amp;B, CarrierStreamState_transport_ready, 30);
+carrier_session_start(B.s, B.remote_sdp, B.sdp_len);
+wait_state(&amp;B, CarrierStreamState_connected, 60);
+carrier_stream_write(B.s, B.stream, &quot;hello over a stream&quot;, 19);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">[B] stream 1 -&gt; initialized
+[B] stream 1 -&gt; transport_ready
+[A] stream 1 -&gt; initialized
+[B] request complete status=0
+[A] stream 1 -&gt; transport_ready
+[A] stream 1 -&gt; connecting
+[B] stream 1 -&gt; connecting
+[A] stream 1 -&gt; connected
+[B] stream 1 -&gt; connected
+[B] topology LAN
+[A] stream data: hello over a stream</code></pre></div>
+<p>Send the session request only after the friend shows as online on the caller&#39;s side. Otherwise it fails with <code>0x86000022</code> (<code>ERROR_FRIEND_OFFLINE</code>). Close with <code>carrier_session_close</code>, then <code>carrier_session_cleanup</code> before <code>carrier_kill</code>.</p>
+<h2 id="offline-messages-express"><a class="doc-anchor" href="#offline-messages-express">Offline messages (Express)</a></h2>
+<p>With <code>express_nodes</code> set, sending to an offline friend stores the message on an Express node, and the receipt reports <code>CarrierReceipt_Offline</code>. The recipient pulls it when it next starts and gets <code>friend_message</code> with <code>offline == true</code>. Offline friend requests travel the same way. This branch posts to and pulls from every configured Express node. The excerpt below was run against <code>lens.beagle.chat</code>. B sent while A was not running; A then started alone:</p>
+<div class="code-wrap"><pre><code class="language-c">/* B (A is not running) */
+carrier_send_friend_message(b, a_id, &quot;sent while you were away&quot;, 24, &amp;msgid, on_receipt, NULL);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">[B] receipt 1793954356: Offline
+[A] message from FXP4Vu7zdMBjbPbkjtyryh7rMLtGFAbf5bPciY7xNpy2 (offline=1, ts=1793954355618750): sent while you were away</code></pre></div>
+<h2 id="threading-and-lifecycle"><a class="doc-anchor" href="#threading-and-lifecycle">Threading and lifecycle</a></h2>
+<ul>
+<li><code>carrier_new</code> creates the node and loads or creates <code>carrier.data</code>. It does not touch the network.</li>
+<li><code>carrier_run(carrier, interval_ms)</code> connects to the bootstraps and runs the event loop on the calling thread. It <strong>blocks</strong> until <code>carrier_kill</code> is called, then saves <code>carrier.data</code> and returns 0. <code>interval</code> 0 means 1000 ms. Run it on a dedicated thread, as in the Quickstart.</li>
+<li><code>CarrierCallbacks</code> callbacks, message receipts and invite responses are called from inside <code>carrier_run</code>, on its thread. Do not block in them. Calling Carrier functions from them works: the samples above accept friends, reply to invites and join groups inside callbacks.</li>
+<li>Session ICE runs on a pjnath worker thread per session, so stream and file-transfer callbacks may arrive on that thread rather than the <code>carrier_run</code> thread. Protect shared state.</li>
+<li>Calls such as <code>carrier_send_friend_message</code> and <code>carrier_invite_friend</code> fail with <code>ERROR_NOT_BEING_READY</code> until the node is ready. Wait for the <code>ready</code> callback or <code>carrier_is_ready()</code>.</li>
+<li>Shutdown: close file transfers and sessions, call <code>carrier_filetransfer_cleanup</code> / <code>carrier_session_cleanup</code>, then <code>carrier_kill(carrier)</code> and join the run thread. After <code>carrier_kill</code> the handle is invalid.</li>
+</ul>
+<p><strong>Errors.</strong> Functions return <code>-1</code> or <code>NULL</code> on failure and set a thread-local error code. Read it with <code>carrier_get_error()</code> and clear it with <code>carrier_clear_error()</code>. <code>carrier_get_strerror(err, buf, len)</code> turns the code into text, and so does the <code>elaerr</code> tool. A code is <code>0x80000000 | facility &lt;&lt; 24 | code</code>. The facilities are <code>FACILITY_GENERAL</code> (1), <code>FACILITY_SYS</code> (2), <code>FACILITY_ICE</code> (5), <code>FACILITY_DHT</code> (6) and <code>FACILITY_EXPRESS</code> (7). The codes are <code>ERROR_INVALID_ARGS</code> (0x01) … <code>ERROR_BAD_FLATBUFFER</code> (0x23), <code>ERROR_UNKNOWN</code> (0xFF). Examples:</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">add_friend error 0x81000001: [General] Invalid argument(s)
+$ elaerr 0x86000022
+[DHT] Friend is being offline</code></pre></div>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<p>These targets come from the branch&#39;s CMake files. Only the macOS arm64 host build was run for this page. The <a href="/docs/swift-carrier">Swift Carrier SDK page</a> separately verified the iOS Simulator arm64 slice of this branch.</p>
+<div class="doc-table"><table><thead><tr><th>Target</th><th>How</th><th>Status</th></tr></thead><tbody><tr><td>macOS arm64 / x86_64</td><td>host build (above)</td><td>arm64 verified 2026-11-06</td></tr><tr><td>Linux (Ubuntu/Debian)</td><td>host build, same commands</td><td>per README and CI config; not run for this page</td></tr><tr><td>iOS <code>iphoneos</code> arm64, <code>iphonesimulator</code> arm64 / x86_64</td><td><code>-DCMAKE_TOOLCHAIN_FILE=cmake/iOSToolchain2.cmake -DIOS_PLATFORM=… -DIOS_ARCH=…</code>; static only; deployment target 13.0 (<code>IOS_DEPLOYMENT_TARGET</code>)</td><td>used for the shipping app; see <code>docs/REBUILD-IOS-ANDROID.md</code></td></tr><tr><td>Android <code>armeabi-v7a</code>, <code>arm64-v8a</code>, <code>x86</code>, <code>x86_64</code></td><td><code>-DCMAKE_TOOLCHAIN_FILE=cmake/AndroidToolchain.cmake -DANDROID_ABI=… -DANDROID_NDK_HOME=… -DANDROID_API=24</code> (default 21; 24 needed for <code>getifaddrs</code>)</td><td>arm64-v8a with NDK r28.2 used for the shipping app; recent NDKs need GNU-named binutils wrappers (see <code>docs/REBUILD-IOS-ANDROID.md</code>)</td></tr><tr><td>Raspberry Pi (armv7l)</td><td><code>cmake/RPiToolchain.cmake</code>, or <code>-DBUILD_ON_RPI=ON</code> on the device</td><td>per README; not run</td></tr><tr><td>Windows x86/x64</td><td>CMake + Visual Studio, per README</td><td>per README; not run on this branch</td></tr></tbody></table></div>
+<p>CMake switches: <code>ENABLE_SHARED</code>, <code>ENABLE_STATIC</code>, <code>ENABLE_APPS</code>, <code>ENABLE_TESTS</code>, <code>ENABLE_UNIT_TESTS</code>, <code>ENABLE_DOCS</code> (Linux only), <code>CMAKE_BUILD_TYPE</code>, <code>CMAKE_INSTALL_PREFIX</code>.</p>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>All functions are declared in the installed headers. Unless noted, they return <code>0</code> on success or <code>-1</code>/<code>NULL</code> on error (see <code>carrier_get_error</code>).</p>
+<h3 id="carrierh-node-identity-friends-messages-groups"><a class="doc-anchor" href="#carrierh-node-identity-friends-messages-groups">carrier.h: node, identity, friends, messages, groups</a></h3>
+<div class="doc-table"><table><thead><tr><th>Function</th><th>Signature</th></tr></thead><tbody><tr><td>version</td><td><code>const char *carrier_get_version(void)</code></td></tr><tr><td>validate</td><td><code>bool carrier_address_is_valid(const char *address)</code>, <code>bool carrier_id_is_valid(const char *id)</code>, <code>char *carrier_get_id_by_address(const char *address, char *userid, size_t len)</code></td></tr><tr><td>lifecycle</td><td><code>Carrier *carrier_new(const CarrierOptions *options, CarrierCallbacks *callbacks, void *context)</code>, <code>int carrier_run(Carrier *carrier, int interval)</code>, <code>void carrier_kill(Carrier *carrier)</code>, <code>bool carrier_is_ready(Carrier *carrier)</code></td></tr><tr><td>identity</td><td><code>char *carrier_get_address(Carrier *, char *address, size_t len)</code>, <code>char *carrier_get_userid(Carrier *, char *userid, size_t len)</code>, <code>char *carrier_get_nodeid(Carrier *, char *nodeid, size_t len)</code>, <code>int carrier_set_self_nospam(Carrier *, uint32_t)</code>, <code>int carrier_get_self_nospam(Carrier *, uint32_t *)</code></td></tr><tr><td>signatures</td><td><code>int carrier_identity_sign(Carrier *, const uint8_t *message, size_t length, uint8_t signature[64])</code>, <code>int carrier_identity_verify(const char *userid, const uint8_t *message, size_t length, const uint8_t signature[64])</code> (returns 1/0/-1), <code>int carrier_export_secret_key(Carrier *, uint8_t secret[32])</code>, <code>int carrier_identity_create_auth_proof(Carrier *, const uint8_t server_public_key[32], const uint8_t *transcript, size_t transcript_len, uint8_t proof[32])</code></td></tr><tr><td>profile</td><td><code>int carrier_set_self_info(Carrier *, const CarrierUserInfo *)</code>, <code>int carrier_get_self_info(Carrier *, CarrierUserInfo *)</code>, <code>int carrier_set_self_presence(Carrier *, CarrierPresenceStatus)</code>, <code>int carrier_get_self_presence(Carrier *, CarrierPresenceStatus *)</code>, <code>int carrier_set_self_profile_ext(Carrier *, const CarrierProfileExt *)</code>, <code>int carrier_get_self_profile_ext(Carrier *, CarrierProfileExt *)</code></td></tr><tr><td>client info</td><td><code>int carrier_set_client_info(Carrier *, const CarrierClientInfo *)</code>, <code>int carrier_get_client_info(Carrier *, CarrierClientInfo *)</code>, <code>int carrier_get_friend_client_info(Carrier *, const char *friendid, CarrierClientInfo *)</code></td></tr><tr><td>friends</td><td><code>int carrier_add_friend(Carrier *, const char *address, const char *hello)</code>, <code>int carrier_accept_friend(Carrier *, const char *userid)</code>, <code>int carrier_remove_friend(Carrier *, const char *userid)</code>, <code>bool carrier_is_friend(Carrier *, const char *userid)</code>, <code>int carrier_get_friends(Carrier *, CarrierFriendsIterateCallback *, void *context)</code>, <code>int carrier_get_friend_info(Carrier *, const char *friendid, CarrierFriendInfo *)</code>, <code>int carrier_set_friend_label(Carrier *, const char *friendid, const char *label)</code>, <code>int carrier_get_friend_profile_ext(Carrier *, const char *friendid, CarrierProfileExt *)</code>, <code>int carrier_get_friend_request_profile_ext(Carrier *, const char *userid, CarrierProfileExt *)</code></td></tr><tr><td>messages</td><td><code>int carrier_send_friend_message(Carrier *, const char *to, const void *message, size_t len, uint32_t *msgid, CarrierFriendMessageReceiptCallback *cb, void *context)</code></td></tr><tr><td>invites</td><td><code>int carrier_invite_friend(Carrier *, const char *to, const char *bundle, const void *data, size_t len, CarrierFriendInviteResponseCallback *callback, void *context)</code>, <code>int carrier_reply_friend_invite(Carrier *, const char *to, const char *bundle, int status, const char *reason, const void *data, size_t len)</code></td></tr><tr><td>groups</td><td><code>int carrier_new_group(Carrier *, char *groupid, size_t length)</code>, <code>int carrier_leave_group(Carrier *, const char *groupid)</code>, <code>int carrier_group_invite(Carrier *, const char *groupid, const char *friendid)</code>, <code>int carrier_group_join(Carrier *, const char *friendid, const void *cookie, size_t cookie_len, char *groupId, size_t group_len)</code>, <code>int carrier_group_send_message(Carrier *, const char *groupid, const void *message, size_t length)</code>, <code>int carrier_group_get_title(…)</code>, <code>int carrier_group_set_title(Carrier *, const char *groupid, const char *title)</code>, <code>int carrier_group_get_peers(…)</code>, <code>int carrier_group_get_peer(…)</code>, <code>int carrier_get_groups(Carrier *, CarrierIterateGroupCallback *, void *context)</code></td></tr><tr><td>errors</td><td><code>int carrier_get_error(void)</code>, <code>void carrier_clear_error(void)</code>, <code>char *carrier_get_strerror(int errnum, char *buf, size_t len)</code></td></tr></tbody></table></div>
+<p><code>CarrierCallbacks</code> members: <code>idle</code>, <code>connection_status</code>, <code>ready</code>, <code>self_info</code>, <code>friend_list</code>, <code>friend_connection</code>, <code>friend_info</code>, <code>friend_presence</code>, <code>friend_request</code>, <code>friend_added</code>, <code>friend_removed</code>, <code>friend_message</code>, <code>friend_invite</code>, <code>group_invite</code>, and <code>group_callbacks</code> (<code>group_connected</code>, <code>group_message</code>, <code>group_title</code>, <code>peer_name</code>, <code>peer_list_changed</code>).</p>
+<p>Limits: address 52 characters, IDs up to 45, name 63, description 127, single message unit 1024 bytes, bulk message 16 MB (5 MB to legacy peers), invite data 8192, bundle 511, group title 127, userinfo packet 1007 bytes, friend request packet 1016 bytes.</p>
+<h3 id="carriersessionh-sessions-streams-port-forwarding"><a class="doc-anchor" href="#carriersessionh-sessions-streams-port-forwarding">carrier_session.h: sessions, streams, port forwarding</a></h3>
+<p><code>carrier_session_init</code>, <code>carrier_session_cleanup</code>, <code>carrier_session_set_callback(Carrier *, const char *bundle_prefix, CarrierSessionRequestCallback *, void *)</code>, <code>carrier_session_new(Carrier *, const char *address)</code>, <code>carrier_session_close</code>, <code>carrier_session_get_peer</code>, <code>carrier_session_set_userdata</code> / <code>_get_userdata</code>, <code>carrier_session_request(CarrierSession *, const char *bundle, CarrierSessionRequestCompleteCallback *, void *)</code>, <code>carrier_session_reply_request(CarrierSession *, const char *bundle, int status, const char *reason)</code>, <code>carrier_session_start(CarrierSession *, const char *sdp, size_t len)</code>, <code>carrier_session_add_stream(CarrierSession *, CarrierStreamType, int options, CarrierStreamCallbacks *, void *)</code>, <code>carrier_session_remove_stream</code>, <code>carrier_session_add_service(CarrierSession *, const char *service, PortForwardingProtocol, const char *host, const char *port)</code>, <code>carrier_session_remove_service</code>, <code>carrier_stream_get_type</code>, <code>carrier_stream_get_state</code>, <code>carrier_stream_get_transport_info</code>, <code>ssize_t carrier_stream_write(CarrierSession *, int stream, const void *data, size_t len)</code>, <code>carrier_stream_open_channel</code>, <code>carrier_stream_close_channel</code>, <code>ssize_t carrier_stream_write_channel(…)</code>, <code>carrier_stream_pend_channel</code>, <code>carrier_stream_resume_channel</code>, <code>carrier_stream_open_port_forwarding(CarrierSession *, int stream, const char *service, PortForwardingProtocol, const char *host, const char *port)</code>, <code>carrier_stream_close_port_forwarding</code>.</p>
+<p><code>CarrierStreamCallbacks</code>: <code>state_changed</code>, <code>stream_data</code>, <code>channel_open</code>, <code>channel_opened</code>, <code>channel_close</code>, <code>channel_data</code>, <code>channel_pending</code>, <code>channel_resume</code>. States: <code>initialized</code>, <code>transport_ready</code>, <code>connecting</code>, <code>connected</code>, <code>deactivated</code>, <code>closed</code>, <code>failed</code>. Topology (<code>carrier_stream_get_transport_info</code>): <code>NetworkTopology_LAN</code>, <code>_P2P</code>, <code>_RELAYED</code>. Only TCP port forwarding is defined (<code>PortForwardingProtocol_TCP</code>).</p>
+<h3 id="carrierfiletransferh-file-transfer"><a class="doc-anchor" href="#carrierfiletransferh-file-transfer">carrier_filetransfer.h: file transfer</a></h3>
+<p><code>carrier_filetransfer_fileid</code>, <code>carrier_filetransfer_init(Carrier *, CarrierFileTransferConnectCallback *, void *)</code>, <code>carrier_filetransfer_cleanup</code>, <code>carrier_filetransfer_new(Carrier *, const char *address, const CarrierFileTransferInfo *, CarrierFileTransferCallbacks *, void *)</code>, <code>carrier_filetransfer_close</code>, <code>carrier_filetransfer_get_fileid</code>, <code>carrier_filetransfer_get_filename</code>, <code>carrier_filetransfer_connect</code>, <code>carrier_filetransfer_accept_connect</code>, <code>carrier_filetransfer_add</code>, <code>carrier_filetransfer_pull(CarrierFileTransfer *, const char *fileid, uint64_t offset)</code>, <code>ssize_t carrier_filetransfer_send(CarrierFileTransfer *, const char *fileid, const uint8_t *data, size_t length)</code>, <code>carrier_filetransfer_cancel</code>, <code>carrier_filetransfer_pend</code>, <code>carrier_filetransfer_resume</code>, <code>carrier_filetransfer_set_userdata</code> / <code>_get_userdata</code>. Callbacks: <code>state_changed</code>, <code>file</code>, <code>pull</code>, <code>data</code>, <code>pending</code>, <code>resume</code>, <code>cancel</code>.</p>
+<p>The <code>*_deprecated.h</code> headers keep the older <code>ela_*</code> names as aliases. Do not use them in new code.</p>
+<h2 id="source"><a class="doc-anchor" href="#source">Source</a></h2>
+<ul>
+<li>Repository: <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK" target="_blank" rel="noreferrer">0xli/Elastos.NET.Carrier.Native.SDK</a> (public, GPLv3), branch <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/tree/feat/agentnet-proto-v2" target="_blank" rel="noreferrer"><code>feat/agentnet-proto-v2</code></a>, commit <code>e8eb0b0f18a1b55d7ede08de9482bc51d080584e</code> (2026-11-01).</li>
+<li>Protocol notes on the branch: <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/blob/feat/agentnet-proto-v2/docs/AGENTNET_PROTOCOL.md" target="_blank" rel="noreferrer"><code>docs/AGENTNET_PROTOCOL.md</code></a>, <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/blob/feat/agentnet-proto-v2/docs/BUILD-DEPS.md" target="_blank" rel="noreferrer"><code>docs/BUILD-DEPS.md</code></a>, <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/blob/feat/agentnet-proto-v2/docs/REBUILD-IOS-ANDROID.md" target="_blank" rel="noreferrer"><code>docs/REBUILD-IOS-ANDROID.md</code></a>, <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/blob/feat/agentnet-proto-v2/CHANGELOG.md" target="_blank" rel="noreferrer"><code>CHANGELOG.md</code></a>, and the shell command list <a href="https://github.com/0xli/Elastos.NET.Carrier.Native.SDK/blob/feat/agentnet-proto-v2/COMMANDS.md" target="_blank" rel="noreferrer"><code>COMMANDS.md</code></a>.</li>
+<li>Mirror: <a href="https://github.com/decentnetworks/Elastos.NET.Carrier.Native.SDK" target="_blank" rel="noreferrer">decentnetworks/Elastos.NET.Carrier.Native.SDK</a> (default branch <code>master</code>; its <code>feat/agentnet-proto-v2</code> is behind, see the table above).</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

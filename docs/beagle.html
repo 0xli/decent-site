@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/beagle 0.1.132 — docs | Decent Network</title>
+    <meta name="description" content="P2P chat, file transfer and calls for regular users on the Decent Network, as a CLI and local desktop app. No admin privilege required." />
+    <meta property="og:title" content="@decentnetwork/beagle 0.1.132 — docs | Decent Network" />
+    <meta property="og:description" content="P2P chat, file transfer and calls for regular users on the Decent Network, as a CLI and local desktop app. No admin privilege required." />
+    <meta property="og:url" content="https://decent.network/docs/beagle" />
+    <link rel="canonical" href="https://decent.network/docs/beagle" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/beagle</h1><p>P2P chat, file transfer and calls for regular users on the Decent Network, as a CLI and local desktop app. No admin privilege required.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.1.132<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>Node.js 20+ · desktop</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/beagle" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install -g @decentnetwork/beagle</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a class="active" href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/beagle</code> is the Beagle chat client for computers: a <code>beagle</code> command that runs a Carrier peer and serves the Beagle web UI on <code>http://localhost:8766</code> for friends, messages, files, groups and calls. It needs no account, server or admin privilege. The identity is a keypair in a local directory. The package also exports the pieces that make that work: the local HTTP server, the backend selector that either runs a peer in-process or hands requests to a running <a href="/docs/lan">AgentNet daemon</a>, and the daemon&#39;s IPC client.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<ul>
+<li><strong>You want a ready chat client</strong> on macOS, Linux or Windows to test your own app against. A peer you build with <a href="/docs/peer">@decentnetwork/peer</a> can friend and message a Beagle user.</li>
+<li><strong>You want to drive a Beagle identity from Node</strong> with the same request shapes the UI uses (<code>friends-list</code>, <code>chat-send</code>, <code>file-send</code>, and so on) through <code>openPeerHost()</code>.</li>
+<li><strong>You run AgentNet</strong> and want a chat UI on the same identity. Beagle detects a running daemon and uses it instead of starting a second peer on the same keypair.</li>
+</ul>
+<div class="doc-table"><table><thead><tr><th>Sibling</th><th>Use it for</th></tr></thead><tbody><tr><td><a href="/docs/peer">@decentnetwork/peer</a></td><td>Building your own app on the protocol</td></tr><tr><td><a href="/docs/beagle-ui">@decentnetwork/beagle-ui</a></td><td>The UI bundle this package serves, to host it in your own page</td></tr><tr><td><a href="/docs/beagle-connect">@decentnetwork/beagle-connect</a></td><td>&quot;Sign in with Beagle&quot; from a website</td></tr><tr><td><a href="/docs/lan">@decentnetwork/lan</a></td><td>A virtual LAN (TUN, needs root) on the same identity</td></tr></tbody></table></div>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/beagle@0.1.132
+npx beagle --help</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The project&#39;s own instructions install it globally (<code>npm install -g @decentnetwork/beagle</code>). A local install plus <code>npx</code> works the same way and does not touch global state.</p>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<h3 id="1-run-the-client"><a class="doc-anchor" href="#1-run-the-client">1. Run the client</a></h3>
+<div class="code-wrap"><pre><code class="language-bash">mkdir beagle-demo &amp;&amp; cd beagle-demo
+npm init -y
+npm install @decentnetwork/beagle@0.1.132
+npx beagle --config-dir ./beagle-home --port 18766     # Ctrl+C to stop
+# in another terminal:
+curl -s http://127.0.0.1:18766/api/ping
+curl -s http://127.0.0.1:18766/api/state</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Then open <code>http://localhost:18766</code> in a browser. Leave out <code>--config-dir</code> to use <code>~/.agentnet</code>, the same identity AgentNet uses on that machine. Leave out <code>--port</code> to use 8766.</p>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:beagle@0.1.132">beagle@0.1.132</a>, Node 24.3.0, macOS arm64, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ npx beagle --config-dir ./beagle-home --port 18766
+[Carrier] INFO: identity KKAoGHgwvz3ng139afcE8GsoLedFAjL5pChurDkLWzn9JXWTYrgL
+beagle 0.1.132 — backend: embedded (embedded peer, new identity at …/beagle-demo/beagle-home/carrier/keypair.json)
+Beagle UI on http://localhost:18766
+
+$ curl -s http://127.0.0.1:18766/api/ping
+{&quot;ok&quot;:true}
+
+$ curl -s http://127.0.0.1:18766/api/state
+{&quot;me&quot;:{&quot;userid&quot;:&quot;9LFt2mAg2cnqgPmhEF284Pf6una4ioeG43exrpBek3dL&quot;,&quot;address&quot;:&quot;KKAoGHgwvz3ng139afcE8GsoLedFAjL5pChurDkLWzn9JXWTYrgL&quot;,&quot;name&quot;:&quot;&quot;,&quot;ip&quot;:null,&quot;installed&quot;:false},&quot;friends&quot;:[],&quot;pending&quot;:[]}</code></pre></div>
+<p>Give your <strong>address</strong> (the long string) to someone who wants to friend you. The <strong>userid</strong> is the public key that identifies you to friends you already have.</p>
+<h3 id="2-drive-a-beagle-identity-from-node"><a class="doc-anchor" href="#2-drive-a-beagle-identity-from-node">2. Drive a Beagle identity from Node</a></h3>
+<p><code>openPeerHost()</code> picks a backend. With <code>force: &quot;embedded&quot;</code> it runs a Carrier peer in your process. The returned host answers the same request objects the UI sends:</p>
+<div class="code-wrap"><pre><code class="language-js">// quickstart.mjs
+// Open a Beagle peer host in-process (no root, no daemon) and talk to it
+// with the same IPC-shaped requests the Beagle UI uses.
+import { resolve } from &quot;node:path&quot;;
+import { openPeerHost, decentlanCarrierDir, ipcSocketPath, probeDaemon } from &quot;@decentnetwork/beagle&quot;;
+
+const configDir = resolve(process.argv[2] ?? &quot;./beagle-demo&quot;);
+const dataDir = decentlanCarrierDir(configDir);
+console.log(&quot;daemon socket would be:&quot;, ipcSocketPath(dataDir));
+console.log(&quot;decentlan daemon running:&quot;, await probeDaemon(dataDir));
+
+const { host, why } = await openPeerHost({
+  configDir,
+  force: &quot;embedded&quot;,
+  bootstrapNodes: [
+    { host: &quot;13.58.208.50&quot;, port: 33445, pk: &quot;89vny8MrKdDKs7Uta9RdVmspPjnRMdwMmaiEW27pZ7gh&quot; },
+    { host: &quot;18.216.102.47&quot;, port: 33445, pk: &quot;G5z8MqiNDFTadFUPfMdYsYtkUDbX5mNCMVHMZtsCnFeb&quot; },
+    { host: &quot;54.193.141.205&quot;, port: 33445, pk: &quot;7TfZWZNV8vnBxxWzJXuvKgX2QyKkLpg2oXx3LQ5tg8LW&quot; },
+  ],
+  expressNodes: [{ host: &quot;lens.beagle.chat&quot;, port: 443, pk: &quot;ECbs4GxwGzxGerNkmqDJFibEmevu8jAXqAZtikccvD95&quot; }],
+  nickname: &quot;docs-demo&quot;,
+  autoAcceptFriends: false,
+});
+console.log(&quot;backend:&quot;, host.kind, &quot;-&quot;, why, &quot;| virtual LAN:&quot;, host.hasVirtualLan);
+
+const diag = await host.call({ op: &quot;diag&quot; });
+console.log(&quot;userid:&quot;, diag.ok &amp;&amp; diag.data.identity.userid);
+console.log(&quot;address:&quot;, diag.ok &amp;&amp; diag.data.identity.address);
+const friends = await host.call({ op: &quot;friends-list&quot; });
+console.log(&quot;friends-list:&quot;, JSON.stringify(friends));
+await host.stop();
+console.log(&quot;stopped&quot;);
+process.exit(0);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:beagle@0.1.132">beagle@0.1.132</a>, 2026-11-06, peer debug lines trimmed):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">$ node quickstart.mjs
+daemon socket would be: …/beagle-demo/carrier/daemon.sock
+decentlan daemon running: false
+[Carrier] INFO: identity GMGdcixVnhPjeJvbQGGC9F3q5k9C5NVgq6QSKD4UbYJMK3HXHNQ2
+backend: embedded - embedded peer, new identity at …/beagle-demo/carrier/keypair.json | virtual LAN: false
+userid: 7z3jqugUoXtcSeH6UBKiqV18613bQ3PA8pjWGuq3o6HY
+address: GMGdcixVnhPjeJvbQGGC9F3q5k9C5NVgq6QSKD4UbYJMK3HXHNQ2
+friends-list: {&quot;ok&quot;:true,&quot;data&quot;:{&quot;friends&quot;:[]}}
+stopped</code></pre></div>
+<p>Never open two peers on the same keypair at once. Stop <code>beagle</code> before running this script against the same config directory, and the other way round.</p>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>Exports from <code>@decentnetwork/beagle</code> (<code>dist/index.d.ts</code>).</p>
+<h3 id="backend-selection"><a class="doc-anchor" href="#backend-selection">Backend selection</a></h3>
+<div class="code-wrap"><pre><code class="language-ts">type BackendKind = &quot;daemon&quot; | &quot;embedded&quot;;
+
+interface PeerHost {
+  readonly kind: BackendKind;
+  readonly hasVirtualLan: boolean;          // true only for the daemon backend
+  call(req: IpcRequest): Promise&lt;IpcResponse&gt;;
+  stop(): Promise&lt;void&gt;;
+}
+
+function openPeerHost(opts: OpenPeerHostOptions): Promise&lt;{ host: PeerHost; why: string }&gt;;
+function defaultConfigDir(): string;                 // $AGENTNET_CONFIG_DIR or ~/.agentnet
+function decentlanCarrierDir(configDir: string): string;  // carrier.dataDir from config.yaml, else &lt;configDir&gt;/carrier</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>OpenPeerHostOptions</code>:</p>
+<div class="doc-table"><table><thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead><tbody><tr><td><code>configDir</code></td><td><code>string</code></td><td>Where the identity lives</td></tr><tr><td><code>bootstrapNodes</code></td><td><code>{ host; port; pk }[]</code></td><td>Carrier bootstrap nodes</td></tr><tr><td><code>expressNodes?</code></td><td><code>{ host; port; pk; tls? }[]</code></td><td>Offline-message relays</td></tr><tr><td><code>nickname?</code>, <code>statusMessage?</code></td><td><code>string</code></td><td>Advertised to friends (embedded backend)</td></tr><tr><td><code>autoAcceptFriends?</code></td><td><code>boolean</code></td><td>Accept incoming friend requests automatically (embedded backend)</td></tr><tr><td><code>onAutoAcceptChange?</code></td><td><code>(enabled: boolean) =&gt; void</code></td><td>Persist a runtime toggle</td></tr><tr><td><code>peerVersion?</code></td><td><code>string</code></td><td>Reported by an embedded host&#39;s <code>ping</code></td></tr><tr><td><code>force?</code></td><td><code>BackendKind</code></td><td>Skip auto-detection</td></tr><tr><td><code>waitForDaemonMs?</code></td><td><code>number</code></td><td>With <code>force: &quot;daemon&quot;</code>, how long to wait for the socket (default 60 s)</td></tr></tbody></table></div>
+<p>Without <code>force</code>, a running AgentNet daemon for this identity wins. Otherwise Beagle runs the peer itself.</p>
+<h3 id="requests"><a class="doc-anchor" href="#requests">Requests</a></h3>
+<div class="code-wrap"><pre><code class="language-ts">type IpcOp =
+  | &quot;ping&quot; | &quot;diag&quot;
+  | &quot;friend-request&quot; | &quot;friends-pending&quot; | &quot;friends-accept&quot; | &quot;friends-reject&quot;
+  | &quot;friends-list&quot; | &quot;friend-remove&quot; | &quot;friend-set-alias&quot; | &quot;friends-autoaccept&quot;
+  | &quot;set-profile&quot; | &quot;sign&quot;
+  | &quot;chat-send&quot; | &quot;chat-history&quot; | &quot;chat-log-local&quot; | &quot;chat-mark-read&quot; | &quot;chat-retry&quot;
+  | &quot;file-send&quot; | &quot;file-delete&quot; | &quot;file-cancel&quot; | &quot;file-retry&quot; | &quot;file-log-local&quot;
+  | &quot;call-signal&quot; | &quot;call-poll&quot;;
+
+interface IpcRequest { op: IpcOp; address?; hello?; userid?; text?; alias?; name?; path?; since?; limit?; … }
+type IpcResponse = { ok: true; data?: Record&lt;string, unknown&gt; } | { ok: false; error: string };</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h3 id="talking-to-an-agentnet-daemon-directly"><a class="doc-anchor" href="#talking-to-an-agentnet-daemon-directly">Talking to an AgentNet daemon directly</a></h3>
+<div class="code-wrap"><pre><code class="language-ts">function ipcCall(dataDir: string, req: IpcRequest, timeoutMs?: number): Promise&lt;IpcResponse&gt;;
+function ipcSocketPath(dataDir: string, platform?: NodeJS.Platform): string; // &lt;dataDir&gt;/daemon.sock, or a named pipe on Windows
+function probeDaemon(dataDir: string, timeoutMs?: number): Promise&lt;boolean&gt;; // connects, so it answers on every platform
+function daemonSocketMayExist(dataDir: string): boolean;                     // sync hint only</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>Every request is one line of JSON over the socket, and the daemon answers with one line of JSON.</p>
+<h3 id="local-server"><a class="doc-anchor" href="#local-server">Local server</a></h3>
+<div class="code-wrap"><pre><code class="language-ts">function startBeagleServer(opts: BeagleServerOptions): { stop: () =&gt; void };</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>BeagleServerOptions</code> requires <code>call</code> (usually <code>host.call</code>) and <code>routesPath</code>. Optional fields include <code>listenHost</code>, <code>listenPort</code>, <code>downloadsDir</code>, <code>messagesPath</code>, <code>greetingsPath</code>, <code>doraRosterPath</code>, <code>callIce</code> (keypair and bootstrap nodes for minting TURN credentials), <code>bridgeWs</code>, <code>lanHost</code>, <code>onRestart</code> and <code>log</code>. The CLI in <code>dist/cli.js</code> is the reference wiring.</p>
+<p>The server&#39;s <code>/api/*</code> routes (for example <code>/api/state</code>, <code>/api/ping</code>, <code>/api/diag</code>, <code>/api/friends-list</code>, <code>/api/chat-send</code>, <code>/api/file-send</code>) and its <code>/connect</code> page exist for the bundled UI and for <a href="/docs/beagle-connect">Sign in with Beagle</a>. They are not documented as a stable public API.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<h3 id="cli-flags"><a class="doc-anchor" href="#cli-flags">CLI flags</a></h3>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">beagle [options]
+  --port &lt;n&gt;         HTTP port (default 8766, or $BEAGLE_PORT)
+  --host &lt;addr&gt;      bind address (default 127.0.0.1)
+  --config-dir &lt;p&gt;   identity/config dir (default ~/.agentnet, or $AGENTNET_CONFIG_DIR)
+  --dora-dir &lt;p&gt;     dora roster dir, if this machine runs a dora
+  --bridge &lt;wss&gt;     bridge whose roster to show (default wss://bridge.beagle.chat/relay-ws)
+  --backend &lt;k&gt;      force 'daemon' or 'embedded' (default: auto)
+  --wait-daemon &lt;s&gt;  with --backend daemon, wait this long for it (default 60)
+  -h, --help</code></pre></div>
+<h3 id="files-in-the-config-directory"><a class="doc-anchor" href="#files-in-the-config-directory">Files in the config directory</a></h3>
+<div class="doc-table"><table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody><tr><td><code>config.yaml</code></td><td>Optional. If present (AgentNet&#39;s file), Beagle reads <code>carrier.bootstrapNodes</code>, <code>carrier.expressNodes</code>, <code>node.name</code>, <code>node.statusMessage</code> and <code>friends.autoAccept</code> from it. Otherwise it uses the bootstrap and express lists shipped in the package&#39;s <code>config/bootstrap-nodes.yaml</code>, and auto-accept defaults to on.</td></tr><tr><td><code>carrier/keypair.json</code></td><td>The Carrier identity (<code>carrier.dataDir</code> overrides the location)</td></tr><tr><td><code>carrier/daemon.pid</code>, <code>carrier/holder.http-port</code></td><td>Identity lock and the UI port of the process holding it</td></tr><tr><td><code>messages.json</code>, <code>downloads/</code>, <code>file-resume/</code></td><td>Chat history, received files, partial transfers</td></tr><tr><td><code>routes.yaml</code>, <code>friend-greetings.json</code>, <code>beagle-exit-state.json</code></td><td>Exit-routing table, kept friend-request greetings, exit probe state</td></tr></tbody></table></div>
+<h3 id="environment-variables"><a class="doc-anchor" href="#environment-variables">Environment variables</a></h3>
+<div class="doc-table"><table><thead><tr><th>Variable</th><th>Effect</th></tr></thead><tbody><tr><td><code>BEAGLE_PORT</code></td><td>Default HTTP port when <code>--port</code> is not given</td></tr><tr><td><code>AGENTNET_CONFIG_DIR</code></td><td>Default config directory</td></tr><tr><td><code>AGENTNET_LOG_LEVEL</code></td><td><code>debug</code> / <code>info</code> / <code>warn</code> / <code>error</code></td></tr><tr><td><code>BEAGLE_ENS_GATEWAY</code></td><td>Gateway for <code>*.beagles.eth</code> names (default <code>https://ens-gateway.beaglechat.workers.dev</code>)</td></tr></tbody></table></div>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li>Node.js <strong>&gt;= 20</strong> (<code>engines</code>). Verified with Node 24.3.0 on macOS (arm64).</li>
+<li>macOS, Linux and Windows. No root or native build step. The embedded backend is pure JavaScript.</li>
+<li>The UI runs in any current browser. Calls need WebRTC in the browser.</li>
+<li>Runtime dependencies: <code>@decentnetwork/peer</code>, <code>@decentnetwork/peer-webrtc</code>, <code>@decentnetwork/beagle-ui</code>, <code>@decentnetwork/chat-components</code>, <code>@decentnetwork/lan</code>, <code>js-yaml</code>, <code>ws</code> and <code>yargs</code>.</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.1.132</strong> (published 2026-11-06; both quickstarts were re-run against it after 0.1.131 was first documented, with the same results and identical type declarations).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/beagle" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/beagle</a></li>
+<li>Source repository is not public yet. Browse the published code at <a href="https://www.npmjs.com/package/@decentnetwork/beagle?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/beagle?activeTab=code</a></li>
+<li>License: MIT.</li>
+<li>Changelog: none is published in the package.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

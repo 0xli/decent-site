@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer support — docs | Decent Network</title>
+    <meta name="description" content="Free help through GitHub issues, and how to reach us for technical support and integration help." />
+    <meta property="og:title" content="Developer support — docs | Decent Network" />
+    <meta property="og:description" content="Free help through GitHub issues, and how to reach us for technical support and integration help." />
+    <meta property="og:url" content="https://decent.network/docs/support" />
+    <link rel="canonical" href="https://decent.network/docs/support" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->Applications + support</div><h1>Developer support</h1><p>Free help through GitHub issues, and how to reach us for technical support and integration help.</p></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#free-help-github-issues">Free help: GitHub issues</a><a href="#technical-support-and-integration-help">Technical support and integration help</a><a href="#before-you-ask">Before you ask</a><a href="#security-issues">Security issues</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a class="active" href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p>Decent Network is built by a small team. Here is how to get help while you build on it, and how to reach us if you want us to help with the integration.</p>
+<h2 id="free-help-github-issues"><a class="doc-anchor" href="#free-help-github-issues">Free help: GitHub issues</a></h2>
+<p>Open an issue at <strong><a href="https://github.com/decentnetworks/decent.network/issues" target="_blank" rel="noreferrer">github.com/decentnetworks/decent.network/issues</a></strong>. It is the public tracker for developer questions about every SDK on this site, including the npm packages whose source repositories are not public yet.</p>
+<p>Two SDKs also accept issues in their own repositories:</p>
+<ul>
+<li>Dora: <a href="https://github.com/0xli/dora/issues" target="_blank" rel="noreferrer">github.com/0xli/dora/issues</a></li>
+<li>agent-mesh: <a href="https://github.com/0xli/decent-agent-mesh/issues" target="_blank" rel="noreferrer">github.com/0xli/decent-agent-mesh/issues</a></li>
+</ul>
+<p>A useful issue contains:</p>
+<ul>
+<li>the SDK and its exact version (<code>npm ls @decentnetwork/peer</code>, the Gradle dependency, the git commit you built from)</li>
+<li>the platform: OS and version, Node.js version, Android API level or iOS version, CPU architecture</li>
+<li>the smallest piece of code that shows the problem, and what you expected to happen</li>
+<li>the log output. Carrier addresses and userids are public keys and are fine to share; <strong>never post the contents of a key file</strong> (<code>peer.save</code>, the Carrier data directory, or anything holding a secret key)</li>
+</ul>
+<p>We answer issues on a best-effort basis. There is no response-time guarantee for free support.</p>
+<h2 id="technical-support-and-integration-help"><a class="doc-anchor" href="#technical-support-and-integration-help">Technical support and integration help</a></h2>
+<p>If you are building a product on Decent Network and want direct help — a review of your integration design, help getting the mobile or native SDKs into your app, or debugging connectivity on your network — write to <strong><a href="mailto:hi@beagle.chat">hi@beagle.chat</a></strong> with:</p>
+<ul>
+<li>your company or project and what you are building</li>
+<li>which SDKs and platforms you use</li>
+<li>what you need help with, and your timeline</li>
+</ul>
+<p>Paid technical support plans are being set up. Tell us what you need and we will reply with the options that fit.</p>
+<h2 id="before-you-ask"><a class="doc-anchor" href="#before-you-ask">Before you ask</a></h2>
+<ul>
+<li>Start from the <a href="/docs">SDK reference</a>. Every page has a quickstart that was run against the published version, and says plainly when an integration has not been verified yet.</li>
+<li>Check whether your two peers are friends. Most &quot;message never arrives&quot; reports come from sending before the friend request was accepted on both sides.</li>
+<li>Check the version. The Carrier network and the SDKs move quickly; compare yours with the version on the SDK&#39;s page.</li>
+</ul>
+<h2 id="security-issues"><a class="doc-anchor" href="#security-issues">Security issues</a></h2>
+<p>Do not open a public issue for a security vulnerability. Email <a href="mailto:hi@beagle.chat">hi@beagle.chat</a> with &quot;security&quot; in the subject line and we will coordinate a fix and disclosure with you.</p>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

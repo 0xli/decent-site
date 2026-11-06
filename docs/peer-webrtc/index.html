@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@decentnetwork/peer-webrtc 0.2.18 — docs | Decent Network</title>
+    <meta name="description" content="Audio/video call signaling over Carrier, wire-compatible with the iOS and Android Beagle apps. Bring your own RTCPeerConnection and transport." />
+    <meta property="og:title" content="@decentnetwork/peer-webrtc 0.2.18 — docs | Decent Network" />
+    <meta property="og:description" content="Audio/video call signaling over Carrier, wire-compatible with the iOS and Android Beagle apps. Bring your own RTCPeerConnection and transport." />
+    <meta property="og:url" content="https://decent.network/docs/peer-webrtc" />
+    <link rel="canonical" href="https://decent.network/docs/peer-webrtc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->npm packages</div><h1>@decentnetwork/peer-webrtc</h1><p>Audio/video call signaling over Carrier, wire-compatible with the iOS and Android Beagle apps. Bring your own RTCPeerConnection and transport.</p><dl class="doc-meta"><div><dt>Version</dt><dd>0.2.18<small> · <!-- -->npm</small></dd></div><div><dt>Platform</dt><dd>Node.js 20+ · browser</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div><div><dt>npm</dt><dd><a href="https://www.npmjs.com/package/@decentnetwork/peer-webrtc" target="_blank" rel="noreferrer">npm package<!-- --> ↗</a></dd></div></dl><div class="doc-install"><div class="code-wrap"><pre><code>npm install @decentnetwork/peer-webrtc</code></pre><button type="button" class="code-copy" aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></div></div></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#install">Install</a><a href="#quickstart">Quickstart</a><a href="#api-reference">API reference</a><a href="#configuration">Configuration</a><a href="#platforms">Platforms</a><a href="#version-source-and-changelog">Version, source and changelog</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a class="active" href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><p><code>@decentnetwork/peer-webrtc</code> is the WebRTC call layer for Decent Network. It owns the call state machine (offer, answer, ICE candidates, ringing, hang-up) and the <code>RtcSignal</code> JSON protocol that the iOS and Android Beagle apps use. It does not bundle a WebRTC stack or a network transport: you inject an <code>RTCPeerConnection</code> factory (the browser&#39;s own, or a Node implementation) and a signaling channel. The bundled <code>CarrierSignaling</code> sends signals as Carrier friend-invites through <a href="/docs/peer"><code>@decentnetwork/peer</code></a>, so a JS client can call, and be called by, the native Beagle apps.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<ul>
+<li>Use it to add audio, video or screen-share calls between Carrier friends in a browser app, an Electron/desktop app, or a Node service.</li>
+<li>Pair it with <a href="/docs/peer"><code>@decentnetwork/peer</code></a>, which carries the signaling (<code>Peer.sendInvite</code> / <code>Peer.onInvite</code>) and provides TURN credentials (<code>Peer.getIceServers()</code>).</li>
+<li>To reach a phone whose app is in the background, use the socket.io channel (<code>SocketIoSignaling</code>) and the push client (<code>BeaglePushClient</code>) that ship with this package.</li>
+<li>On Android and iOS, use the native WebRTC SDKs (<a href="/docs/android-webrtc">Android</a>, <a href="/docs/ios-webrtc">iOS</a>). They speak the same <code>RtcSignal</code> protocol over the same Carrier invite channel.</li>
+<li>For text, files and friends only, you do not need this package.</li>
+</ul>
+<h2 id="install"><a class="doc-anchor" href="#install">Install</a></h2>
+<div class="code-wrap"><pre><code class="language-bash">npm install @decentnetwork/peer-webrtc @decentnetwork/peer</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><code>@decentnetwork/peer</code> is an optional peer dependency (<code>&gt;=0.1.84</code>), so npm does not install it for you. You need it for <code>CarrierSignaling</code>. The package is ESM only. It has no runtime dependencies.</p>
+<p>In a browser, the <code>RTCPeerConnection</code> and <code>getUserMedia</code> come from the browser. In Node you need a WebRTC implementation. The quickstart uses <a href="https://www.npmjs.com/package/werift" target="_blank" rel="noreferrer">werift</a>, a pure-JavaScript one:</p>
+<div class="code-wrap"><pre><code class="language-bash">npm install werift</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<h2 id="quickstart"><a class="doc-anchor" href="#quickstart">Quickstart</a></h2>
+<p>This Node script creates two Carrier peers, makes them friends, and runs one <code>CallEngine</code> on each side over <code>CarrierSignaling</code>. The caller places an audio call. The callee gets <code>incomingCall</code> and rejects it, and the caller sees the call ring and end with <code>declined</code>. Every signal crosses the live Carrier network as a friend-invite.</p>
+<div class="code-wrap"><pre><code class="language-js">// quickstart.mjs — ring a Carrier friend with CallEngine, entirely in Node.
+// npm install @decentnetwork/peer-webrtc @decentnetwork/peer werift
+// Run: node quickstart.mjs
+import { Peer } from &quot;@decentnetwork/peer&quot;;
+import { CallEngine } from &quot;@decentnetwork/peer-webrtc&quot;;
+import { CarrierSignaling } from &quot;@decentnetwork/peer-webrtc/carrier&quot;;
+import { RTCPeerConnection } from &quot;werift&quot;; // any RTCPeerConnection works; werift is a pure-JS one for Node
+
+const bootstrapNodes = [
+  { host: &quot;47.100.103.201&quot;, port: 33445, pk: &quot;CX1XH419p4xJ5SV4KvDxBeKYSRdMJW9QpdWJY8owUxHd&quot; },
+  { host: &quot;154.64.235.176&quot;, port: 33445, pk: &quot;GdNtV2N74fZnLjhH7NhQ18nGdxb1k8jRM9dQaK7WnxmL&quot; },
+  { host: &quot;45.207.220.155&quot;, port: 33445, pk: &quot;37PXijTXkyX9rUcRFjGo7PYpwf732KXQJgMtcKuMu3ym&quot; },
+  { host: &quot;13.58.208.50&quot;, port: 33445, pk: &quot;89vny8MrKdDKs7Uta9RdVmspPjnRMdwMmaiEW27pZ7gh&quot; },
+];
+const expressNodes = [
+  { host: &quot;lens.beagle.chat&quot;, port: 443, pk: &quot;ECbs4GxwGzxGerNkmqDJFibEmevu8jAXqAZtikccvD95&quot; },
+];
+const watchdog = setTimeout(() =&gt; { console.error(&quot;timed out&quot;); process.exit(1); }, 180_000);
+
+// 1. Two Carrier peers that are friends (call signaling needs a live friend session).
+const caller = await Peer.create({ keyFile: &quot;./caller/peer.save&quot;, bootstrapNodes, expressNodes });
+const callee = await Peer.create({ keyFile: &quot;./callee/peer.save&quot;, bootstrapNodes, expressNodes });
+callee.onFriendRequest((req) =&gt; void callee.acceptFriendRequest(req.pubkey));
+await caller.start();
+await callee.start();
+await Promise.all([caller.joinNetwork(), callee.joinNetwork()]);
+await caller.sendFriendRequest(callee.address(), &quot;let's talk&quot;);
+const online = await caller.waitForFriendConnected(callee.userid(), 120_000);
+console.log(`carrier session caller -&gt; callee: ${online ? &quot;connected&quot; : &quot;not connected&quot;}`);
+
+// 2. One CallEngine per side. Signals ride Carrier friend-invites (&quot;carrier&quot; extension).
+const engine = (peer) =&gt; new CallEngine({
+  selfId: peer.userid(),
+  signaling: new CarrierSignaling(peer),
+  createPeerConnection: (config) =&gt; new RTCPeerConnection(config),
+  iceServers: peer.getIceServers({ limit: 1 }), // Carrier bootstrap STUN + TURN
+});
+const callerEngine = engine(caller);
+const calleeEngine = engine(callee);
+
+calleeEngine.on(&quot;incomingCall&quot;, (info) =&gt; {
+  console.log(`callee &lt;- incomingCall from ${info.peerId} audio=${info.audio} video=${info.video}`);
+  void calleeEngine.reject(info.callId); // a UI would ask the user, then accept(callId)
+});
+callerEngine.on(&quot;stateChanged&quot;, (info, state) =&gt; console.log(`caller state: ${state}`));
+const ended = new Promise((resolve) =&gt; callerEngine.on(&quot;ended&quot;, (callId, reason) =&gt; resolve(reason)));
+
+const callId = await callerEngine.call(callee.userid(), { audio: true, video: false });
+console.log(`caller -&gt; call() sent offer, callId ${callId}`);
+console.log(`caller &lt;- ended: ${await ended}`);
+
+callerEngine.dispose();
+calleeEngine.dispose();
+await caller.stop();
+await callee.stop();
+clearTimeout(watchdog);
+process.exit(0);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p><strong>Verified output</strong> (npm @decentnetwork/<a href="mailto:peer-webrtc@0.2.18">peer-webrtc@0.2.18</a> with @decentnetwork/<a href="mailto:peer@0.1.172">peer@0.1.172</a> and <a href="mailto:werift@0.22.2">werift@0.22.2</a>, Node.js 24.3.0, 2026-11-06):</p>
+<div class="code-wrap"><pre class="doc-output"><code class="language-text">carrier session caller -&gt; callee: connected
+caller state: ringing
+caller -&gt; call() sent offer, callId 27f2540f-9fdb-4eee-87b1-0f44529a4693
+callee &lt;- incomingCall from 6DevUHjrkd4NatwhS6akDFDy3MwAF4i5FSNyhYtzwMNf audio=true video=false
+caller state: remoteRinging
+caller state: declined
+caller &lt;- ended: declined</code></pre></div>
+<p><code>remoteRinging</code> is the callee&#39;s automatic <code>event: &quot;ringing&quot;</code> reply, which proves the offer reached it. <code>declined</code> is the callee&#39;s <code>bye</code> with reason <code>declined</code>.</p>
+<p>What was verified, and what was not:</p>
+<ul>
+<li><strong>Verified over the live network (Node):</strong> offer delivery over Carrier invites, <code>incomingCall</code>, the automatic ringing reply, <code>reject()</code>, and the caller&#39;s <code>ended(&quot;declined&quot;)</code>. The script passed on every run.</li>
+<li><strong>Verified in a browser:</strong> a full audio call between two <code>CallEngine</code> instances on one page, in Chromium 152, using <code>BroadcastChannelSignaling</code> and the browser&#39;s <code>RTCPeerConnection</code>. A WebAudio tone stood in for the microphone. Both sides reached <code>connected</code>, both got a <code>remoteStream</code> with one audio track, and <code>hangup()</code> ended both with <code>normal</code>.</li>
+<li><strong>Not verified:</strong> connected media over Carrier signaling (browser to browser, or to a native Beagle app), video, screen sharing, and the socket.io and push paths. With werift 0.22.2, ICE connected but the engine never left <code>connecting</code>, because werift does not call <code>oniceconnectionstatechange</code>. To accept calls in Node you need an <code>RTCPeerConnection</code> that fires the standard browser events.</li>
+</ul>
+<h3 id="wiring-it-in-a-browser"><a class="doc-anchor" href="#wiring-it-in-a-browser">Wiring it in a browser</a></h3>
+<p>This is the same API, with browser media:</p>
+<div class="code-wrap"><pre><code class="language-ts">import { Peer } from &quot;@decentnetwork/peer&quot;;
+import { CallEngine } from &quot;@decentnetwork/peer-webrtc&quot;;
+import { CarrierSignaling } from &quot;@decentnetwork/peer-webrtc/carrier&quot;;
+
+const engine = new CallEngine({
+  signaling: new CarrierSignaling(peer),                        // peer: a started Peer
+  createPeerConnection: (config) =&gt; new RTCPeerConnection(config),
+  getLocalMedia: (kinds) =&gt; navigator.mediaDevices.getUserMedia(kinds),
+  getDisplayMedia: (c) =&gt; navigator.mediaDevices.getDisplayMedia(c), // enables shareScreen()
+  iceServers: peer.getIceServers(),
+});
+
+engine.on(&quot;incomingCall&quot;, (info) =&gt; { /* show UI, then */ engine.accept(info.callId); });
+engine.on(&quot;localStream&quot;, (callId, stream) =&gt; { localVideo.srcObject = stream; });
+engine.on(&quot;remoteStream&quot;, (callId, stream) =&gt; { remoteVideo.srcObject = stream; });
+engine.on(&quot;ended&quot;, (callId, reason) =&gt; { /* tear down UI */ });
+
+const callId = await engine.call(friendUserid, { audio: true, video: true });
+// later
+await engine.hangup(callId);</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The package also ships <code>demo/index.html</code>, a two-tab call demo over <code>BroadcastChannelSignaling</code>. It imports <code>../dist/index.js</code>, so serve the installed package directory (<code>node_modules/@decentnetwork/peer-webrtc</code>) with any static server and open <code>demo/index.html</code> in two tabs.</p>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>Entry points (from <code>package.json</code> <code>exports</code>):</p>
+<div class="doc-table"><table><thead><tr><th>Import path</th><th>Exports</th></tr></thead><tbody><tr><td><code>@decentnetwork/peer-webrtc</code></td><td>everything below</td></tr><tr><td><code>@decentnetwork/peer-webrtc/carrier</code></td><td><code>CarrierSignaling</code>, <code>decodeSignal</code>, <code>encodeSignalBytes</code></td></tr><tr><td><code>@decentnetwork/peer-webrtc/socketio</code></td><td><code>SocketIoSignaling</code>, <code>decodeSignal</code>, <code>encodeSignal</code></td></tr><tr><td><code>@decentnetwork/peer-webrtc/push</code></td><td><code>BeaglePushClient</code></td></tr></tbody></table></div>
+<h3 id="class-callengine"><a class="doc-anchor" href="#class-callengine">Class <code>CallEngine</code></a></h3>
+<p><code>new CallEngine(opts: CallEngineOptions)</code>. It extends <code>Emitter&lt;CallEngineEvents&gt;</code>.</p>
+<div class="doc-table"><table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>call(peerId: string, kinds?: { audio?: boolean; video?: boolean; data?: boolean }): Promise&lt;string&gt;</code></td><td>Gets local media, sends an offer, and returns the new callId. Defaults: <code>audio: true</code>, <code>video: false</code>, <code>data: false</code>. Rejects after emitting <code>ended(callId, &quot;unreachable&quot;)</code> when the offer cannot be sent.</td></tr><tr><td><code>accept(callId: string): Promise&lt;void&gt;</code></td><td>Answer an incoming call.</td></tr><tr><td><code>reject(callId: string): Promise&lt;void&gt;</code></td><td>Decline (sends <code>bye</code> with <code>declined</code>).</td></tr><tr><td><code>hangup(callId: string, reason?: HangupType): Promise&lt;void&gt;</code></td><td>Hang up (default <code>normal</code>).</td></tr><tr><td><code>setLocalTrackEnabled(callId, kind: &quot;audio&quot; | &quot;video&quot;, enabled: boolean): void</code></td><td>Mute, or turn the camera off.</td></tr><tr><td><code>shareScreen(callId): Promise&lt;void&gt;</code> / <code>stopScreenShare(callId): Promise&lt;void&gt;</code> / <code>isSharingScreen(callId): boolean</code></td><td>Screen share (needs <code>getDisplayMedia</code>).</td></tr><tr><td><code>discard(callId): void</code></td><td>Drop a call locally without signaling the peer.</td></tr><tr><td><code>dispose(): void</code></td><td>Tear down every call.</td></tr><tr><td><code>calls: CallInfo[]</code> (getter)</td><td>Calls in progress.</td></tr><tr><td><code>isBusy: boolean</code> (getter)</td><td><code>true</code> while any call is active.</td></tr><tr><td><code>on(event, handler): () =&gt; void</code>, <code>once(...)</code>, <code>off(...)</code>, <code>emit(...)</code>, <code>removeAll()</code></td><td>From <code>Emitter</code>. <code>on</code> returns an unsubscribe function.</td></tr></tbody></table></div>
+<h3 id="events-callengineevents"><a class="doc-anchor" href="#events-callengineevents">Events (<code>CallEngineEvents</code>)</a></h3>
+<div class="doc-table"><table><thead><tr><th>Event</th><th>Handler</th></tr></thead><tbody><tr><td><code>incomingCall</code></td><td><code>(info: CallInfo) =&gt; void</code></td></tr><tr><td><code>stateChanged</code></td><td><code>(info: CallInfo, state: CallState) =&gt; void</code></td></tr><tr><td><code>localStream</code></td><td><code>(callId: string, stream: MediaStream) =&gt; void</code></td></tr><tr><td><code>remoteStream</code></td><td><code>(callId: string, stream: MediaStream) =&gt; void</code>. Emitted again with a new stream object when a track is added.</td></tr><tr><td><code>ended</code></td><td><code>(callId: string, reason: CallEndReason) =&gt; void</code></td></tr><tr><td><code>negotiationFailed</code></td><td><code>(callId: string, error: Error) =&gt; void</code>. A mid-call re-offer or answer from the peer could not be applied. The call stays up.</td></tr></tbody></table></div>
+<p><code>CallState</code> is one of <code>&quot;connecting&quot; | &quot;ringing&quot; | &quot;connected&quot; | &quot;disconnected&quot; | &quot;ended&quot; | &quot;failed&quot; | &quot;busy&quot; | &quot;declined&quot; | &quot;remoteRinging&quot; | &quot;remoteOnline&quot; | &quot;noAnswer&quot; | &quot;unreachable&quot;</code>.
+<code>CallEndReason</code> is one of <code>&quot;declined&quot; | &quot;busy&quot; | &quot;normal&quot; | &quot;close&quot; | &quot;failed&quot; | &quot;noAnswer&quot; | &quot;unreachable&quot;</code>.
+<code>CallInfo</code> is <code>{ callId, peerId, direction: &quot;outgoing&quot; | &quot;incoming&quot;, audio, video, data, state }</code>.</p>
+<h3 id="signaling-channels"><a class="doc-anchor" href="#signaling-channels">Signaling channels</a></h3>
+<p>All of these implement <code>SignalingChannel</code>: <code>{ send(peerId, signal: RtcSignal): void | Promise&lt;void&gt;; onSignal(handler: (peerId, signal) =&gt; void): void }</code>. Implement the same two methods to bring your own transport, for example an IPC bridge between a daemon that holds the <code>Peer</code> and a browser UI that holds the <code>RTCPeerConnection</code>.</p>
+<div class="doc-table"><table><thead><tr><th>Class</th><th>Constructor</th><th>Notes</th></tr></thead><tbody><tr><td><code>CarrierSignaling</code></td><td><code>new CarrierSignaling(peer: CarrierInviteTransport, opts?: { ext?: string })</code></td><td><code>peer</code> is any object with <code>sendInvite(pubkey, data, opts?)</code> and <code>onInvite(cb)</code>. A <code>Peer</code> from <code>@decentnetwork/peer</code> fits. <code>ext</code> defaults to <code>&quot;carrier&quot;</code>, the extension the native apps listen on. Invites that are not signals are ignored.</td></tr><tr><td><code>BroadcastChannelSignaling</code></td><td><code>new BroadcastChannelSignaling(selfId: string, channelName?: string)</code></td><td>Browser-only, between tabs or within a page. Also has <code>close()</code>.</td></tr><tr><td><code>SocketIoSignaling</code></td><td><code>new SocketIoSignaling(socket: SocketIoLike, opts: { userId: string })</code></td><td>Beagle socket.io gateway. Each call is a room keyed by <code>callId</code>. Also has <code>joinCall(callId)</code> (join before answering a call that arrived by push) and <code>leaveCall(callId)</code>. Bring your own <code>socket.io-client</code> socket.</td></tr></tbody></table></div>
+<h3 id="class-beaglepushclient"><a class="doc-anchor" href="#class-beaglepushclient">Class <code>BeaglePushClient</code></a></h3>
+<p><code>new BeaglePushClient(opts: BeaglePushOptions)</code> with <code>{ appKey: string; appName: string; endpoints?: string[]; fetch?: typeof fetch }</code>. The default endpoints are the public Beagle push gateways.</p>
+<div class="doc-table"><table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody><tr><td><code>ring(calleeUserId, { callerUserId, callId, callerName, hasVideo, channel? }): Promise&lt;boolean&gt;</code></td><td>Wake an offline phone for a call.</td></tr><tr><td><code>cancel(calleeUserId, { … same … }): Promise&lt;boolean&gt;</code></td><td>Cancel the ring.</td></tr><tr><td><code>sendCallPush(calleeUserId, payload: PushPayload): Promise&lt;boolean&gt;</code></td><td>Send a raw <code>PushPayload</code>: <code>{ userId, hasVideo: &quot;true&quot; | &quot;false&quot;, callId, callName, action: &quot;call&quot; | &quot;decline&quot;, channel: &quot;socketio&quot; | &quot;carrier&quot; }</code>.</td></tr></tbody></table></div>
+<p>Each call tries the endpoints in order and resolves <code>false</code> if they all fail. <code>appKey</code> and <code>appName</code> must be registered with the push gateway; they were not tested for this page.</p>
+<h3 id="signal-and-sdp-helpers"><a class="doc-anchor" href="#signal-and-sdp-helpers">Signal and SDP helpers</a></h3>
+<div class="doc-table"><table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>encodeSignal(signal: RtcSignal): string</code> / <code>encodeSignalBytes(signal): Uint8Array</code></td><td>Compact JSON as the native apps expect it. Undefined fields are left out.</td></tr><tr><td><code>decodeSignal(input: string | Uint8Array): RtcSignal</code></td><td>Parse. Accepts a trailing NUL from C senders. Throws on bad input.</td></tr><tr><td><code>decodeSignalBytesGuard(input): RtcSignal | undefined</code></td><td>Like <code>decodeSignal</code>, but returns <code>undefined</code> instead of throwing.</td></tr><tr><td><code>looksLikeSignal(input): boolean</code></td><td>Cheap check before a full decode.</td></tr><tr><td><code>fitSignalForInvite(signal, budget?): { signal, bytes, shrunk }</code></td><td>Shrink an offer to fit the Carrier invite limit (<code>CARRIER_MAX_INVITE_DATA_LEN</code> = 8192 bytes).</td></tr><tr><td><code>shrinkSdpForInvite(sdp, budget?, opts?: { codecs?: boolean }): string</code></td><td>The SDP-level shrink used by <code>fitSignalForInvite</code>.</td></tr><tr><td><code>sanitizeSdp(sdp): string</code> / <code>orphanPayloadTypeLines(sdp): string[]</code></td><td>Remove codec lines whose payload type is not on their <code>m=</code> line (Firefox leaves these; Chrome rejects them). A clean SDP comes back unchanged.</td></tr><tr><td><code>mediaDirection(sdp, kind: &quot;audio&quot; | &quot;video&quot;): SdpDirection | undefined</code>, <code>videoIsSending(sdp): boolean</code>, <code>byteLength(text): number</code></td><td>SDP inspection.</td></tr></tbody></table></div>
+<p><code>RtcSignal</code> is <code>{ type: &quot;offer&quot; | &quot;answer&quot; | &quot;candidate&quot; | &quot;remove-candidates&quot; | &quot;prAnswer&quot; | &quot;bye&quot; | &quot;action&quot; | &quot;event&quot;; callId: string; sdp?; candidates?: RtcCandidateSignal[]; reason?: HangupType; options?: MediaKind[]; action?: &quot;reject&quot; | &quot;accept&quot;; event?: &quot;ringing&quot; | &quot;online&quot; | &quot;connectToRoom&quot; }</code>.</p>
+<p>Exported types: <code>RtcSignal</code>, <code>RtcCandidateSignal</code>, <code>SdpType</code>, <code>HangupType</code>, <code>SignalEvent</code>, <code>SignalAction</code>, <code>MediaKind</code>, <code>SdpDirection</code>, <code>SignalingChannel</code>, <code>PeerConnectionFactory</code>, <code>LocalMediaProvider</code>, <code>CallEngineOptions</code>, <code>CallEngineEvents</code>, <code>CallState</code>, <code>CallEndReason</code>, <code>CallDirection</code>, <code>CallInfo</code>, <code>CarrierInviteTransport</code>, <code>SocketIoLike</code>, <code>PushPayload</code>, <code>BeaglePushOptions</code>.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">Configuration</a></h2>
+<p><code>CallEngineOptions</code>:</p>
+<div class="doc-table"><table><thead><tr><th>Option</th><th>Default</th><th>Notes</th></tr></thead><tbody><tr><td><code>signaling</code></td><td>required</td><td>A <code>SignalingChannel</code>.</td></tr><tr><td><code>createPeerConnection</code></td><td>required</td><td><code>(config: RTCConfiguration) =&gt; RTCPeerConnection</code>.</td></tr><tr><td><code>getLocalMedia</code></td><td>none</td><td><code>(kinds) =&gt; Promise&lt;MediaStream&gt;</code>. Leave it out for receive-only calls.</td></tr><tr><td><code>getDisplayMedia</code></td><td>none</td><td>Enables <code>shareScreen()</code>.</td></tr><tr><td><code>iceServers</code></td><td>Google STUN</td><td>Add TURN for calls across symmetric NATs. <code>Peer.getIceServers()</code> returns Carrier bootstrap STUN and TURN entries with per-identity credentials.</td></tr><tr><td><code>selfId</code></td><td>none</td><td>For logs.</td></tr><tr><td><code>generateCallId</code></td><td><code>crypto.randomUUID()</code></td><td>Custom callId generator.</td></tr><tr><td><code>ringTimeoutMs</code></td><td><code>60000</code></td><td>An outgoing call with no answer ends with <code>noAnswer</code>. <code>0</code> turns it off.</td></tr><tr><td><code>sendRinging</code></td><td><code>true</code></td><td>The callee replies <code>event: &quot;ringing&quot;</code> to each new offer.</td></tr><tr><td><code>leanVideoCodecs</code></td><td><code>true</code></td><td>Limit video to H264/VP8 (plus rtx/red/ulpfec) so offers fit the 8192-byte invite limit.</td></tr><tr><td><code>maxSignalBytes</code></td><td><code>8192</code></td><td>Hard cap for one encoded signal.</td></tr><tr><td><code>iceRestartOffers</code></td><td><code>false</code></td><td>Allow ICE-restart re-offers. Turn it on only when every peer runs this JS engine: the native apps treat any new offer as a new call.</td></tr><tr><td><code>logger</code></td><td>none</td><td><code>(msg: string) =&gt; void</code>.</td></tr></tbody></table></div>
+<p>There are no environment variables and no CLI.</p>
+<h2 id="platforms"><a class="doc-anchor" href="#platforms">Platforms</a></h2>
+<ul>
+<li><strong>Browsers:</strong> any browser with <code>RTCPeerConnection</code>. A full audio call was verified in Chromium 152 (see above). The package contains fixes for Firefox-generated SDP.</li>
+<li><strong>Node.js 20+</strong> (<code>engines.node &gt;= 20.0.0</code>). <code>CallEngine</code> and the signaling classes run in Node, but you must inject an <code>RTCPeerConnection</code>. Node has none built in. <code>BroadcastChannelSignaling</code> needs <code>BroadcastChannel</code>, and receiving media in Node needs a global <code>MediaStream</code>.</li>
+<li><strong>Native interop:</strong> wire-compatible with the Beagle apps&#39; <code>RtcSignal</code> over Carrier invites (<code>ext</code> <code>&quot;carrier&quot;</code>), according to the package. A call to a native app was not tested for this page.</li>
+<li>No native dependencies, and no runtime dependencies at all.</li>
+</ul>
+<h2 id="version-source-and-changelog"><a class="doc-anchor" href="#version-source-and-changelog">Version, source and changelog</a></h2>
+<ul>
+<li>Verified version: <strong>0.2.18</strong> (npm <code>latest</code>, published 2026-11-05).</li>
+<li>npm: <a href="https://www.npmjs.com/package/@decentnetwork/peer-webrtc" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/peer-webrtc</a></li>
+<li>Source: the source repository is not public yet. The published code is in the npm package: <a href="https://www.npmjs.com/package/@decentnetwork/peer-webrtc?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/peer-webrtc?activeTab=code</a></li>
+<li>Changelog: <code>CHANGELOG.md</code> ships in the package (entries from 0.2.17 on): <a href="https://www.npmjs.com/package/@decentnetwork/peer-webrtc?activeTab=code" target="_blank" rel="noreferrer">https://www.npmjs.com/package/@decentnetwork/peer-webrtc?activeTab=code</a></li>
+<li>License: GPL-3.0-or-later.</li>
+</ul>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>

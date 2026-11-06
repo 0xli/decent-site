@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 20v60h30c25 0 40-15 40-30s-15-30-40-30H20zm15 15h15c15 0 20 8 20 15s-5 15-20 15H35V35z' fill='%233b82f6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iOS WebRTC SDK — docs | Decent Network</title>
+    <meta name="description" content="Preview: audio/video calls for iOS on WebRTC, with signaling over Carrier — the call stack inside Beagle Chat for iOS. Source is not public yet and nothing is published." />
+    <meta property="og:title" content="iOS WebRTC SDK — docs | Decent Network" />
+    <meta property="og:description" content="Preview: audio/video calls for iOS on WebRTC, with signaling over Carrier — the call stack inside Beagle Chat for iOS. Source is not public yet and nothing is published." />
+    <meta property="og:url" content="https://decent.network/docs/ios-webrtc" />
+    <link rel="canonical" href="https://decent.network/docs/ios-webrtc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://decent.network/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-r0Fy9EJQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dz60Qjvy.css">
+  </head>
+  <body>
+    <div id="root"><div class="app-container"><div class="bg-grid"></div><div class="glow-orb" style="top:-20%;left:10%"></div><div class="glow-orb" style="top:60%;right:-10%"></div><nav class="navbar glass"><div class="container nav-container"><a class="nav-logo" href="/" data-discover="true"><span class="brand-mark">D</span>Decent<span class="nav-logo-dot">.</span>network</a><div class="nav-links"><a class="nav-link" href="/developers" data-discover="true">Developers</a><a class="nav-link" href="/nodes" data-discover="true">Nodes</a><a class="nav-link" href="/network" data-discover="true">Network</a><a class="nav-link" href="/docs" data-discover="true">Docs</a><a class="nav-link" href="/sdks" data-discover="true">SDKs</a><a class="nav-link" href="/#use-cases" data-discover="true">Use Cases</a></div><a class="nav-cta" href="/whitepaper" data-discover="true">Read Whitepaper</a></div></nav><main class="site-main"><section class="page-hero container doc-hero"><div class="section-kicker"><a href="/docs" data-discover="true">All docs</a> / <!-- -->Mobile + native Carrier SDKs</div><h1>iOS WebRTC SDK</h1><p>Preview: audio/video calls for iOS on WebRTC, with signaling over Carrier — the call stack inside Beagle Chat for iOS. Source is not public yet and nothing is published.</p><dl class="doc-meta"><div><dt>Version</dt><dd>No published release</dd></div><div><dt>Platform</dt><dd>iOS · Swift</dd></div><div><dt>Source</dt><dd>Source repository not public yet</dd></div></dl></section><section class="section docs-reading doc-page"><div class="container docs-reading-layout"><aside><strong>On this page</strong><a href="#when-to-use-it">When to use it</a><a href="#add-it-to-your-project">Add it to your project</a><a href="#initialize">Initialize</a><a href="#identity">Identity</a><a href="#friends">Friends</a><a href="#messages">Messages</a><a href="#files">Files</a><a href="#sessions-and-calls">Sessions and calls</a><a href="#offline-messages-express">Offline messages (Express)</a><a href="#threading-and-lifecycle">Threading and lifecycle</a><a href="#api-reference">API reference</a><a href="#source">Source</a><div class="doc-nav"><strong>npm packages</strong><a href="/docs/peer" data-discover="true">peer</a><a href="/docs/peer-webrtc" data-discover="true">peer-webrtc</a><a href="/docs/chat-components" data-discover="true">chat-components</a><a href="/docs/lan" data-discover="true">lan</a><a href="/docs/dora" data-discover="true">dora</a><a href="/docs/beagle" data-discover="true">beagle</a><a href="/docs/beagle-ui" data-discover="true">beagle-ui</a><a href="/docs/beagle-connect" data-discover="true">beagle-connect</a><a href="/docs/billing-client" data-discover="true">billing-client</a></div><div class="doc-nav"><strong>Mobile + native Carrier SDKs</strong><a href="/docs/android-carrier" data-discover="true">Android Carrier SDK</a><a href="/docs/android-webrtc" data-discover="true">Android WebRTC SDK</a><a href="/docs/swift-carrier" data-discover="true">Swift Carrier SDK</a><a class="active" href="/docs/ios-webrtc" data-discover="true">iOS WebRTC SDK</a><a href="/docs/native-carrier" data-discover="true">Carrier Native SDK (C/C++)</a></div><div class="doc-nav"><strong>Applications + support</strong><a href="/docs/reference-apps" data-discover="true">Reference applications</a><a href="/docs/support" data-discover="true">Developer support</a></div></aside><main><div class="doc-prose"><blockquote>
+<p><strong>Integration not yet verified.</strong> The source repository of this SDK is not public yet, and no distribution of it is published, so a third-party app cannot add it today. The API below was read from the SDK source on the branch that ships in Beagle Chat for iOS. The call sample on this page was compiled (Xcode 27.0, iOS Simulator) against a copy of that source and a from-source build of the <a href="/docs/swift-carrier">Swift Carrier SDK</a>, but no call was placed, and you cannot reproduce that build outside the project. Treat this page as a preview of what is coming.</p>
+</blockquote>
+<p>The iOS WebRTC SDK (module <code>ElastosWebRTCSDK</code>) adds one-to-one audio and video calls, plus an optional WebRTC data channel, to an iOS app on the Decent Network. Media runs over Google&#39;s WebRTC. Signaling (offer, answer, ICE candidates, hang-up) goes through a provider object that your app supplies. Over Carrier, that provider sends the signals as JSON through the <a href="/docs/swift-carrier">Swift Carrier SDK</a>&#39;s <code>CarrierExtension</code> invite channel, and uses the TURN server that Carrier hands out. Beagle Chat for iOS uses this SDK for its calls.</p>
+<h2 id="when-to-use-it"><a class="doc-anchor" href="#when-to-use-it">When to use it</a></h2>
+<p>Use it when an iOS app needs calls between Carrier friends. Every other part of the network (identity, friends, messages, files, offline delivery) comes from the <a href="/docs/swift-carrier">Swift Carrier SDK</a>, which you need in any case. On Android, use the <a href="/docs/android-webrtc">Android WebRTC SDK</a>. In JavaScript, use <a href="/docs/peer-webrtc">@decentnetwork/peer-webrtc</a>.</p>
+<h2 id="add-it-to-your-project"><a class="doc-anchor" href="#add-it-to-your-project">Add it to your project</a></h2>
+<p>You cannot add it yet:</p>
+<ul>
+<li>The source repository is private. No tag, Swift package, CocoaPods pod or binary of this SDK has been published.</li>
+<li>The CocoaPods pod named <code>ElastosWebRTCSDK</code> (1.0.0 to 1.0.3, 2020 to 2021) is the older upstream Elastos SDK, not this one. Its source repository no longer exists, so it does not install either.</li>
+</ul>
+<p>For planning, here is what the SDK is made of. It is a Swift package, <code>ElastosWebRTCSDK</code>, with <code>swift-tools-version 5.9</code> and platforms iOS 16 / macOS 13. It depends on the public <a href="https://github.com/stasel/WebRTC" target="_blank" rel="noreferrer">stasel/WebRTC</a> package (<code>147.0.0</code> and up) and on a small helper package, <code>ACUtils</code> (which pulls in <a href="https://github.com/onevcat/Kingfisher" target="_blank" rel="noreferrer">Kingfisher</a>), that ships alongside it. The package does not depend on the Carrier SDK: your app links both and connects them through an <code>RTCProvider</code> (see below).</p>
+<h2 id="initialize"><a class="doc-anchor" href="#initialize">Initialize</a></h2>
+<p>Create a <code>WebRtcClient</code> with a <code>WebRtcDelegate</code>, then attach a signaling provider with <code>setup(provider:)</code>. The provider below sends signals over Carrier. It needs a started, ready <code>Carrier</code> (see <a href="/docs/swift-carrier">Initialize</a> on the Carrier page).</p>
+<div class="code-wrap"><pre><code class="language-swift">import Foundation
+import ElastosCarrierSDK
+import ElastosWebRTCSDK   // re-exports WebRTC, ACFoundation, ACAppKit
+
+/// Carries WebRTC signals (offer/answer/candidates/bye) as JSON over the
+/// Carrier extension invite channel, and supplies the Carrier TURN server.
+final class CarrierSignalProvider: RTCProvider {
+    var receiveClosure: ((RtcSignal, String) -&gt; Void)?
+    var call: Call?
+    var iceServers: [RTCIceServer] = []
+    var channel: ProviderChannel = .carrier
+    var status: ProviderStatus = .connecting
+
+    private let ext: CarrierExtension
+
+    init(carrier: Carrier) throws {
+        ext = CarrierExtension(carrier)
+        try ext.registerExtension { [weak self] _, from, data in
+            guard let data = data?.data(using: .utf8),
+                  let signal = try? JSONDecoder().decode(RtcSignal.self, from: data) else { return }
+            self?.receiveClosure?(signal, from)
+        }
+        if let turn = try? ext.turnServerInfo() {
+            iceServers = [RTCIceServer(urlStrings: [&quot;turn:\(turn.server):\(turn.port)&quot;],
+                                       username: turn.username, credential: turn.password)]
+        }
+    }
+
+    func send(_ signal: RtcSignal, friendId: String, closure: @escaping BoolClosure) throws {
+        let json = String(decoding: try JSONEncoder().encode(signal), as: UTF8.self)
+        try ext.sendInviteFriendRequest(to: friendId, withData: json) { _, _, status, _, _ in
+            closure(status == 0)
+        }
+    }
+
+    func connect() { status = .connected }
+    func disconnected() { status = .disconnected(retryCount: 0) }
+}
+
+final class CallController: WebRtcDelegate {
+    lazy var client = WebRtcClient(delegate: self)
+    var isBusy: Bool { false }
+
+    func start(carrier: Carrier) throws {
+        client.setup(provider: try CarrierSignalProvider(carrier: carrier))
+    }
+
+    func call(friendId: String, video: Bool) {
+        let call = Call(remoteAddress: friendId, direction: .outgoing, localId: UUID(),
+                        hasLocalVideo: video, channel: .carrier)
+        client.makeCall(call: call)
+    }
+
+    func hangUp() { client.endCall(type: .normal) }
+
+    // Incoming offer: accept, reject or report busy.
+    func onInvite(call: Call, completion: @escaping InviteClosure) {
+        completion(.accept)
+    }
+
+    func onWebRtc(_ client: WebRtcClient, didChangeState state: WebRtcCallState) {
+        print(&quot;call state: \(state)&quot;)
+    }
+
+    func onReceiveMessage(_ data: Data, isBinary: Bool, channelId: Int) {}
+    func onSendDataFailure(error: Error) {}
+}</code></pre><button type="button" class="code-copy" data-copy aria-label="Copy to clipboard"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+<p>The SDK always adds <code>stun:stun.l.google.com:19302</code> to the ICE servers, followed by whatever the provider returns in <code>iceServers</code>. Beagle&#39;s own provider follows the same pattern: JSON-encoded <code>RtcSignal</code> over <code>CarrierExtension</code>, with TURN from <code>turnServerInfo()</code>. It also routes and repairs signals in ways not shown here.</p>
+<h2 id="identity"><a class="doc-anchor" href="#identity">Identity</a></h2>
+<p>The SDK has no identity of its own. A call&#39;s peer is a Carrier friend, addressed by userId (<code>Call.remoteAddress</code>). See <a href="/docs/swift-carrier">Identity</a> on the Swift Carrier page.</p>
+<h2 id="friends"><a class="doc-anchor" href="#friends">Friends</a></h2>
+<p>Not part of this SDK. Calls go to existing Carrier friends, and the provider can only reach a friend through Carrier.</p>
+<h2 id="messages"><a class="doc-anchor" href="#messages">Messages</a></h2>
+<p>During a call, the WebRTC data channel can carry text and files: <code>sendText(_:)</code>, <code>sendFile(_:)</code> and <code>sendImage(_:)</code> on <code>WebRtcClient</code>. Received data arrives in <code>WebRtcDelegate.onReceiveMessage(_:isBinary:channelId:)</code>. The data channel exists only when the call&#39;s options include <code>.data</code>. An incoming call gets <code>.data</code> if the caller offered it. <code>makeCall(call:)</code> uses <code>Call.options</code>, which contain only <code>.audio</code> / <code>.video</code>, so in this version an outgoing call does not open a data channel. For chat messages, use Carrier&#39;s <code>sendFriendMessage</code>.</p>
+<h2 id="files"><a class="doc-anchor" href="#files">Files</a></h2>
+<p><code>sendFile(_ path: String)</code> and <code>sendImage(_ image: UIImage)</code> split the file into JSON chunks (<code>data</code> in base64, <code>fileId</code>, <code>index</code>, <code>mime</code>, <code>end</code>) over the data channel, subject to the limits in <a href="#messages">Messages</a>. For files outside a call, use Carrier <a href="/docs/swift-carrier">file transfer</a>.</p>
+<h2 id="sessions-and-calls"><a class="doc-anchor" href="#sessions-and-calls">Sessions and calls</a></h2>
+<p>The call flow, from the source:</p>
+<ol>
+<li><strong>Caller.</strong> <code>makeCall(call:)</code> stores the <code>Call</code> on the provider, adds the local tracks, creates an SDP offer and sends it as <code>RtcSignal(type: .offer, …)</code> through the provider. If the provider&#39;s <code>send</code> throws, the client calls <code>onOfferSendFailure(callId, error)</code>.</li>
+<li><strong>Callee.</strong> The provider passes the decoded signal to <code>receiveClosure</code>, which <code>setup(provider:)</code> wires to <code>WebRtcClient.receive(message:from:)</code>. An offer builds an incoming <code>Call</code> and calls <code>WebRtcDelegate.onInvite(call:completion:)</code>. Answer <code>.accept</code> to create and send the SDP answer, <code>.reject</code> to send <code>bye</code> with reason <code>declined</code>, or <code>.busy</code> to send <code>bye</code> with reason <code>busy</code>. Before <code>onInvite</code>, the client asks <code>shouldConfirmRinging(for:)</code> (default <code>false</code>). If that returns <code>true</code>, it sends <code>event: ringing</code> back once per call and channel.</li>
+<li><strong>Both sides.</strong> ICE candidates are queued and sent as <code>.candidate</code> signals once the remote SDP is in place. State changes come to <code>onWebRtc(_:didChangeState:)</code> as <code>WebRtcCallState</code>: <code>.connecting</code>, <code>.connected</code>, <code>.disconnected</code>, <code>.accept</code>, <code>.error(error:)</code>, <code>.hangup(byRemote:)</code>, <code>.ended</code>, <code>.busy</code>, <code>.remoteRinging</code>, <code>.remoteOnline</code>, <code>.connectToRoom</code>.</li>
+<li><strong>Hang up.</strong> <code>endCall(type:)</code> sends <code>bye</code> with a <code>HangupType</code> (<code>.normal</code>, <code>.declined</code>, <code>.busy</code>, <code>.close</code>) and releases the camera, peer connection and data channel.</li>
+</ol>
+<p>Media controls on <code>WebRtcClient</code>: <code>isEnableAudio</code> and <code>isEnableVideo</code> (mute / camera off), <code>setLoudSpeaker(enabled:)</code>, <code>switchCamera(position:)</code> and <code>stopCapture()</code>. For video calls, the client creates <code>localVideoView</code> (<code>LocalVideoView</code>, the camera preview) and <code>remoteVideoView</code> (<code>RemoteVideoView</code>, Metal-rendered) on the main thread and then calls <code>videoViewsReadyClosure</code>, where you add them to your view hierarchy. On the simulator the camera is not started.</p>
+<p><strong>CallKit.</strong> The SDK does not use CallKit. <code>Call.localId</code> is a <code>UUID</code> so that it can serve as a CallKit call id, and <code>Call.Direction</code> has a <code>.callkit</code> case, but the CallKit and PushKit integration lives in the app (in Beagle, its own CallKit and push managers). <code>discardUnansweredCall(callId:)</code> and <code>noteRemoteEnded(callId:)</code> exist to support that app-side hand-off.</p>
+<h2 id="offline-messages-express"><a class="doc-anchor" href="#offline-messages-express">Offline messages (Express)</a></h2>
+<p>Not part of this SDK. A call needs the friend to be reachable, and signals go only through the provider you attach. <code>ProviderChannel</code> has a <code>.socketio</code> case for a second, app-supplied signaling provider (Beagle uses one for its offline path). The SDK itself ships only the protocol, not a socket.io client.</p>
+<h2 id="threading-and-lifecycle"><a class="doc-anchor" href="#threading-and-lifecycle">Threading and lifecycle</a></h2>
+<ul>
+<li>Delegate callbacks come on the thread where the signal or WebRTC event arrived. Over Carrier, that is the Carrier background queue. <code>videoViewsReadyClosure</code> is called on the main thread. Dispatch UI work to the main queue.</li>
+<li><code>WebRtcClient.delegate</code> is <code>weak</code>, so keep your delegate alive. One <code>WebRtcClient</code> handles one call at a time. <code>WebRtcDelegate</code> requires an <code>isBusy</code> property, but this version of the SDK never reads it, so check for calls in progress yourself in <code>onInvite</code> and answer <code>.busy</code>.</li>
+<li>After <code>endCall</code> (or a remote <code>bye</code>), the client detaches the provider. Call <code>setup(provider:)</code> again before the next call.</li>
+<li><code>RtcSignal</code> is <code>Codable</code>. On the wire its fields are <code>type</code>, <code>sdp</code>, <code>candidates</code>, <code>reason</code>, <code>options</code>, <code>action</code>, <code>callId</code> and <code>event</code>, so peers on other platforms can share the same JSON.</li>
+</ul>
+<h2 id="api-reference"><a class="doc-anchor" href="#api-reference">API reference</a></h2>
+<p>Preview only. This is the public API on the unreleased source and may change before a release.</p>
+<div class="doc-table"><table><thead><tr><th>Type</th><th>Members</th></tr></thead><tbody><tr><td><code>WebRtcClient</code></td><td><code>init(delegate: WebRtcDelegate)</code>, <code>func setup(provider: RTCProvider)</code>, <code>var provider: RTCProvider?</code>, <code>weak var delegate</code>, <code>var friendId: String?</code>, <code>var callId: String?</code>, <code>var options: MediaOptions</code> (read-only), <code>func makeCall(call: Call)</code>, <code>func endCall(type: HangupType)</code>, <code>func send(signal: RtcSignal, closure: @escaping BoolClosure) throws</code>, <code>func receive(message: RtcSignal, from: String)</code>, <code>var isEnableAudio: Bool</code>, <code>var isEnableVideo: Bool</code>, <code>func setLoudSpeaker(enabled: Bool)</code>, <code>func switchCamera(position: AVCaptureDevice.Position)</code>, <code>func stopCapture()</code>, <code>func sendText(_:) throws</code>, <code>func sendFile(_:) throws</code>, <code>func sendImage(_:) throws</code>, <code>var localVideoView: LocalVideoView?</code>, <code>var remoteVideoView: RemoteVideoView?</code>, <code>var videoViewsReadyClosure: (() -&gt; Void)?</code>, <code>var latestRemoteVideoTrack: RTCVideoTrack?</code>, <code>var onOfferSendFailure: ((String, Error) -&gt; Void)?</code>, <code>func discardUnansweredCall(callId: UUID) -&gt; Bool</code>, <code>func noteRemoteEnded(callId: UUID)</code>, <code>var remoteEndedCallId: UUID?</code></td></tr><tr><td><code>WebRtcDelegate</code></td><td><code>func onInvite(call: Call, completion: @escaping InviteClosure)</code>, <code>func onWebRtc(_ client: WebRtcClient, didChangeState state: WebRtcCallState)</code>, <code>func onReceiveMessage(_ data: Data, isBinary: Bool, channelId: Int)</code>, <code>func onSendDataFailure(error: Error)</code>, <code>var isBusy: Bool { get }</code>, <code>func shouldConfirmRinging(for call: Call) -&gt; Bool</code> (default <code>false</code>)</td></tr><tr><td><code>RTCProvider</code></td><td><code>var receiveClosure: ((RtcSignal, String) -&gt; Void)?</code>, <code>func send(_ signal: RtcSignal, friendId: String, closure: @escaping BoolClosure) throws</code>, <code>func connect()</code>, <code>func disconnected()</code>, <code>var call: Call?</code>, <code>var iceServers: [RTCIceServer]</code>, <code>var channel: ProviderChannel</code>, <code>var status: ProviderStatus</code></td></tr><tr><td><code>Call</code></td><td><code>init(remoteAddress:direction:localId:callerName:hasLocalVideo:dataChannel:channel:)</code>; <code>remoteAddress</code>, <code>direction</code> (<code>.incoming</code>, <code>.outgoing</code>, <code>.callkit</code>), <code>localId: UUID</code>, <code>hasLocalVideo</code>, <code>callerName</code>, <code>dataChannel</code>, <code>channel</code>, <code>startDate</code>, <code>endDate</code>, <code>state</code>, <code>duration</code>, <code>options</code></td></tr><tr><td><code>RtcSignal</code></td><td><code>init(type:sdp:candidates:reason:options:action:callId:event:)</code>; <code>SdpType</code> (<code>offer</code>, <code>answer</code>, <code>candidate</code>, <code>remove-candidates</code>, <code>prAnswer</code>, <code>bye</code>, <code>action</code>, <code>event</code>), <code>Action</code> (<code>accept</code>, <code>reject</code>), <code>Event</code> (<code>ringing</code>, <code>online</code>, <code>connectToRoom</code>), <code>HangupType</code></td></tr><tr><td><code>MediaOptions</code></td><td>array literal of <code>MediaOptionItem</code> (<code>.audio</code>, <code>.video</code>, <code>.data</code>); <code>isEnableAudio</code>, <code>isEnableVideo</code>, <code>isEnableDataChannel</code></td></tr><tr><td>Enums</td><td><code>ProviderChannel</code> (<code>.socketio</code>, <code>.carrier</code>), <code>ProviderStatus</code>, <code>WebRtcCallState</code>, <code>InviteState</code> (<code>.accept</code>, <code>.reject</code>, <code>.busy</code>), <code>WebRtcError</code> (<code>.dataChannelInitFailed</code>, <code>.dataChannelStateIsNotOpen</code>, <code>.turnServerIsNil</code>)</td></tr><tr><td>Views</td><td><code>LocalVideoView</code> (<code>UIView</code>, camera preview), <code>RemoteVideoView</code> (<code>UIView</code>, <code>RTCVideoRenderer</code>, Metal), <code>VideoCaptureController</code> (<code>startCapture()</code>, <code>stopCapture()</code>, <code>switchCamera(isUsingFrontCamera:)</code>)</td></tr></tbody></table></div>
+<h2 id="source"><a class="doc-anchor" href="#source">Source</a></h2>
+<p>Not public yet. The source repository is private, so there is no link to it here. This page documents the package <code>Packages/ElastosWebRTCSDK-iOS</code> on branch <code>feat/agentnet-proto-v2</code>, commit <code>b8830f25cd57ea77466204b45fc7753810d9fffb</code> (2026-11). The signaling side runs on the public <a href="/docs/swift-carrier">Swift Carrier SDK</a>, and the media engine is the public <a href="https://github.com/stasel/WebRTC" target="_blank" rel="noreferrer">stasel/WebRTC</a> package.</p>
+</div></main></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="nav-logo" style="margin-bottom:12px" href="/" data-discover="true"><span class="brand-mark small">D</span>Decent<span class="nav-logo-dot">.</span>network</a><p class="footer-desc">Self-sovereign identity and private communication for people, agents, devices, and services.</p></div><div><h4 class="footer-col-title">Build</h4><ul class="footer-links"><li><a class="footer-link" href="/developers" data-discover="true">Developers</a></li><li><a class="footer-link" href="/sdks" data-discover="true">SDKs</a></li><li><a class="footer-link" href="/applications" data-discover="true">Applications</a></li><li><a href="https://github.com/decentnetworks" class="footer-link">GitHub ↗</a></li></ul></div><div><h4 class="footer-col-title">Network</h4><ul class="footer-links"><li><a class="footer-link" href="/nodes" data-discover="true">Run a Node</a></li><li><a class="footer-link" href="/network" data-discover="true">Architecture</a></li><li><a class="footer-link" href="/docs" data-discover="true">Docs</a></li><li><a class="footer-link" href="/whitepaper" data-discover="true">Whitepaper</a></li></ul></div><div><h4 class="footer-col-title">Community</h4><ul class="footer-links"><li><a href="https://beagle.chat" class="footer-link">Beagle Chat ↗</a></li><li><a href="https://twitter.com/0xWLi" class="footer-link">Twitter</a></li><li><a href="mailto:hi@beagle.chat" class="footer-link">Contact</a></li><li><button class="footer-link language-link">中文</button></li></ul></div></div><div class="footer-bottom"><p>© <!-- -->2026<!-- --> Decent Network.</p><p>Built for the Agent Era</p></div></div></footer></div></div>
+  </body>
+</html>
